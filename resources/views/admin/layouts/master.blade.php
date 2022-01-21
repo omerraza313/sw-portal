@@ -208,7 +208,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="users.html" class="nav-link">
+                <a href="{{route('admin.user')}}" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>See All</p>
                 </a>
@@ -231,6 +231,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{route('admin.blog')}}" class="nav-link">
+                  <i class="far fa-copy nav-icon"></i>
+                  <p>All Posts</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
                   <p>Add Post</p>
@@ -238,12 +244,12 @@
               </li>
                <li class="nav-item">
                 <a href="post-categories.html" class="nav-link">
-                  <i class="fas fa-folder nav-icon"></i>
+                  <i class="fas fa-align-center nav-icon"></i>
                   <p>Post Category</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a href="add-post-category.html" class="nav-link">
+                <a href="{{route('admin.blog_category')}}" class="nav-link">
                   <i class="fas fa-folder-plus nav-icon"></i>
                   <p>Add Category</p>
                 </a>
@@ -255,11 +261,17 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Business Listings
+                Business
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.business')}}" class="nav-link">
+                  <i class="fas fa-stream nav-icon"></i>
+                  <p>Business Listing</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="business.html" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
@@ -290,11 +302,17 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                Service Listings
+                Service
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.service')}}" class="nav-link">
+                  <i class="fas fa-stream nav-icon"></i>
+                  <p>Service Listing</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
@@ -331,13 +349,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.approval')}}" class="nav-link">
                   <i class="fas fa-calendar-check nav-icon"></i>
                   <p>Pending Approvals</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.review')}}" class="nav-link">
                   <i class="far fa-calendar-check nav-icon"></i>
                   <p>Pending Reviews</p>
                 </a>
@@ -359,21 +377,20 @@
     <!-- /.sidebar -->
   </aside>
 
-
-
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
 
   <!---------Main Content Starts---------->
                 @section('content')
                 @show
   <!---------Main Content Ends------------>
 
-
-    <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
     </div>
+  <!-- /.content-wrapper -->
+    <footer class="main-footer">
+    <strong>Copyright &copy; <a href="#">Sharina World</a>.</strong>
+    All rights reserved.
+    
   </footer>
 
   <!-- Control Sidebar -->
