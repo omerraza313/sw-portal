@@ -36,9 +36,16 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/', [AdminController::class, 'index'])->name('admin.dash');
 	//user View
 	Route::get('/user', [AdminController::class, 'users'])->name('admin.user');
+
 	//Blog routes
+
 	Route::get('/blog', [AdminController::class, 'blog'])->name('admin.blog');
-	Route::get('blog-category', [AdminController::class, 'blog_category'])->name('admin.blog_category');
+	Route::get('/blog/category', [AdminController::class, 'blog_category'])->name('admin.blog_category');
+	Route::post('/blog/creat-category', [AdminController::class, 'create_category'])->name('admin.create_category');
+	Route::post('/blog/edit-category', [AdminController::class, 'edit_category'])->name('admin.edit_category');
+	Route::get('/blog/delete-category/{id}', [AdminController::class, 'delete_category'])->name('admin.delete_category');
+
+
 	//business listing
 	Route::get('/business', [AdminController::class, 'business'])->name('admin.business');
 	//service listing
