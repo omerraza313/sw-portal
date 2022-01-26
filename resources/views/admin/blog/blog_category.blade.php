@@ -1,4 +1,4 @@
-@extends('Admin.layouts.master')
+@extends('Admin.layouts.masterDataTables')
 @section('content')
 
 <div class="content-header">
@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row d-flex justify-content-center">
           <!-- left column -->
-          <div class="col-md-11">
+          <div class="col-md-12">
 
             <!------Blog Category List------>
             @error('name')
@@ -42,10 +42,11 @@
                 </p>
                 @endif
               </div>
-              <div class="card-body p-0">
-                <table class="table">
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th>No#</th>
                       <th>Category</th>
                       <th>Slug</th>
                       <th class="text-right">Action</th>
@@ -54,6 +55,7 @@
                   <tbody> 
                     @foreach($data as $key=>$list)
                     <tr>
+                      <td>{{++$key}}</td>
                       <td>{{$list->name}}</td>
                       <td>{{$list->slug}}</td>
                       <td class="text-right py-0 align-middle">
