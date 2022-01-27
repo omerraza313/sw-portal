@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\BlogSubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BlogController;
 
@@ -104,6 +105,28 @@ class BlogController extends Controller
         $model->save();
         return redirect('/admin/blog/sub_category')->with('msg', 'Category Inserted');
 
+    }
+
+    public function edit_sub_category(Request $request){
+
+        $request->validate([
+            'name'=>'required|unique:blog_sub_categories'
+        ]);
+        
+        /*******Converting slug to lowercase******/
+
+        $str = $request->post('name');
+        $str1 = strtolower($str);
+        $str2 = str_replace(" ","-",$str1);
+
+        /********Slug Converted*******/
+        $edit_sub_cat = BlogSubCategory::find($request->id);
+        $edit_sub_cat->name = $request->post('name');
+        $edit_sub_cat->slug = $str2;
+        $edit_sub_cat->image = 'test';
+        $edit_sub_cat->blog_category_id = $request->blog_category_id;
+        $edit_sub_cat->save();
+        return redirect('/admin/blog/sub_category')->with('msg', 'Category Updated');
     }
  
     public function create()
