@@ -5,13 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Blog Category</h1>
+            <h1 class="m-0">Category</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item">Blog Category</li>
-              <li class="breadcrumb-item active">Blog Sub Category</li>
+              <li class="breadcrumb-item active">Category</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -23,7 +22,7 @@
       <div class="container-fluid">
         <div class="row d-flex justify-content-center">
           <!-- left column -->
-          <div class="col-md-11">
+          <div class="col-md-12">
 
             <!------Blog Category List------>
             @error('name')
@@ -50,17 +49,15 @@
                       <th>No#</th>
                       <th>Category</th>
                       <th>Slug</th>
-                      <th>Parent Category</th>
                       <th class="text-right">Action</th>
                     </tr>
                   </thead>
                   <tbody> 
-                    @foreach($subcategories as $key=>$list)
+                    @foreach($categories as $key=>$list)
                     <tr>
                       <td>{{++$key}}</td>
                       <td>{{$list->name}}</td>
                       <td>{{$list->slug}}</td>
-                      <td>{{$list->category->name}}</td>
                       <td class="text-right py-0 align-middle">
                         <div class="btn-group btn-group-sm">
                           <button class="btn btn-info" data-toggle="modal" data-target="#modal-edit-{{$list->id}}"><i class="fas fa-pen-square"></i></button>
@@ -74,16 +71,16 @@
                       <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">Delete Sub Categpry</h4>
+                            <h4 class="modal-title">Delete Categpry</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="card-body">
-                            <p>Do You Want to Delete <strong>{{$list->name}}</strong> Sub Category</p>
+                            <p>Do You Want to Delete <strong>{{$list->name}}</strong> Category</p>
                               <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <a href="{{url('admin/blog/delete-sub-category/')}}/{{$list->id}}" class="btn btn-danger">Delete</a>
+                                <a href="{{url('admin/category/delete')}}/{{$list->id}}" class="btn btn-danger">Delete</a>
                               </div>
                             
                           </div>
@@ -99,13 +96,13 @@
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Edit Sub Category</h4>
+                    <h4 class="modal-title">Edit Category</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="card-body">
-                    <form method="POST" action="{{route('admin.edit_sub_category')}}">
+                    <form method="POST" action="{{route('admin.edit_category')}}">
                       @csrf
                       <input type="text" name="id" value="{{$list->id}}" hidden="">
                       <div class="form-group">
@@ -120,17 +117,6 @@
                             <input type="file" class="custom-file-input" name="image" id="category-image">
                             <label class="custom-file-label" for="category-image">Choose file</label>
                           </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="Parent Category">Parent Category</label>
-                        <div class="input-group">
-                          <select class="form-control" name="blog_category_id" required="">
-                           <option value="{{$list->id}}" selected>{{$list->category->name}}</option>
-                            @foreach($categories as $key=>$cat)
-                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                            @endforeach
-                          </select>
                         </div>
                       </div>
                       <div class="modal-footer justify-content-between">
@@ -167,16 +153,15 @@
                     </button>
                   </div>
                   <div class="card-body">
-                    <form method="POST" action="{{route('admin.sub_category_add')}}">
+                    <form method="POST" action="{{route('admin.create_category')}}">
                       @csrf
                       <div class="form-group">
-                        <label for="category-name">Sub Category Name</label>
+                        <label for="category-name">Category Name</label>
                         <input type="text" class="form-control" name="name" id="category-name" placeholder="Category Name" required="">
-                          
                       </div>
                       
                       <div class="form-group">
-                        <label for="category-image">Sub Category Image</label>
+                        <label for="category-image">Category Image</label>
                         <div class="input-group">
                           <div class="custom-file">
                             <input type="file" class="custom-file-input" name="image" id="category-image" required="">
@@ -184,20 +169,9 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="Parent Category">Parent Category</label>
-                        <div class="input-group">
-                          <select class="form-control" name="blog_category_id" required="">
-                            <option value="">Select Category</option>
-                            @foreach($categories as $key=>$cat)
-                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                      </div>
                       <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Sub Category</button>
+                        <button type="submit" class="btn btn-primary">Add New</button>
                       </div>
                   </form>
                   </div>

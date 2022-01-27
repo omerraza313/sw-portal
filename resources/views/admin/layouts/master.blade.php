@@ -243,15 +243,15 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a href="post-categories.html" class="nav-link">
-                  <i class="fas fa-align-center nav-icon"></i>
+                <a href="{{route('admin.blog_category')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
                   <p>Post Category</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a href="{{route('admin.blog_category')}}" class="nav-link">
-                  <i class="fas fa-folder-plus nav-icon"></i>
-                  <p>Add Category</p>
+                <a href="{{route('admin.sub_blog_category')}}" class="nav-link">
+                  <i class="fas fa-list-ol nav-icon"></i>
+                  <p>Sub Category</p>
                 </a>
               </li>
             </ul>

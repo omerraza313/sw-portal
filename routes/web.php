@@ -43,10 +43,18 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/blog/category', [BlogController::class, 'blog_category'])->name('admin.blog_category');
 	Route::post('/blog/creat-category', [BlogController::class, 'create_category'])->name('admin.create_category');
 	Route::post('/blog/edit-category', [BlogController::class, 'edit_category'])->name('admin.edit_category');
-	Route::get('/blog/delete-category/{id}', [BlogController::class, 'delete_category'])->name('admin.delete_category');
+	Route::get('/blog/delete-category/{id}', [BlogController::class, 'delete_category'])->name('admin.delete_blog_category');
 	Route::get('/blog/sub_category', [BlogController::class, 'blog_sub_category'])->name('admin.sub_blog_category');
 	Route::post('/blog/sub_category/add', [BlogController::class, 'add_sub_category'])->name('admin.sub_category_add');
 	Route::post('/blog/sub_category/edit', [BlogController::class, 'edit_sub_category'])->name('admin.edit_sub_category');
+	
+	//Category Routes
+
+	Route::get('/category', [CategoryController::class, 'index'])->name('admin.category');
+	Route::post('/category/add', [CategoryController::class, 'create_category'])->name('admin.create_category');
+	Route::post('/category/edit', [CategoryController::class, 'edit_category'])->name('admin.edit_category');
+	Route::get('/category/delete/{id}', [BlogController::class, 'delete_category'])->name('admin.delete_category');
+
 	//business listing
 	Route::get('/business', [AdminController::class, 'business'])->name('admin.business');
 	//service listing
