@@ -39,13 +39,14 @@ Route::group(['prefix'=>'admin'], function(){
 
 	//Blog routes
 
-	Route::get('/blog', [AdminController::class, 'blog'])->name('admin.blog');
-	Route::get('/blog/category', [AdminController::class, 'blog_category'])->name('admin.blog_category');
-	Route::post('/blog/creat-category', [AdminController::class, 'create_category'])->name('admin.create_category');
-	Route::post('/blog/edit-category', [AdminController::class, 'edit_category'])->name('admin.edit_category');
-	Route::get('/blog/delete-category/{id}', [AdminController::class, 'delete_category'])->name('admin.delete_category');
-
-
+	Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
+	Route::get('/blog/category', [BlogController::class, 'blog_category'])->name('admin.blog_category');
+	Route::post('/blog/creat-category', [BlogController::class, 'create_category'])->name('admin.create_category');
+	Route::post('/blog/edit-category', [BlogController::class, 'edit_category'])->name('admin.edit_category');
+	Route::get('/blog/delete-category/{id}', [BlogController::class, 'delete_category'])->name('admin.delete_category');
+	Route::get('/blog/sub_category', [BlogController::class, 'blog_sub_category'])->name('admin.sub_blog_category');
+	Route::post('/blog/sub_category/add', [BlogController::class, 'add_sub_category'])->name('admin.sub_category_add');
+	Route::post('/blog/sub_category/edit', [BlogController::class, 'edit_sub_category'])->name('admin.edit_sub_category');
 	//business listing
 	Route::get('/business', [AdminController::class, 'business'])->name('admin.business');
 	//service listing
@@ -54,6 +55,8 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/approval', [AdminController::class, 'approval'])->name('admin.approval');
 	//Pending Review
 	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
+
+
 
 	/*********Admin Controller End*******/
 

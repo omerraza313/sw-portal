@@ -11,7 +11,7 @@ class BlogSubCategory extends Model
 
       public function category(){
 
-    	return $this->belongsTo('App\Models\BlogCategory');
+    	return $this->belongsTo('App\Models\BlogCategory' , 'blog_category_id', 'id');
     }
 
 

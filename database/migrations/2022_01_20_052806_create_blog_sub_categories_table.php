@@ -15,6 +15,10 @@ class CreateBlogSubCategoriesTable extends Migration
     {
         Schema::create('blog_sub_categories', function (Blueprint $table) {
             $table->id();
+            $table->integer('blog_category_id');
+            $table->string('name');
+            $table->string('slug');
+            $table->string('image');
             $table->timestamps();
         });
     }

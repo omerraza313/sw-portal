@@ -3,58 +3,127 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\BlogController;
 
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
-        echo "Admin Blog";
+        return view('Admin.blog.post');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function blog_category()
+    {
+        $data = BlogCategory::all();
+        return view('Admin.blog.blog_category', compact('data'));
+    }
+    
+    public function create_category(Request $request)
+    {
+        $request->validate([
+            'name'=>'required|unique:blog_categories'
+        ]);
+        
+        /*******Converting slug to lowercase******/
+
+        $str = $request->post('name');
+        $str1 = strtolower($str);
+        $str2 = str_replace(" ","-",$str1);
+
+        /********Slug Converted*******/
+
+        $model = new BlogCategory;
+        $model->name = $request->post('name');
+        $model->slug = $str2;
+        $model->image = 'test';
+        $model->save();
+        return redirect('/admin/blog/category')->with('msg', 'Category Inserted');
+    }
+
+    public function edit_category(Request $request)
+    {
+        //return $request;
+        $request->validate([
+            'name'=>'required|unique:blog_categories'
+        ]);
+        /*******Converting slug to lowercase******/
+
+        $str = $request->post('name');
+        $str1 = strtolower($str);
+        $str2 = str_replace(" ","-",$str1);
+
+        /********Slug Converted*******/
+        $edit_category = BlogCategory::find($request->id);
+       // return $edit_category;
+
+        $edit_category->name = $request->name;
+        $edit_category->slug = $str2;
+        $edit_category->image = 'test';
+        $edit_category->save();
+        return redirect('/admin/blog/category')->with('msg', 'Category Updated');
+
+    }
+
+    public function delete_category($id)
+    {
+        $model = BlogCategory::find($id);
+        $model->delete();
+        return redirect('/admin/blog/category')->with('msg', 'Category Deleted');
+    }
+
+    public function blog_sub_category(){
+
+        $categories = BlogCategory::all();
+        $subcategories = BlogSubCategory::all();
+        return view('Admin.blog.blog_sub_category', compact('categories','subcategories'));
+
+    }
+
+     public function add_sub_category(Request $request){
+
+         $request->validate([
+            'name'=>'required|unique:blog_sub_categories'
+        ]);
+        
+        /*******Converting slug to lowercase******/
+
+        $str = $request->post('name');
+        $str1 = strtolower($str);
+        $str2 = str_replace(" ","-",$str1);
+
+        /********Slug Converted*******/
+
+        $model = new BlogSubCategory;
+        $model->name = $request->post('name');
+        $model->slug = $str2;
+        $model->image = 'test';
+        $model->blog_category_id = $request->blog_category_id;
+        $model->save();
+        return redirect('/admin/blog/sub_category')->with('msg', 'Category Inserted');
+
+    }
+ 
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Blog $blog)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Blog $blog)
     {
         //
