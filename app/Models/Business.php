@@ -9,7 +9,7 @@ class Business extends Model
 {
     use HasFactory;
 
-    function service()
+    function services()
     {
     	return $this->hasMany('\App\Models\Service');
     }

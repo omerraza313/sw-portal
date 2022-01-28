@@ -13,9 +13,16 @@ class BlogController extends Controller
  
     public function index()
     {
-        return view('Admin.blog.post');
+        $posts = Blog::all();
+        return view('Admin.blog.post', compact('posts'));
     }
-
+    public function add_post(){
+        return view('Admin.blog.add_post');
+    }
+    public function create_post(Request $request){
+        $post = new Blog;
+        return $request;
+    }
     public function blog_category()
     {
         $data = BlogCategory::all();
@@ -41,6 +48,7 @@ class BlogController extends Controller
         $model->slug = $str2;
         $model->image = 'test';
         $model->save();
+
         return redirect('/admin/blog/category')->with('msg', 'Category Inserted');
     }
 

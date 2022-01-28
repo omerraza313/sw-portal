@@ -40,6 +40,10 @@ Route::group(['prefix'=>'admin'], function(){
 	//Blog routes
 
 	Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
+	Route::get('/blog/add_post', [BlogController::class, 'add_post'])->name('admin.blog.add');
+	Route::post('/blog/create_post', [BlogController::class, 'create_post'])->name('admin.blog.create');
+
+
 	Route::get('/blog/category', [BlogController::class, 'blog_category'])->name('admin.blog_category');
 	Route::post('/blog/creat-category', [BlogController::class, 'create_category'])->name('admin.create_category');
 	Route::post('/blog/edit-category', [BlogController::class, 'edit_category'])->name('admin.edit_category');

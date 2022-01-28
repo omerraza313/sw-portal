@@ -42,7 +42,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  @foreach($posts as $key=>$list)
                   <tr>
                     <td>Other browsers</td>
                     <td>All others</td>
@@ -50,6 +50,7 @@
                     <td>-</td>
                     <td>U</td>
                   </tr>
+                  @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
