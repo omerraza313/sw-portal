@@ -31,8 +31,30 @@
 				        <div class="card-body">
 				            <div class="form-group">
 				                <label for="title">Title</label>
-				                <input type="text" class="form-control" id="category-name" placeholder="Business Name">
+				                <input name="title" type="text" class="form-control" id="category-name" placeholder="Business Name">
 				            </div>
+				            <div class="row">
+				            	<div class="col-md-6">
+						            <div class="form-group">
+						            	<label>Select Category</label>
+						            	<select class="form-control" id="selectcat" name="blog_category_id">
+						            		<option value="">Select Category</option>
+						            		@foreach($blog_categories as $category)
+						            		<option value="{{$category->id}}">{{$category->name}}</option>
+						            		@endforeach
+						            	</select>
+						            </div>
+				            	</div>
+				            	<div class="col-md-6">
+				            		<div class="form-group">
+						            	<label>Select Sub Category</label>
+						            	<select class="form-control" id="subcat" name="blog_sub_category_id">
+						            		
+						            	</select>
+						            </div>
+				            	</div>
+				            </div>
+				            
 				            <div class="form-group">
 				                <label for="body">Business Description</label>
 				                   

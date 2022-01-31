@@ -17,7 +17,9 @@ class BlogController extends Controller
         return view('Admin.blog.post', compact('posts'));
     }
     public function add_post(){
-        return view('Admin.blog.add_post');
+        $blog_categories = BlogCategory::all();
+        $blog_sub_categories = BlogSubCategory::all();
+        return view('Admin.blog.add_post', compact('blog_categories','blog_sub_categories'));
     }
     public function create_post(Request $request){
         $post = new Blog;
@@ -29,8 +31,9 @@ class BlogController extends Controller
         return view('Admin.blog.blog_category', compact('data'));
     }
     
-    public function create_category(Request $request)
+    public function create_blog_category(Request $request)
     {
+        
         $request->validate([
             'name'=>'required|unique:blog_categories'
         ]);

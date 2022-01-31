@@ -153,7 +153,7 @@
                     </button>
                   </div>
                   <div class="card-body">
-                    <form method="POST" action="{{route('admin.create_category')}}">
+                    <form method="POST" action="{{route('admin.blog.create_category')}}">
                       @csrf
                       <div class="form-group">
                         <label for="category-name">Category Name</label>

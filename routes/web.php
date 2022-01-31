@@ -45,7 +45,7 @@ Route::group(['prefix'=>'admin'], function(){
 
 
 	Route::get('/blog/category', [BlogController::class, 'blog_category'])->name('admin.blog_category');
-	Route::post('/blog/creat-category', [BlogController::class, 'create_category'])->name('admin.create_category');
+	Route::post('/blog/creat-category', [BlogController::class, 'create_blog_category'])->name('admin.blog.create_category');
 	Route::post('/blog/edit-category', [BlogController::class, 'edit_category'])->name('admin.edit_category');
 	Route::get('/blog/delete-category/{id}', [BlogController::class, 'delete_category'])->name('admin.delete_blog_category');
 	Route::get('/blog/sub_category', [BlogController::class, 'blog_sub_category'])->name('admin.sub_blog_category');

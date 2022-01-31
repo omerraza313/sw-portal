@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Blog Category</h1>
+            <h1 class="m-0">Blog Sub Category</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -35,7 +35,7 @@
             <div class="card card-dafault">
               <div class="card-header">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add">
-                  Add Category
+                  Add Sub Category
                 </button>
                 @if(Session::Has('msg'))
                 <p class="alert alert-danger float-right bg-danger py-2 px-3" role="alert">
@@ -161,7 +161,7 @@
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
+                    <h4 class="modal-title">Add Sub Category</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

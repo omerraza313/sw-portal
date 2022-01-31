@@ -394,6 +394,9 @@
 
 <!-- jQuery -->
 <script src="{{ asset('backend_assets/plugins/jquery/jquery.min.js')}}"></script>
+
+<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <!-- Bootstrap 4 -->
 <script src="{{ asset('backend_assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
@@ -408,7 +411,11 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend_assets/dist/js/demo.js')}}"></script>
 <!-- Page specific script -->
+
+
+
 <script>
+
   $(function () {
     // Summernote
     $('#summernote').summernote()
@@ -419,6 +426,35 @@
       theme: "monokai"
     });
   })
+
+</script>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function(){
+    
+
+      let dist = {!! json_encode($blog_sub_categories->toArray(), JSON_HEX_TAG) !!};
+      console.log(dist);
+
+        $('#selectcat').change(function() {
+        $('#subcat').html('<option disabled selected>=== Select Category ===</option>')
+      
+  
+      let dist = {!! json_encode($blog_sub_categories->toArray(), JSON_HEX_TAG) !!};
+      
+      
+      jQuery.each(dist, function(value, key) {
+
+        if(key.blog_category_id == $('#selectcat').children("option:selected").val()) {
+       
+          $('#subcat').append('<option value='+key.id+'>'+key.name+'</option>');
+        }
+      });
+    });
+  });
+
 </script>
 </body>
 </html>
