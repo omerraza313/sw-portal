@@ -11,6 +11,7 @@ use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogSubCategoryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,16 @@ use App\Http\Controllers\FavouriteController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**********Frontend Routes***********/
+
+Route::group(['prefix'=>'blog'], function(){
+
+	Route::get('/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
+
+});
+
+/**********End Frontend Routes***********/
 
 /**********Admin Dashboard Routes***********/
 
@@ -73,9 +84,6 @@ Route::group(['prefix'=>'admin'], function(){
 	//Pending Review
 	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
 
-
-
-	/*********Admin Controller End*******/
-
-
 });
+
+/*********Admin Controller End*******/
