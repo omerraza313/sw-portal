@@ -14,4 +14,9 @@ class BlogCategory extends Model
 
     	return $this->hasMany('App\Models\BlogSubCategory');
     }
+
+    public function blogs(){
+
+    	return $this->hasMany('App\Models\Blog');
+    }
 }

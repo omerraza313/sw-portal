@@ -370,11 +370,92 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+<div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Blog Category</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item">Blog Category</li>
+              <li class="breadcrumb-item active">Blog Sub Category</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+</div>
 
-  <!---------Main Content Starts---------->
-                @section('content')
-                @show
-  <!---------Main Content Ends------------>  
+<!-- Main content -->
+    <section class="content">
+    	<div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+        	<div class="col-md-11">
+        		<div class="card">
+					<div class="card-header"></div>
+				    <form method="POST" action="{{route('admin.blog.update')}}">
+				    	@csrf
+				    	<input type="text" name="id" value="{{$post->id}}" hidden="">
+				        <div class="card-body">
+				            <div class="form-group">
+				                <label for="title">Title</label>
+				                <input name="title" type="text" class="form-control" id="category-name" placeholder="Business Name" value="{{$post->title}}">
+				            </div>
+				            <div class="row">
+				            	<div class="col-md-6">
+						            <div class="form-group">
+						            	<label>Select Category</label>
+						            	<select class="form-control" id="selectcat" name="blog_category_id">
+						            		<option value="{{$post->blog_category_id}}">{{$post->category->name}}</option>
+						            		@foreach($blog_categories as $category)
+						            		<option value="{{$category->id}}">{{$category->name}}</option>
+						            		@endforeach
+						            	</select>
+						            </div>
+				            	</div>
+				            	<div class="col-md-6">
+				            		<div class="form-group">
+						            	<label>Select Sub Category</label>
+						            	<select class="form-control" id="subcat" name="blog_sub_category_id">
+						            		<option value="{{$post->blog_sub_category_id}}">{{$post->subcategory->name}}</option>
+						            		@foreach($blog_sub_categories as $sub_cat)
+						            	     <option value="{{$sub_cat->id}}">
+						            	     	{{$sub_cat->name}}
+						            	     </option>
+                                            @endforeach
+						            	</select>
+						            </div>
+				            	</div>
+				            </div>
+				            
+				            <div class="form-group">
+				                <label for="body">Business Description</label>
+				           
+				                <textarea id="summernote" name="body">
+				                	
+				                	
+				                </textarea>
+				                 
+				            </div>
+
+				        </div>
+				                <!-- /.card-body -->
+
+				        <div class="card-footer">
+				            <button type="submit" class="btn btn-success">
+				            	Update
+				            </button>
+				        </div>
+				    </form>
+				</div>
+        	</div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+      <!---------Main Content Ends------------>  
     
   </div>
   <!-- /.content-wrapper -->
@@ -416,23 +497,12 @@
 
 <script>
 
-  $(function () {
+ 
 
-
-    // Summernote
-    $('#summernote').summernote()
-
-    // CodeMirror
-    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-    });
-
-  })
+  $('#summernote').summernote('code', `{!! $post->body !!}` );
 
 
 </script>
-
 <script type="text/javascript">
 
 

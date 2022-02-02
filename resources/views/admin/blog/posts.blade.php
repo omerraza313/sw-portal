@@ -27,38 +27,44 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <a href="{{route('admin.blog.add')}}" class="btn btn-info">Add Post</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr#</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($posts as $key=>$list)
                   <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td>{{++$key}}</td>
+                    <td>{{$list->title}}</td>
+                    <td>{{$list->category->name}}</td>
+                    <td>{{$list->subcategory->name}}</td>
+                    <td>
+                      <div class="btn-group btn-group-sm">
+                        <a href="{{url('/admin/blog/edit_post')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
+                          <a href="{{url('/admin/blog/delete_post')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                           <a href="#" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr#</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
+                    <th>Actions</th>
                   </tr>
                   </tfoot>
                 </table>

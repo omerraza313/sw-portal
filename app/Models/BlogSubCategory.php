@@ -14,6 +14,11 @@ class BlogSubCategory extends Model
     	return $this->belongsTo('App\Models\BlogCategory' , 'blog_category_id', 'id');
     }
 
+    public function blogs(){
+
+    	return $this->hasMany('App\Models\Blog');
+    }
+
 
 
     // $categories = Category::all();

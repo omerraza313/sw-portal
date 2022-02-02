@@ -165,7 +165,7 @@
                         <label for="category-image">Category Image</label>
                         <div class="input-group">
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image" id="category-image" required="">
+                            <input type="file" class="custom-file-input" name="image" id="category-image" >
                             <label class="custom-file-label" for="category-image">Choose file</label>
                           </div>
                         </div>
