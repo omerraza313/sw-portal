@@ -52,7 +52,7 @@
                       <div class="btn-group btn-group-sm">
                         <a href="{{url('/admin/blog/edit_post')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
                           <a href="{{url('/admin/blog/delete_post')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                           <a href="#" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                           <a href="{{url('/blog')}}/{{$list->slug}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                       </div>
                     </td>
                   </tr>

@@ -23,6 +23,11 @@ class BlogController extends Controller
     }
     public function create_post(Request $request){
        
+
+       $request->validate([
+            'post_image'=>'required|mimes:jpeg,jpg,png'
+        ]);
+
        $content = $request->body;
        $dom = new \DomDocument();
        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -45,16 +50,32 @@ class BlogController extends Controller
  
        $content = $dom->saveHTML();
 
-/***********Converting title to lowercase*************/
+/**********Converting title to lowercase************/
        $str = $request->post('title');
         $str1 = strtolower($str);
         $str2 = str_replace(" ","-",$str1);
 /************End Converting Title to Lowercase*******************/
+//return $str2;
        $post = new Blog;
+
+       
        $post->title = $request->title;
        $post->slug = $str2;
        $post->blog_category_id = $request->blog_category_id;
        $post->blog_sub_category_id = $request->blog_sub_category_id;
+
+       /************Image Handling****************/
+
+        if($request->hasfile('post_image')){
+            $image = $request->file('post_image');
+            $ext = $image->extension();
+            $image_name = time().'.'.$ext;
+            $image->storeAs('/public/media', $image_name);
+            $post->post_image = $image_name;
+        }
+        //return $request->file('post_image');
+        /************Image Handling End*********/
+
        $post->body = $content;
 
        $post->save();

@@ -26,12 +26,12 @@
         		<div class="card">
 					<div class="card-header"></div>
 
-				    <form method="POST" action="{{route('admin.blog.create')}}">
+				    <form method="POST" action="{{route('admin.blog.create')}}" enctype="multipart/form-data">
 				    	@csrf
 				        <div class="card-body">
 				            <div class="form-group">
 				                <label for="title">Title</label>
-				                <input name="title" type="text" class="form-control" id="category-name" placeholder="Business Name">
+				                <input name="title" type="text" class="form-control" id="post_title" placeholder="Post Title">
 				            </div>
 				            <div class="row">
 				            	<div class="col-md-6">
@@ -54,9 +54,17 @@
 						            </div>
 				            	</div>
 				            </div>
-				            
 				            <div class="form-group">
-				                <label for="body">Business Description</label>
+		                        <label for="category-image">Featured Image</label>
+		                        <div class="input-group">
+		                          <div class="custom-file">
+		                            <input type="file" class="custom-file-input" name="post_image" id="post_image">
+		                            <label class="custom-file-label" for="category-image">Choose file</label>
+		                          </div>
+		                        </div>
+		                    </div>
+				            <div class="form-group">
+				                <label for="body">Post Body</label>
 				                   
 				                <textarea id="summernote" name="body">
 				                	

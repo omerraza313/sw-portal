@@ -30,11 +30,13 @@ Route::get('/', function () {
 
 /**********Frontend Routes***********/
 
-Route::group(['prefix'=>'blog'], function(){
+Route::get('blog/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
+// Route::group(['prefix'=>'blog'], function(){
 
-	Route::get('/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
 
-});
+// 	Route::get('/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
+
+// });
 
 /**********End Frontend Routes***********/
 

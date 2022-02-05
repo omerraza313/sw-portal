@@ -20,6 +20,7 @@ class CreateBlogsTable extends Migration
             $table->longText('body');
             $table->integer('blog_category_id');
             $table->integer('blog_sub_category_id');
+            $table->string('post_image');
             $table->timestamps();
         });
     }
