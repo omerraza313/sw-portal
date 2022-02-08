@@ -31,6 +31,8 @@ Route::get('/', function () {
 /**********Frontend Routes***********/
 
 Route::get('blog/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
+Route::get('blog/category/{slug}', [FrontController::class, 'single_category_post'])->name('front.single.category_post');
+
 // Route::group(['prefix'=>'blog'], function(){
 
 

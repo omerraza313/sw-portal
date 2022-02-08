@@ -21,44 +21,35 @@
 		<section class="blog-single section">
 			<div class="container-fluid px-5">
 				<div class="row">
-					<div class="col-lg-8 col-12">
+					<div class="col-lg-9 col-12">
 						<div class="blog-single-main">
 							<div class="row">
-								<div class="col-12">
+								@foreach($blog_posts as $key=>$list)
+								<div class="col-lg-4 col-md-4 mb-4">
 									
-									<div class="blog-detail">
-										<h2 class="blog-title">{{$single_post->title}}</h2>
-										<div class="blog-meta">
-											<span class="author"><a href="#"><i class="fa fa-user"></i>By Admin</a><a href="#"><i class="fa fa-calendar"></i>{{$single_post->created_at}}</a></span>
-										</div>
-										<div class="image">
-										 <img src="{{ asset('storage/media/'.$single_post->post_image)}}" alt="#" class="post_featured_image">
-									    </div>
-									    <hr>
-										<div class="content">
-											{!! $single_post->body !!}
-										</div>
-									</div>
-									<!-- <div class="share-social">
-										<div class="row">
-											<div class="col-12">
-												<div class="content-tags">
-													<h4>Tags:</h4>
-													<ul class="tag-inner">
-														<li><a href="#">How it works</a></li>
-														<li><a href="#">Business Plan</a></li>
-														<li><a href="#">Service Search</a></li>
-														<li><a href="#">Sharina World</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div> -->
-								</div>			
+						            <div class="card" style="box-shadow: 5px 7px 5px -1px rgba(199,189,189,0.75);">
+						              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+						                <img src="{{ asset('storage/media/'.$list->post_image)}}" alt="{{$list->title}}" class="img-fluid rounded-top post_category_image" />
+						                <a href="{{url('/blog/')}}/{{$list->slug}}">
+						                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+						                </a>
+						              </div>
+						              <div class="card-body">
+						                <h5 class="card-title"><a href="{{url('/blog/')}}/{{$list->slug}}">{{$list->title}}</a></h5>
+						                <p class="card-text pb-2">
+						                  Some quick example text to build on the card title and make up the bulk of the
+						                  card's content.
+						                </p>
+						                <a href="{{url('/blog/')}}/{{$list->slug}}" class="btn btn-primary"><span class="text-white">Read</span></a>
+						              </div>
+						            </div>
+						            
+						        </div>
+						        @endforeach
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-12">
+					<div class="col-lg-3 col-12">
 						<div class="main-sidebar">
 							<!-- Single Widget -->
 							<div class="single-widget search">
@@ -85,7 +76,7 @@
 								<h3 class="title">Recent post</h3>
 								<!-- Single Post -->
 								@foreach($recent_posts as $key=>$list)
-								<div class="single-post">	
+								<div class="single-post">
 									<div class="image">
 										<img src="{{ asset('storage/media/'.$list->post_image)}}" alt="{{$list->title}}">
 									</div>
