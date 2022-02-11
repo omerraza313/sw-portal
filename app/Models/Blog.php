@@ -20,4 +20,15 @@ class Blog extends Model
 
     	return $this->belongsTo('App\Models\BlogSubCategory', 'blog_sub_category_id' , 'id');
     }
+
+
+    public function comments(){
+
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function approvedComments(){
+
+        return $this->comments()->where('status', 'approved');
+    }
 }

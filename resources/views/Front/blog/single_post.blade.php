@@ -56,6 +56,56 @@
 									</div> -->
 								</div>			
 							</div>
+							<hr>
+							<div class="card mt-5">
+								<div class="card-header" style="background-color:#F7941D;">
+									<h4 class="float-left text-white">Recent Comments</h4>
+									<h4 class="float-right badge badge-primary">Total Comments : {{$single_post->approvedComments->count()}}</h4>
+								</div>
+								<div class="card-body">
+									@foreach($single_post->approvedComments as $comment)
+									<h5>{{$comment->comment}}</h5>
+									<p>{{$comment->created_at}} <i> by</i> <strong>{{$comment->name}}</strong></p>
+									<hr>
+									@endforeach
+								</div>
+							</div>
+							<div class="card mt-5 plr-3">
+								<div class="card-header" style="background-color:#F7941D;">
+									<h4 class="float-left text-white">Post A New Comment</h4>
+									
+								</div>
+								<div class="card-body">
+								<div class="row">
+									<div class="col-6">
+										<form method="Post" action="{{route('blog.comment.add')}}">
+										@csrf	
+										
+										<input type="id" name="blog_id" value="{{$single_post->id}}" hidden>
+										<div class="form-group">
+											<label>Enter Your Name</label>
+											<input type="text" name="name" class="form-control">
+										</div>	
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label>Enter Your Email</label>
+											<input type="email" name="email" class="form-control">
+										</div>	
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label>Enter Your Comment</label>
+											<textarea  name="comment" class="form-control"></textarea>
+										</div>	
+										<button type="submit" class="btn btn-primary">Post A comment</button>
+
+										</form>
+									</div>
+
+								</div>
+							</div>
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-4 col-12">

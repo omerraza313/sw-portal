@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use App\Models\BlogSubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BlogController;
+use App\Models\Comment;
 
 class BlogController extends Controller
 {
@@ -121,6 +122,22 @@ class BlogController extends Controller
         $model = Blog::where('id',$id)->first();
         $model->delete();
         return redirect('admin/blog')->with('del_msg', 'Post has been deleted');
+    }
+
+    /********* Single Post Comment ***********/
+
+    public function addComment(Request $request){
+
+        $comment = new Comment();
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->blog_id = $request->blog_id;
+        $comment->comment = $request->comment;
+        $comment->status = 'pending';
+        $comment->save();
+
+        return redirect()->back()->with('msg', 'Your Comment has been submitted and under review.');
+        
     }
 
     public function blog_category()

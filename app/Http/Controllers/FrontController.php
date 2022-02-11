@@ -22,6 +22,7 @@ class FrontController extends Controller
     	$single_cat = BlogCategory::where('slug', $slug)->first();
     	$blog_posts = $single_cat->blogs;
     	$recent_posts = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        
         //return $recent_posts;
 
         return view('Front.blog.single_category_post', compact('blog_cat', 'blog_posts', 'recent_posts'));

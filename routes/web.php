@@ -96,3 +96,6 @@ Route::group(['prefix'=>'admin'], function(){
 });
 
 /*********Admin Controller End*******/
+
+	
+	Route::post('/blog/add-comment', [BlogController::class, 'addComment'])->name('blog.comment.add');
