@@ -271,29 +271,11 @@
                     <p>Add Business</p>
                   </a>
                 </li>
-                 <li class="nav-item">
-                  <a href="business-categories.html" class="nav-link">
-                    <i class="fas fa-folder nav-icon"></i>
-                    <p>Business Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="add-business-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="business-sub-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Sub Category</p>
-                  </a>
-                </li>
               </ul>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tree"></i>
+                <i class="fas fa-toolbox nav-icon"></i>
                 <p>
                   Service
                   <i class="fas fa-angle-left right"></i>
@@ -312,20 +294,37 @@
                     <p>Add Service</p>
                   </a>
                 </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-stream nav-icon"></i>
+                <p>
+                  Category
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.service')}}" class="nav-link">
+                    <i class="fas fa-list-ul nav-icon"></i>
+                    <p>All Categories</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-list-ol nav-icon"></i>
+                    <p>Sub Category</p>
+                  </a>
+                </li>
                  <li class="nav-item">
                   <a href="service-categories.html" class="nav-link">
-                    <i class="fas fa-folder nav-icon"></i>
-                    <p>Service Category</p>
+                    <i class="fas fa-folder-plus nav-icon"></i>
+                    <p>Add Categories</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="add-service-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="service-sub-category.html" class="nav-link">
                     <i class="fas fa-folder-plus nav-icon"></i>
                     <p>Add Sub Category</p>
                   </a>
@@ -441,16 +440,19 @@
         $('#selectcat').change(function() {
         $('#subcat').html('<option disabled selected>=== Select Category ===</option>')
       
+
   
-      let dist = {!! json_encode($blog_sub_categories->toArray(), JSON_HEX_TAG) !!};
+      let dist = {!! json_encode($sub_categories->toArray(), JSON_HEX_TAG) !!};
       
       
       jQuery.each(dist, function(value, key) {
 
-        if(key.blog_category_id == $('#selectcat').children("option:selected").val()) {
+        if(key.category_id == $('#selectcat').children("option:selected").val()) {
        
           $('#subcat').append('<option value='+key.id+'>'+key.name+'</option>');
+
         }
+
       });
     });
   });

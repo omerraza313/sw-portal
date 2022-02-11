@@ -1,4 +1,4 @@
-@extends('Admin.layouts.master')
+@extends('Admin.layouts.masterDataTables')
 @section('content')
 
 <div class="content-header">

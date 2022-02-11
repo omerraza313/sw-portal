@@ -57,12 +57,9 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
 	Route::get('/blog/add_post', [BlogController::class, 'add_post'])->name('admin.blog.add');
 	Route::post('/blog/create_post', [BlogController::class, 'create_post'])->name('admin.blog.create');
-
 	Route::get('/blog/edit_post/{id}', [BlogController::class, 'edit_post'])->name('admin.blog.edit');
 	Route::post('/blog/update/', [BlogController::class, 'update_post'])->name('admin.blog.update');
 	Route::get('/blog/delete_post/{id}', [BlogController::class, 'delete_post'])->name('admin.delete_post');
-
-
 	Route::get('/blog/category', [BlogController::class, 'blog_category'])->name('admin.blog_category');
 	Route::post('/blog/creat-category', [BlogController::class, 'create_blog_category'])->name('admin.blog.create_category');
 	Route::post('/blog/edit-category', [BlogController::class, 'edit_category'])->name('admin.edit_category');
@@ -77,12 +74,20 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/category', [CategoryController::class, 'index'])->name('admin.category');
 	Route::post('/category/add', [CategoryController::class, 'create_category'])->name('admin.create_category');
 	Route::post('/category/edit', [CategoryController::class, 'edit_category'])->name('admin.edit.category');
-	Route::get('/category/delete/{id}', [BlogController::class, 'delete_category'])->name('admin.delete_category');
+	Route::get('/category/delete/{id}', [CategoryController::class, 'delete_category'])->name('admin.delete_category');
+
+	Route::get('/sub_category', [CategoryController::class, 'sub_category'])->name('admin.sub_category');
+	Route::post('/sub_category/add', [CategoryController::class, 'create_sub_category'])->name('admin.sub_category.create');
+	Route::post('/sub_category/edit', [CategoryController::class, 'edit_sub_category'])->name('admin.edit.sub_category');
+	Route::get('/sub_category/delete', [CategoryController::class, 'delete_sub_category'])->name('admin.sub_category.delete');
+
 
 	//business listing
 	Route::get('/business', [AdminController::class, 'business'])->name('admin.business');
 	//service listing
-	Route::get('/service', [AdminController::class, 'service'])->name('admin.service');
+	Route::get('/service', [ServiceController::class, 'index'])->name('admin.service');
+	Route::get('/service/add', [ServiceController::class, 'add_service'])->name('admin.service.add');
+	Route::post('/service/create', [ServiceController::class, 'create_service'])->name('admin.service.create');
 	//Pending Approval
 	Route::get('/approval', [AdminController::class, 'approval'])->name('admin.approval');
 	//Pending Review

@@ -8,7 +8,8 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('backend_assets/plugins/fontawesome-free/css/all.min.css')}}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="{{asset('backend_assets/plugins/fontawesome-free/css/all.min.css')}}"> -->
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -278,29 +279,11 @@
                   <p>Add Business</p>
                 </a>
               </li>
-               <li class="nav-item">
-                <a href="business-categories.html" class="nav-link">
-                  <i class="fas fa-folder nav-icon"></i>
-                  <p>Business Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="add-business-category.html" class="nav-link">
-                  <i class="fas fa-folder-plus nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="business-sub-category.html" class="nav-link">
-                  <i class="fas fa-folder-plus nav-icon"></i>
-                  <p>Add Sub Category</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="fas fa-toolbox nav-icon"></i>
               <p>
                 Service
                 <i class="fas fa-angle-left right"></i>
@@ -319,20 +302,37 @@
                   <p>Add Service</p>
                 </a>
               </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-stream nav-icon"></i>
+              <p>
+                Category
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.service')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
+                  <p>All Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-list-ol nav-icon"></i>
+                  <p>Sub Category</p>
+                </a>
+              </li>
                <li class="nav-item">
                 <a href="service-categories.html" class="nav-link">
-                  <i class="fas fa-folder nav-icon"></i>
-                  <p>Service Category</p>
+                  <i class="fas fa-folder-plus nav-icon"></i>
+                  <p>Add Categories</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="add-service-category.html" class="nav-link">
-                  <i class="fas fa-folder-plus nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="service-sub-category.html" class="nav-link">
                   <i class="fas fa-folder-plus nav-icon"></i>
                   <p>Add Sub Category</p>
                 </a>

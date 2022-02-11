@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -14,72 +17,69 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        echo "Admin Service";
+        return view('Admin.service.service');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function add_service(){
+
+        $categories = Category::all();
+        $sub_categories = SubCategory::all();
+        return view('Admin.service.add_service', compact('categories','sub_categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function create_service(Request $request){
+        //return $request;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Service $service)
-    {
-        //
-    }
+       $content = $request->service_desc;
+       $dom = new \DomDocument();
+       $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+       $imageFile = $dom->getElementsByTagName('imageFile');
+ 
+       foreach($imageFile as $item => $image){
+           $data = $img->getAttribute('src');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
-    {
-        //
-    }
+           list($type, $data) = explode(';', $data);
+           list(, $data)      = explode(',', $data);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Service $service)
-    {
-        //
-    }
+           $imgeData = base64_decode($data);
+           $image_name= "/upload/" . time().$item.'.png';
+           $path = public_path() . $image_name;
+           file_put_contents($path, $imgeData);
+           
+           $image->removeAttribute('src');
+           $image->setAttribute('src', $image_name);
+        }
+ 
+       $content = $dom->saveHTML();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Service $service)
-    {
-        //
+        $service = new Service;
+        $service->user_id = 1;
+        $service->title = $request->service_title;
+        $service->category_id = $request->category_id;
+        $service->sub_category_id = $request->sub_category_id;
+        $service->description = $content;
+
+        $service->save();
+        $sid = $service->id;
+
+        /********Working Days********/
+        $dayArr = $request->post('service_day');
+        $hour_fArr = $request->post('hour_from');
+        $hour_tArr = $request->post('hour_to');
+
+        foreach($dayArr as $key=>$value)
+        {
+            $workingArr['service_id'] = $sid;
+            $workingArr['day'] = $dayArr[$key];
+            $workingArr['opening_at'] = $hour_fArr[$key];
+            $workingArr['closing_at'] = $hour_tArr[$key];
+
+            DB::table('service_working_days')->insert($workingArr);
+        }
+        /******End Working Days******/
+
+        $request->session()->flash('add', 'New Product Inserted');
+        return redirect('/admin/service');
+
     }
 }

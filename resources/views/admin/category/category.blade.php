@@ -102,7 +102,7 @@
                     </button>
                   </div>
                   <div class="card-body">
-                    <form method="POST" action="{{route('admin.edit_category')}}">
+                    <form method="POST" action="{{route('admin.edit.category')}}">
                       @csrf
                       <input type="text" name="id" value="{{$list->id}}" hidden="">
                       <div class="form-group">

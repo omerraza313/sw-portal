@@ -17,9 +17,11 @@ class BlogController extends Controller
         return view('Admin.blog.posts', compact('posts'));
     }
     public function add_post(){
+
         $blog_categories = BlogCategory::all();
-        $blog_sub_categories = BlogSubCategory::all();
-        return view('Admin.blog.add_post', compact('blog_categories','blog_sub_categories'));
+        $sub_categories = BlogSubCategory::all();
+        return view('Admin.blog.add_post', compact('blog_categories','sub_categories'));
+
     }
     public function create_post(Request $request){
        
