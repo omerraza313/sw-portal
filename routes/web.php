@@ -82,12 +82,27 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/sub_category/delete', [CategoryController::class, 'delete_sub_category'])->name('admin.sub_category.delete');
 
 
+
 	//business listing
 	Route::get('/business', [AdminController::class, 'business'])->name('admin.business');
 	//service listing
 	Route::get('/service', [ServiceController::class, 'index'])->name('admin.service');
 	Route::get('/service/add', [ServiceController::class, 'add_service'])->name('admin.service.add');
 	Route::post('/service/create', [ServiceController::class, 'create_service'])->name('admin.service.create');
+	Route::get('/service/edit/{id}', [ServiceController::class, 'edit_service'])->name('admin.service.edit');
+	Route::post('/service/update', [ServiceController::class, 'service_update'])->name('admin.service.update');
+	Route::get('/service/delete/{id}', [ServiceController::class, 'delete_service'])->name('admin.service.delete');
+	Route::get('/service/working_day/delete/{wdid}/{sid}', [ServiceController::class, 'delete_working_day'])->name('admin.service.workingday.delete');
+	Route::get('/service/package', [ServiceController::class, 'service_package'])->name('admin.service.package');
+	Route::get('/service/package/add/{id}', [ServiceController::class, 'add_service_package'])->name('admin.service.package.add');
+	Route::post('/service/package/insert', [ServiceController::class, 'insert_service_package'])->name('admin.service.package.insert');
+	Route::get('/service/package/{id}', [ServiceController::class, 'show_service_package'])->name('admin.service.package.show');
+	Route::get('service/package/edit/{id}', [ServiceController::class, 'edit_service_package'])->name('admin.service.package.edit');
+	Route::get('/service/package/delete/{packageid}/{serviceid}', [ServiceController::class, 'delete_service_package'])->name('admin.service.package.delete');
+	Route::get('/service/package_attr/delete/{paid}/{sid}', [ServiceController::class, 'delete_package_attr'])->name('admin.service.package.attribute.delete');
+	Route::post('/service/package/update', [ServiceController::class, 'update_service_package'])->name('admin.service.package.update');
+
+
 	//Pending Approval
 	Route::get('/approval', [AdminController::class, 'approval'])->name('admin.approval');
 	//Pending Review

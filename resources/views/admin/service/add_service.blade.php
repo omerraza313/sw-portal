@@ -200,7 +200,6 @@
   }
 
   function remove_more(loop_count){
-    --loop_count;
       console.log("remove more" + loop_count);
       jQuery('#working_day_'+loop_count).remove();
 

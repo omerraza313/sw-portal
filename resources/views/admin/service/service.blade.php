@@ -34,30 +34,45 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr #</th>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Category / Sub Category</th>
+                    <th>Packages</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  @foreach($service as $key=>$list)
                   <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td>{{++$key}}</td>
+                    <td>{{$list->user_id}}</td>
+                    <td>{{$list->title}}</td>
+                    <td>{{$list->category->name}} / {{$list->subcategory->name}}</td>
+                    <td>
+                      <div class="btn-group btn-group-sm">
+                        <a href="{{url('admin/service/package/add/')}}/{{$list->id}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                        <a href="{{url('admin/service/package/')}}/{{$list->id}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="btn-group btn-group-sm">
+                        <a href="{{url('admin/service/edit/')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
+                        <a href="{{url('admin/service/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="#" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                      </div>
+                    </td>
                   </tr>
+                  @endforeach
                   </tbody>
                   <tfoot>
-                  <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                   <tr>
+                    <th>Sr #</th>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Category / Sub Category</th>
+                    <th>Packages</th>
+                    <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>

@@ -15,10 +15,12 @@ class CreateServicePackageAttrsTable extends Migration
     {
         Schema::create('service_package_attrs', function (Blueprint $table) {
             $table->id();
-            $table->integer('package_id');
+            $table->integer('service_package_id')->unsigned();
             $table->string('plan_name');
             $table->bigInteger('price');
             $table->timestamps();
+
+            // $table->foreign('package_id')->references('id')->on('service_packages');
         });
     }
 
