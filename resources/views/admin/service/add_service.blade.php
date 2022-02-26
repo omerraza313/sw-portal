@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('admin.service.create')}}">
+              <form method="POST" action="{{route('admin.service.create')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="row">
@@ -62,6 +62,20 @@
         						    </div>
   				            </div>
 				          </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6 style="font-weight: bolder;">Image</h6>
+                      <label for="primary_image"><i class="fa fa-plus" style="font-size: 24px; border:2px solid #9b9797bf; padding: 25px; border-radius: 2px; color:#9b9797bf; cursor: pointer;"></i></label>
+                      <input type="file" name="featured_img" id="primary_image" style="display: none; visibility: none;" onchange="getImage(this.value);">
+
+                      <!----Display Image Name----->
+                      <div id="display_image"></div>
+                      <!----End Display Image------>
+                    </div>
+                    <div class="col-md-6"></div>
+                   
+                  </div>
 
                     <div class="form-group">
                        <label for="service-description">Service Description</label>
@@ -204,5 +218,12 @@
       jQuery('#working_day_'+loop_count).remove();
 
     }
+</script>
+<script type="text/javascript">
+  function getImage(imagename)
+  {
+    var newimg=imagename.replace(/^.*\\/, "");
+    $('#display_image').html(newimg);
+  }
 </script>
 @endsection

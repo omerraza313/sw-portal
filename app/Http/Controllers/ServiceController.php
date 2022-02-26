@@ -18,6 +18,12 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $service = Service::all();
@@ -28,6 +34,7 @@ class ServiceController extends Controller
 
         $categories = Category::all();
         $sub_categories = SubCategory::all();
+        // $users = User::where('role', 'Member')->where('account_type', 'Worker')->get();
         return view('Admin.service.add_service', compact('categories','sub_categories'));
     }
 
@@ -59,6 +66,27 @@ class ServiceController extends Controller
         $service = new Service;
         $service->user_id = 1;
         $service->title = $request->service_title;
+
+
+/**********Converting title to lowercase************/
+       $str = $request->service_title;
+        $str1 = strtolower($str);
+        $str2 = str_replace(" ","-",$str1);
+/************End Converting Title to Lowercase*******************/
+
+        $service->slug = $str2;
+
+        /************Image Handling****************/
+
+        if($request->hasfile('featured_img')){
+            $image = $request->file('featured_img');
+            $ext = $image->extension();
+            $image_name = time().'.'.$ext;
+            $image->storeAs('/public/media', $image_name);
+            $service->featured_img = $image_name;
+        }
+        
+        /************Image Handling End*********/
         $service->category_id = $request->category_id;
         $service->sub_category_id = $request->sub_category_id;
         $service->description = $content;
@@ -98,6 +126,7 @@ class ServiceController extends Controller
     }
 
     public function service_update(Request $request){
+        //return $request;
 
         $content = $request->service_desc;
        $dom = new \DomDocument();
@@ -125,6 +154,28 @@ class ServiceController extends Controller
 
         $find_service->id = $request->id;
         $find_service->title = $request->title;
+
+/**********Converting title to lowercase************/
+       $str = $request->title;
+        $str1 = strtolower($str);
+        $str2 = str_replace(" ","-",$str1);
+/************End Converting Title to Lowercase*******************/
+
+        $find_service->slug = $str2;
+
+         /************Image Handling****************/
+
+        if($request->hasfile('featured_img')){
+            $image = $request->file('featured_img');
+            $ext = $image->extension();
+            $image_name = time().'.'.$ext;
+            $image->storeAs('/public/media', $image_name);
+            $find_service->featured_img = $image_name;
+        }
+        
+        /************Image Handling End*********/
+        //$find_service->featured_img = 'test';
+
         $find_service->category_id = $request->category_id;
         $find_service->sub_category_id = $request->sub_category_id;
         $find_service->description = $content;

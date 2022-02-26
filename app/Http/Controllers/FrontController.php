@@ -27,4 +27,11 @@ class FrontController extends Controller
 
         return view('Front.blog.single_category_post', compact('blog_cat', 'blog_posts', 'recent_posts'));
     }
+
+    /*************Service Routes**************/
+
+    public function single_service($slug){
+
+        echo "This is Single Service View";
+    }
 }

@@ -12,6 +12,8 @@ use App\Http\Controllers\BlogSubCategoryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +30,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+	
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('CheckUser');
+
 /**********Frontend Routes***********/
+
+//Blog Routes
 
 Route::get('blog/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
 Route::get('blog/category/{slug}', [FrontController::class, 'single_category_post'])->name('front.single.category_post');
+
+//Services Routes
+
+Route::get('/user_name/{slug}', [FrontController::class, 'single_service'])->name('front.service.single');
 
 // Route::group(['prefix'=>'blog'], function(){
 
@@ -110,7 +123,37 @@ Route::group(['prefix'=>'admin'], function(){
 
 });
 
-/*********Admin Controller End*******/
+/*********Admin Controller End******/
 
+/*********Member Routes*************/
+Route::group(['prefix'=>'member'], function(){
+
+
+
+
+	Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('member.dashboard');
+	//service listing
+	Route::get('/service', [MemberController::class, 'index'])->name('member.service');
+	Route::get('/service/add', [MemberController::class, 'add_service'])->name('member.service.add');
+	Route::post('/service/create', [MemberController::class, 'create_service'])->name('member.service.create');
+	Route::get('/service/edit/{id}', [MemberController::class, 'edit_service'])->name('member.service.edit');
+	Route::post('/service/update', [MemberController::class, 'service_update'])->name('member.service.update');
+	Route::get('/service/delete/{id}', [MemberController::class, 'delete_service'])->name('member.service.delete');
+	Route::get('/service/working_day/delete/{wdid}/{sid}', [MemberController::class, 'delete_working_day'])->name('member.service.workingday.delete');
+	Route::get('/service/package', [MemberController::class, 'service_package'])->name('member.service.package');
+	Route::get('/service/package/add/{id}', [MemberController::class, 'add_service_package'])->name('member.service.package.add');
+	Route::post('/service/package/insert', [MemberController::class, 'insert_service_package'])->name('member.service.package.insert');
+	Route::get('/service/package/{id}', [MemberController::class, 'show_service_package'])->name('member.service.package.show');
+	Route::get('service/package/edit/{id}', [MemberController::class, 'edit_service_package'])->name('member.service.package.edit');
+	Route::get('/service/package/delete/{packageid}/{serviceid}', [MemberController::class, 'delete_service_package'])->name('member.service.package.delete');
+	Route::get('/service/package_attr/delete/{paid}/{sid}', [MemberController::class, 'delete_package_attr'])->name('member.service.package.attribute.delete');
+	Route::post('/service/package/update', [MemberController::class, 'update_service_package'])->name('member.service.package.update');
+
+});
+
+
+/*********End Member Routes*********/
 	
 	Route::post('/blog/add-comment', [BlogController::class, 'addComment'])->name('blog.comment.add');
+
+

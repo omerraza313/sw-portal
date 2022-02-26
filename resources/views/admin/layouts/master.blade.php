@@ -117,6 +117,27 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
+       <li class="nav-item">
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="nav-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                            </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -192,7 +213,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="index.html" class="nav-link active">
+            <a href="{{route('admin.dash')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -238,7 +259,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.blog.add')}}" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
                   <p>Add Post</p>
                 </a>
@@ -297,7 +318,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.service.add')}}" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
                   <p>Add Service</p>
                 </a>
@@ -314,29 +335,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('admin.service')}}" class="nav-link">
+                <a href="{{route('admin.category')}}" class="nav-link">
                   <i class="fas fa-list-ul nav-icon"></i>
                   <p>All Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('admin.sub_category')}}" class="nav-link">
                   <i class="fas fa-list-ol nav-icon"></i>
                   <p>Sub Category</p>
                 </a>
               </li>
-               <li class="nav-item">
-                <a href="service-categories.html" class="nav-link">
-                  <i class="fas fa-folder-plus nav-icon"></i>
-                  <p>Add Categories</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="add-service-category.html" class="nav-link">
-                  <i class="fas fa-folder-plus nav-icon"></i>
-                  <p>Add Sub Category</p>
-                </a>
-              </li>
+               
             </ul>
           </li>
           <li class="nav-item">

@@ -17,6 +17,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('title');
+            $table->string('slug');
+            $table->string('featured_img');
             $table->longText('description');
             $table->integer('category_id');
             $table->integer('sub_category_id');

@@ -27,7 +27,9 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">
+                  <a href="{{route('admin.service.add')}}" class="btn btn-primary">Add Service</a>
+                </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -59,7 +61,7 @@
                       <div class="btn-group btn-group-sm">
                         <a href="{{url('admin/service/edit/')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
                         <a href="{{url('admin/service/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        <a href="#" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="{{url('/user_name/')}}/{{$list->slug}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                       </div>
                     </td>
                   </tr>
