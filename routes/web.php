@@ -26,9 +26,7 @@ use App\Http\Controllers\VerificationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'home'])->name('front.home');
 
 	
 Auth::routes();
@@ -38,13 +36,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /**********Frontend Routes***********/
 
 //Blog Routes
-
+Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('blog/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
 Route::get('blog/category/{slug}', [FrontController::class, 'single_category_post'])->name('front.single.category_post');
 
 //Services Routes
 
-Route::get('/user_name/{slug}', [FrontController::class, 'single_service'])->name('front.service.single');
+Route::get('user/{user_name}/{slug}', [FrontController::class, 'single_service'])->name('front.service.single');
 
 // Route::group(['prefix'=>'blog'], function(){
 
@@ -148,6 +146,12 @@ Route::group(['prefix'=>'member'], function(){
 	Route::get('/service/package/delete/{packageid}/{serviceid}', [MemberController::class, 'delete_service_package'])->name('member.service.package.delete');
 	Route::get('/service/package_attr/delete/{paid}/{sid}', [MemberController::class, 'delete_package_attr'])->name('member.service.package.attribute.delete');
 	Route::post('/service/package/update', [MemberController::class, 'update_service_package'])->name('member.service.package.update');
+
+	/********Member Profile**********/
+	Route::get('/profile/', [MemberController::class, 'user_profile'])->name('member.profile');
+	Route::post('/profile/update', [MemberController::class, 'user_profile_update'])->name('member.update.profile');
+	Route::post('/profile/update_info', [MemberController::class, 'user_profile_info_update'])->name('member.profile.info.update');
+	/********End Member Profile******/
 
 });
 

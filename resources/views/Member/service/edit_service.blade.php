@@ -182,112 +182,12 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
-              <a href="index.html" class="nav-link active">
+              <a href="{{route('member.dashboard')}}" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Users
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('admin.user')}}" class="nav-link">
-                    <i class="fas fa-user nav-icon"></i>
-                    <p>See All</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-user-plus nav-icon"></i>
-                    <p>Add Users</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Blog
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('admin.blog')}}" class="nav-link">
-                    <i class="far fa-copy nav-icon"></i>
-                    <p>All Posts</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-plus-square nav-icon"></i>
-                    <p>Add Post</p>
-                  </a>
-                </li>
-                 <li class="nav-item">
-                  <a href="{{route('admin.blog_category')}}" class="nav-link">
-                    <i class="fas fa-list-ul nav-icon"></i>
-                    <p>Post Category</p>
-                  </a>
-                </li>
-                 <li class="nav-item">
-                  <a href="{{route('admin.sub_blog_category')}}" class="nav-link">
-                    <i class="fas fa-list-ol nav-icon"></i>
-                    <p>Sub Category</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Business
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('admin.business')}}" class="nav-link">
-                    <i class="fas fa-stream nav-icon"></i>
-                    <p>Business Listing</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="business.html" class="nav-link">
-                    <i class="fas fa-plus-square nav-icon"></i>
-                    <p>Add Business</p>
-                  </a>
-                </li>
-                 <li class="nav-item">
-                  <a href="business-categories.html" class="nav-link">
-                    <i class="fas fa-folder nav-icon"></i>
-                    <p>Business Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="add-business-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="business-sub-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Sub Category</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -299,56 +199,15 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('admin.service')}}" class="nav-link">
+                  <a href="{{route('member.service')}}" class="nav-link">
                     <i class="fas fa-stream nav-icon"></i>
                     <p>Service Listing</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{route('member.service.add')}}" class="nav-link">
                     <i class="fas fa-plus-square nav-icon"></i>
                     <p>Add Service</p>
-                  </a>
-                </li>
-                 <li class="nav-item">
-                  <a href="service-categories.html" class="nav-link">
-                    <i class="fas fa-folder nav-icon"></i>
-                    <p>Service Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="add-service-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Category</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="service-sub-category.html" class="nav-link">
-                    <i class="fas fa-folder-plus nav-icon"></i>
-                    <p>Add Sub Category</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                  Approvals
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('admin.approval')}}" class="nav-link">
-                    <i class="fas fa-calendar-check nav-icon"></i>
-                    <p>Pending Approvals</p>
-                  </a>
-                </li>
-                 <li class="nav-item">
-                  <a href="{{route('admin.review')}}" class="nav-link">
-                    <i class="far fa-calendar-check nav-icon"></i>
-                    <p>Pending Reviews</p>
                   </a>
                 </li>
               </ul>
@@ -400,7 +259,7 @@
               </div>
               <!-- /.card-header -->
                <!-- form start -->
-            <form method="POST" action="{{route('admin.service.update')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('member.service.update')}}" enctype="multipart/form-data">
               @csrf
               <input type="text" name="id" value="{{$edit_service->id}}" hidden="">
                 <div class="card-body">

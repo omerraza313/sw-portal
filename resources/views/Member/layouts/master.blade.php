@@ -47,7 +47,7 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Profile</a>
+        <a href="{{route('member.profile')}}" class="nav-link">Profile</a>
       </li>
     </ul>
 
@@ -233,13 +233,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('admin.service')}}" class="nav-link">
+                <a href="{{route('member.service')}}" class="nav-link">
                   <i class="fas fa-stream nav-icon"></i>
                   <p>Service Listing</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.service.add')}}" class="nav-link">
+                <a href="{{route('member.service.add')}}" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
                   <p>Add Service</p>
                 </a>

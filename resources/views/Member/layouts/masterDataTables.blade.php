@@ -35,7 +35,7 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">How it Works?</a>
+        <a href="{{route('member.profile')}}" class="nav-link">Profile</a>
       </li>
     </ul>
 
@@ -179,7 +179,7 @@
           <img src="{{asset('backend_assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">John Doe</a>
+          <a href="#" class="d-block">{{Auth::user()->username}}</a>
         </div>
       </div>
 
@@ -201,7 +201,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{route('admin.dash')}}" class="nav-link active">
+            <a href="{{route('member.dashboard')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -218,13 +218,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('admin.service')}}" class="nav-link">
+                <a href="{{route('member.service')}}" class="nav-link">
                   <i class="fas fa-stream nav-icon"></i>
                   <p>Service Listing</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.service.add')}}" class="nav-link">
+                <a href="{{route('member.service.add')}}" class="nav-link">
                   <i class="fas fa-plus-square nav-icon"></i>
                   <p>Add Service</p>
                 </a>

@@ -9,6 +9,10 @@ class Service extends Model
 {
     use HasFactory;
 
+     function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+
     function business(){
     	return $this->belongsTo('\App\Models\Business');
     }

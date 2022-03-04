@@ -17,4 +17,5 @@ class ServicePackage extends Model
     function package_attrs(){
     	return $this->hasMany('App\Models\ServicePackageAttr');
     }
+   
 }

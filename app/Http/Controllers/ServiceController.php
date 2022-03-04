@@ -8,8 +8,10 @@ use App\Models\SubCategory;
 use App\Models\ServiceWorkingDay;
 use App\Models\ServicePackage;
 use App\Models\ServicePackageAttr;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class ServiceController extends Controller
 {
@@ -34,8 +36,8 @@ class ServiceController extends Controller
 
         $categories = Category::all();
         $sub_categories = SubCategory::all();
-        // $users = User::where('role', 'Member')->where('account_type', 'Worker')->get();
-        return view('Admin.service.add_service', compact('categories','sub_categories'));
+        $users = User::where('role', 'Member')->where('account_type', 'Worker')->get();
+        return view('Admin.service.add_service', compact('categories','sub_categories', 'users'));
     }
 
     public function create_service(Request $request){
@@ -64,7 +66,7 @@ class ServiceController extends Controller
        $content = $dom->saveHTML();
 
         $service = new Service;
-        $service->user_id = 1;
+        $service->user_id = $request->user_id;
         $service->title = $request->service_title;
 
 

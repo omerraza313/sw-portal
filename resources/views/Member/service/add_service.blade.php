@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('admin.service.create')}}" enctype="multipart/form-data">
+              <form method="POST" action="{{route('member.service.create')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="row">

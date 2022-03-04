@@ -5,10 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Front;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\Service;
+use App\Models\ServiceWorkingDay;
+use App\Models\ServicePackage;
+use App\Models\ServicePackageAttr;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class FrontController extends Controller
 {
+    public function home(){
+        return view('Front.home.home');
+    }
+    public function blog(){
+        $blog = Blog::all();
+        return view('Front.blog.blog', compact('blog'));
+        //return $blog;
+    }
     public function single_post($slug){
         $single_post = Blog::where('slug',$slug)->first();
         $blog_cat = BlogCategory::all();
@@ -29,9 +43,13 @@ class FrontController extends Controller
     }
 
     /*************Service Routes**************/
-
-    public function single_service($slug){
-
-        echo "This is Single Service View";
+    
+    public function single_service($user_name, $slug){
+       $user = User::where('username', $user_name)->first();
+       $service = Service::where('user_id', $user->id)->where('slug', $slug)->first();
+       $service_package = ServicePackage::where('service_id', $service->id)->get();
+       // return $service_package;
+       return view('Front.service.single_service', compact('user', 'service', 'service_package'));
     }
+ 
 }

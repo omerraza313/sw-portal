@@ -45,4 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function services(){
+        return $this->hasMany('App\Models\Service');
+    }
+
+    public function worker_info(){
+        return $this->hasOne('App\Models\WorkerInfo');
+    }
 }

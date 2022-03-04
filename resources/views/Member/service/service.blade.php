@@ -15,7 +15,7 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+</div>
 
 <!-- Main content -->
     <section class="content">
@@ -28,7 +28,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  <a href="{{route('admin.service.add')}}" class="btn btn-primary">Add Service</a>
+                  <a href="{{route('member.service.add')}}" class="btn btn-primary">Add Service</a>
                 </h3>
               </div>
               <!-- /.card-header -->
@@ -53,15 +53,15 @@
                     <td>{{$list->category->name}} / {{$list->subcategory->name}}</td>
                     <td>
                       <div class="btn-group btn-group-sm">
-                        <a href="{{url('admin/service/package/add/')}}/{{$list->id}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
-                        <a href="{{url('admin/service/package/')}}/{{$list->id}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="{{url('member/service/package/add/')}}/{{$list->id}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                        <a href="{{url('member/service/package/')}}/{{$list->id}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                       </div>
                     </td>
                     <td>
                       <div class="btn-group btn-group-sm">
-                        <a href="{{url('admin/service/edit/')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
-                        <a href="{{url('admin/service/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        <a href="{{url('/user_name/')}}/{{$list->slug}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="{{url('member/service/edit/')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
+                        <a href="{{url('member/service/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="{{url('/user')}}/{{$list->user->username}}/{{$list->slug}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                       </div>
                     </td>
                   </tr>

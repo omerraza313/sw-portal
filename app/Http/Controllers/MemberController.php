@@ -9,8 +9,10 @@ use App\Models\SubCategory;
 use App\Models\ServiceWorkingDay;
 use App\Models\ServicePackage;
 use App\Models\ServicePackageAttr;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\WorkerInfo;
 use Auth;
 
 class MemberController extends Controller
@@ -106,7 +108,7 @@ class MemberController extends Controller
         /******End Working Days******/
 
         $request->session()->flash('add', 'New Product Inserted');
-        return redirect('/Member/service');
+        return redirect('/member/service');
 
     }
 
@@ -202,7 +204,7 @@ class MemberController extends Controller
         }
         /*****End Working Day*******/
 
-         return redirect('/Member/service')->with('msg', 'Service has been updated');
+         return redirect('/member/service')->with('msg', 'Service has been updated');
     }
 
     public function delete_working_day(Request $request ,$dayid, $serviceid){
@@ -286,7 +288,7 @@ class MemberController extends Controller
             DB::table('service_package_attrs')->insert($packageAttr);
         }
        
-        return redirect('/Member/service/')->with('msg','Package has been added');
+        return redirect('/member/service/')->with('msg','Package has been added');
 
     }
 
@@ -351,7 +353,7 @@ class MemberController extends Controller
                 DB::table('service_package_attrs')->insert($packageAttribute);
             }
         }
-        return redirect('/Member/service/')->with('msg','Package has been updated');
+        return redirect('/member/service/')->with('msg','Package has been updated');
     }
 
     public function delete_package_attr($paid, $sid){
@@ -371,4 +373,59 @@ class MemberController extends Controller
             echo "Not deleted";
         }
     }
+
+    /*********Member Profile**********/
+    public function user_profile()
+    {
+        return view('Member.profile.profile');
+    }
+
+    public function user_profile_update(Request $request){
+
+        User::find(Auth::id())->update($request->all());
+
+        return redirect()->back();
+    }
+
+    public function user_profile_info_update(Request $request)
+    {
+
+        if($request->hasfile('profile_img')){
+            $image = $request->file('profile_img');
+            $ext = $image->extension();
+            $image_name = time().'.'.$ext;
+            $image->storeAs('/public/media', $image_name);
+            $profile_img = $image_name;
+        }
+
+        $data = [
+
+             
+            'profile_img' => $profile_img,
+            'education' => $request->education,
+            'country' => $request->country,
+            'state' => $request->state,
+            'city' => $request->city,
+            'town' => $request->town,
+            'zip_code' => $request->zip_code,
+            'personal_info' => $request->personal_info
+
+        ];
+
+        WorkerInfo::updateOrCreate(
+            [
+
+                'user_id' => Auth::id()
+            ],
+            $data);
+
+        return redirect()->back();
+
+
+
+    }
+    /*********End Member Profile*******/
+
+
+
 }

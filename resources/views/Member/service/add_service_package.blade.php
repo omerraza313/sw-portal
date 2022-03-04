@@ -30,7 +30,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('admin.service.package.insert')}}">
+              <form method="POST" action="{{route('member.service.package.insert')}}">
                 @csrf
                 <input type="hidden" name="service_id" value="{{$id}}">
                 <div class="card-body">

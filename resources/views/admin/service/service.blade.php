@@ -48,7 +48,7 @@
                   @foreach($service as $key=>$list)
                   <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$list->user_id}}</td>
+                    <td>{{$list->user->username}}</td>
                     <td>{{$list->title}}</td>
                     <td>{{$list->category->name}} / {{$list->subcategory->name}}</td>
                     <td>

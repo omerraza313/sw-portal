@@ -38,7 +38,7 @@
               ?>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('admin.service.package.update')}}">
+              <form method="POST" action="{{route('member.service.package.update')}}">
                 @csrf
                 <input type="hidden" name="service_id" value="{{$package->service_id}}">
                 <input type="hidden" name="id" value="{{$package->id}}">

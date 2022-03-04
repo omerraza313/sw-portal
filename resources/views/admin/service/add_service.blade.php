@@ -35,6 +35,20 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
+                      <label for="user">
+                        Assign to User
+                      </label>
+                      <select name="user_id" class="form-control" id="userid">
+                        <option value="">Select User</option>
+                        @foreach($users as $key=>$user)
+                         <option value="{{$user->id}}">{{$user->username}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="col-md-6"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label for="category-name">Service Title</label>
                         <input type="text" class="form-control" name="service_title" id="category-name" placeholder="Service Name">
@@ -180,7 +194,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Add Business</button>
+                  <button type="submit" class="btn btn-primary">Add Service</button>
                 </div>
               </form>
             </div>
