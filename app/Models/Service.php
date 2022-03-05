@@ -30,6 +30,6 @@ class Service extends Model
     }
 
     function service_packages(){
-    	return $this->hasMany('\App\Models\ServicePackage;');
+    	return $this->hasMany('\App\Models\ServicePackage');
     }
 }

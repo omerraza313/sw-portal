@@ -9,6 +9,8 @@ use App\Models\Service;
 use App\Models\ServiceWorkingDay;
 use App\Models\ServicePackage;
 use App\Models\ServicePackageAttr;
+use App\Models\Category;
+use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -16,7 +18,10 @@ use Auth;
 class FrontController extends Controller
 {
     public function home(){
-        return view('Front.home.home');
+        $service = Service::orderBy('id', 'desc')->take(4)->get();;
+        $category = Category::all();
+        $recent_posts = Blog::orderBy('created_at', 'desc')->take(3)->get();
+        return view('Front.home.home', compact('service','category', 'recent_posts'));
     }
     public function blog(){
         $blog = Blog::all();

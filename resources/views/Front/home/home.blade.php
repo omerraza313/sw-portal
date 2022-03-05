@@ -81,7 +81,7 @@
 							<ul class="list-main">
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
 								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								<li><i class="ti-power-off"></i><a href="{{url('/login')}}">Login</a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -96,7 +96,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/Sharina-Logo.png" alt="logo" style="height: 65px; width: auto; margin-top: -15px"></a>
+							<a href="index.html"><img src="{{ asset('frontend_assets/images/Sharina-Logo.png')}}" alt="logo" style="height: 65px; width: auto; margin-top: -15px"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -179,7 +179,7 @@
 											<li class="single-menu">
 												<a href="#" class="title-link">Explore Now</a>
 												<div class="image">
-													<img src="images/home-cleaning.jpg" alt="#">
+													<img src="{{ asset('frontend_assets/images/home-cleaning.jpg')}}" alt="#">
 												</div>
 												<div class="inner-link">
 													<a href="#">Home Cleaning</a>
@@ -191,7 +191,7 @@
 											<li class="single-menu">
 												<a href="#" class="title-link">Explore Now</a>
 												<div class="image">
-													<img src="images/locksmith.jpg" alt="#">
+													<img src="{{ asset('frontend_assets/images/locksmith.jpg')}}" alt="#">
 												</div>
 												<div class="inner-link">
 													<a href="#">Lock Smith</a>
@@ -203,7 +203,7 @@
 											<li class="single-menu">
 												<a href="#" class="title-link">Explore Now</a>
 												<div class="image">
-													<img src="images/home-cleaning.jpg" alt="#">
+													<img src="{{ asset('frontend_assets/images/home-cleaning.jpg')}}" alt="#">
 												</div>
 												<div class="inner-link">
 													<a href="#">Home Cleaning</a>
@@ -229,22 +229,22 @@
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="index.html">Home</a></li>
-													<li><a href="how-it-works.html">How it works?</a></li>												
-													<li><a href="get-featured.html">Get Featured</a></li>
+													<li class="active"><a href="#">Home</a></li>
+													<li><a href="#">How it works?</a></li>												
+													<li><a href="#">Get Featured</a></li>
 																						
-													<li><a href="service-search-result.html">Services<i class="ti-angle-down"></i></a>
+													<li><a href="#">Services<i class="ti-angle-down"></i></a>
 														<ul class="dropdown">
 															<li>
-																<a href="blog-single-sidebar.html">Top Rated</a>
+																<a href="#">Top Rated</a>
 															</li>
 															<li>
-																<a href="blog-single-sidebar.html">Feaured Businesses</a>
+																<a href="#">Feaured Businesses</a>
 															</li>
 														</ul>
 													</li>
-													<li><a href="blog.html">Blog</a></li>
-													<li><a href="contact.html">Contact Us</a></li>
+													<li><a href="#">Blog</a></li>
+													<li><a href="#">Contact Us</a></li>
 												</ul>
 										</div>
 									</div>
@@ -295,7 +295,7 @@
 				<!-- Single Banner  -->
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="single-banner">
-						<img src="images/top-rated-business.jpg" alt="#">
+						<img src="{{ asset('frontend_assets/images/top-rated-business.jpg')}}" alt="#">
 						<div class="content">
 							<p>Top Rated</p>
 							<h3>Explore BEST<br> Providers</h3>
@@ -307,7 +307,7 @@
 				<!-- Single Banner  -->
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="single-banner">
-						<img src="images/featured-business.jpg" alt="#">
+						<img src="{{ asset('frontend_assets/images/featured-business.jpg')}}" alt="#">
 						<div class="content">
 							<p>Featured</p>
 							<h3>Get yourself featured for<br> more EXPOSURE </h3>
@@ -319,7 +319,7 @@
 				<!-- Single Banner  -->
 				<div class="col-lg-4 col-12">
 					<div class="single-banner tab-height">
-						<img src="images/new-arrivals.jpg" alt="#">
+						<img src="{{ asset('frontend_assets/images/new-arrivals.jpg')}}" alt="#">
 						<div class="content">
 							<p>New Arrivals</p>
 							<h3>Explore New Business<br> and Service</h3>
@@ -349,12 +349,13 @@
 							<div class="nav-main">
 								<!-- Tab Nav -->
 								<ul class="nav nav-tabs" id="myTab" role="tablist">
-									<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#cleaning-services" role="tab">Cleaning Services</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#decor" role="tab">Decor</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#household" role="tab">Household</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#professionals" role="tab">Professionals</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#delivery" role="tab">Delivery</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#resturant" role="tab">Resturants</a></li>
+									@foreach($category as $key=>$list)
+									  @if($key==0)
+									  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#cleaning-services" role="tab">{{$list->name}}</a></li>
+									  @else
+									  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cleaning-services" role="tab">{{$list->name}}</a></li>
+									  @endif
+									@endforeach
 								</ul>
 								<!--/ End Tab Nav -->
 							</div>
@@ -363,12 +364,13 @@
 								<div class="tab-pane fade show active" id="cleaning-services" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
+										@foreach($service as $key=>$val)
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
 														<a href="product-details.html">
-															<img class="default-img" src="images/cleaning-services.jpg" alt="#">
-															<img class="hover-img" src="images/cleaning-services.jpg" alt="#">
+															<img class="default-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+															<img class="hover-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
@@ -382,93 +384,27 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Professional Cleaning Services</a></h3>
+														<h3><a href="#">{{$val->title}}</a></h3>
 														<div class="product-price">
-															<span>$29.00</span>
+															<span>@php 
+
+																$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
+
+																$package_attr = \App\Models\ServicePackageAttr::where('service_package_id', $package->id)->min('price');
+																if($package_attr){
+																	echo  '<strong class="py-2">Starts From <span style="font-family: inherit;background-color: #f7941d;padding: 3px 4px 3px 4px;color: white;border-radius: 5px;">$'.$package_attr . '</span></strong>';
+																}
+																
+
+																@endphp
+
+
+															</span>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="product-details.html">
-															<img class="default-img" src="images/decor.jpg" alt="#">
-															<img class="hover-img" src="images/decor.jpg" alt="#">
-														</a>
-														<div class="button-head">
-															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-															</div>
-															<div class="product-action-2">
-																<a title="Add to cart" href="#">Contact Provider</a>
-															</div>
-														</div>
-													</div>
-													<div class="product-content">
-														<h3><a href="product-details.html">Professional Decore Services</a></h3>
-														<div class="product-price">
-															<span>$29.00</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="product-details.html">
-															<img class="default-img" src="images/household.jpg" alt="#">
-															<img class="hover-img" src="images/household.jpg" alt="#">
-														</a>
-														<div class="button-head">
-															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-															</div>
-															<div class="product-action-2">
-																<a title="Add to cart" href="#">Contact Provider</a>
-															</div>
-														</div>
-													</div>
-													<div class="product-content">
-														<h3><a href="product-details.html">Professional Household Services</a></h3>
-														<div class="product-price">
-															<span>$29.00</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="product-details.html">
-															<img class="default-img" src="images/delivery.jpg" alt="#">
-															<img class="hover-img" src="images/delivery.jpg" alt="#">
-															<span class="new">New</span>
-														</a>
-														<div class="button-head">
-															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-															</div>
-															<div class="product-action-2">
-																<a title="Add to cart" href="#">Contact Provider</a>
-															</div>
-														</div>
-													</div>
-													<div class="product-content">
-														<h3><a href="product-details.html">Delivery Services</a></h3>
-														<div class="product-price">
-															<span>$29.00</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											
+										@endforeach
 										</div>
 									</div>
 								</div>
@@ -489,7 +425,7 @@
 				<!-- Single Banner  -->
 				<div class="col-lg-6 col-md-6 col-12">
 					<div class="single-banner">
-						<img src="images/New-services-providers.jpg" alt="#">
+						<img src="{{ asset('frontend_assets/images/New-services-providers.jpg')}}" alt="#">
 						<div class="content">
 							<p>New Arrivals</p>
 							<h3>Reliables Professionals in your <br>Area<span> Get Upto 50% OFF</span></h3>
@@ -501,7 +437,7 @@
 				<!-- Single Banner  -->
 				<div class="col-lg-6 col-md-6 col-12">
 					<div class="single-banner">
-						<img src="images/new-companies.jpg" alt="#">
+						<img src="{{ asset('frontend_assets/images/new-companies.jpg')}}" alt="#">
 						<div class="content">
 							<p>New Arrivals</p>
 							<h3>Check Out Best Companies <br> & <span>Get Upto 20%</span></h3>
@@ -529,11 +465,12 @@
                 <div class="col-12">
                     <div class="owl-carousel popular-slider">
 						<!-- Start Single Product -->
+						@foreach($service as $key=>$val)
 						<div class="single-product">
 							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/cleaning-services.jpg" alt="#">
-									<img class="hover-img" src="images/cleaning-services.jpg" alt="#">
+								<a href="#">
+									<img class="default-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<img class="hover-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 									<span class="out-of-stock">Hot</span>
 								</a>
 								<div class="button-head">
@@ -548,97 +485,22 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="#">Cleaning Services</a></h3>
+								<h3><a href="#">{{$val->title}}</a></h3>
 								<div class="product-price">
 									<span class="old">$60.00</span>
-									<span>$50.00</span>
+									@php 
+
+										$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
+
+										$package_attr = \App\Models\ServicePackageAttr::where('service_package_id', $package->id)->min('price');
+										if($package_attr){
+										echo  '<strong class="py-2">Starts From <span style="font-family: inherit;background-color: #f7941d;padding: 3px 4px 3px 4px;color: white;border-radius: 5px;">$'.$package_attr . '</span></strong>';
+										}
+									@endphp
 								</div>
 							</div>
 						</div>
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						<div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/decor.jpg" alt="#">
-									<img class="hover-img" src="images/decor.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="#">Decor Services</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						<div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/household.jpg" alt="#">
-									<img class="hover-img" src="images/household.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="#">Household Services</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						<div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/delivery.jpg" alt="#">
-									<img class="hover-img" src="images/delivery.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="#">Delivery Services</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div>
+						@endforeach
 						<!-- End Single Product -->
                     </div>
                 </div>
@@ -660,12 +522,13 @@
                 <div class="col-12">
                     <div class="owl-carousel popular-slider">
 						<!-- Start Single Product -->
+						@foreach($service as $key=>$val)
 						<div class="single-product">
 							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/cleaning-services.jpg" alt="#">
-									<img class="hover-img" src="images/cleaning-services.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
+								<a href="#">
+									<img class="default-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<img class="hover-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<!-- <span class="out-of-stock">Hot</span> -->
 								</a>
 								<div class="button-head">
 									<div class="product-action">
@@ -679,97 +542,22 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="#">Cleaning Services</a></h3>
+								<h3><a href="#">{{$val->title}}</a></h3>
 								<div class="product-price">
 									<span class="old">$60.00</span>
-									<span>$50.00</span>
+									@php 
+
+										$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
+
+										$package_attr = \App\Models\ServicePackageAttr::where('service_package_id', $package->id)->min('price');
+										if($package_attr){
+										echo  '<strong class="py-2">Starts From <span style="font-family: inherit;background-color: #f7941d;padding: 3px 4px 3px 4px;color: white;border-radius: 5px;">$'.$package_attr . '</span></strong>';
+										}
+									@endphp
 								</div>
 							</div>
 						</div>
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						<div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/decor.jpg" alt="#">
-									<img class="hover-img" src="images/decor.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="#">Decor Services</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						<div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/household.jpg" alt="#">
-									<img class="hover-img" src="images/household.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="#">Household Services</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Product -->
-						<!-- Start Single Product -->
-						<div class="single-product">
-							<div class="product-img">
-								<a href="product-details.html">
-									<img class="default-img" src="images/delivery.jpg" alt="#">
-									<img class="hover-img" src="images/delivery.jpg" alt="#">
-									<span class="out-of-stock">Hot</span>
-								</a>
-								<div class="button-head">
-									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
-									</div>
-									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
-									</div>
-								</div>
-							</div>
-							<div class="product-content">
-								<h3><a href="#">Delivery Services</a></h3>
-								<div class="product-price">
-									<span class="old">$60.00</span>
-									<span>$50.00</span>
-								</div>
-							</div>
-						</div>
+						@endforeach
 						<!-- End Single Product -->
                     </div>
                 </div>
@@ -808,42 +596,19 @@
 				</div>
 			</div>
 			<div class="row">
+				@foreach($recent_posts as $key=>$list)
 				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
+					<!-- Start Single Blog  -->	
 					<div class="shop-single-blog">
-						<img src="images/follow-dream.jpg" alt="#">
+						<img src="{{ asset('storage/media/'.$list->post_image)}}" alt="#">
 						<div class="content">
-							<p class="date">05 Nov , 2021. Friday</p>
-							<a href="#" class="title">Wait for the right time, and let your dreams come true</a>
-							<a href="#" class="more-btn">Continue Reading</a>
+							<p class="date">{{$list->created_at}}</p>
+							<a href="{{url('blog/')}}/{{$list->slug}}" class="title">{{$list->title}}</a>
+							<a href="{{url('blog/')}}/{{$list->slug}}" class="more-btn">Continue Reading</a>
 						</div>
 					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="images/business-planning.jpg" alt="#">
-						<div class="content">
-							<p class="date">04 Nov , 2021. Thursday</p>
-							<a href="#" class="title">7 Best Tips for Business reasearch and Growth</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="images/business-growth.jpg" alt="#">
-						<div class="content">
-							<p class="date">03 Nov , 2021. Wednesday</p>
-							<a href="#" class="title">Big Dreams leads to better Growth</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
+				</div>	<!-- End Single Blog  -->
+				@endforeach
 			</div>
 		</div>
 	</section>
