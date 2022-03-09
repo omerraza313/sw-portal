@@ -9,7 +9,7 @@
 								<div class="logo">
 									<a href="index.html"><img src="{{ asset('frontend_assets/images/Sharina-Logo.png')}}" alt="#"></a>
 								</div>
-								<p class="text">Sharina World! is a consilated platform for everyone. Get high-quality dervices at very affordable prices. Moreover, register with us to boost your business.</p>
+								<p class="text">Sharina World! is a consilated platform for everyone. Get high-quality services at very affordable prices. Moreover, register with us to boost your business.</p>
 								<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
 							</div>
 							<!-- End Single Widget -->
@@ -19,11 +19,11 @@
 							<div class="single-footer links">
 								<h4>Sitemap</h4>
 								<ul>
-									<li><a href="#">Home</a></li>
+									<li><a href="{{route('front.home')}}">Home</a></li>
 									<li><a href="#">How it Works</a></li>
 									<li><a href="#">Get Featured</a></li>
-									<li><a href="#">Contact Us</a></li>
-									<li><a href="#">Blog</a></li>
+									<li><a href="{{route('front.contact')}}">Contact Us</a></li>
+									<li><a href="{{route('front.blog')}}">Blog</a></li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->

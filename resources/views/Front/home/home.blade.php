@@ -1,264 +1,7 @@
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-	<!-- Meta Tag -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='copyright' content=''>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Title Tag  -->
-    <title>Sharina World</title>
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/favicon.png">
-	<!-- Web Font -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+@extends('Front.home.layouts.homeMaster')
+@section('content')	
 	
-	<!-- StyleSheet -->
-	
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{ asset('frontend_assets/css/bootstrap.css')}}">
-	<!-- Magnific Popup -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/magnific-popup.min.css')}}">
-	<!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/font-awesome.css')}}">
-	<!-- Fancybox -->
-	<link rel="stylesheet" href="{{ asset('frontend_assets/css/jquery.fancybox.min.css')}}">
-	<!-- Themify Icons -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/themify-icons.css')}}">
-	<!-- Nice Select CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/niceselect.css')}}">
-	<!-- Animate CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/animate.css')}}">
-	<!-- Flex Slider CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/flex-slider.min.css')}}">
-	<!-- Owl Carousel -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/owl-carousel.css')}}">
-	<!-- Slicknav -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/slicknav.min.css')}}">
-	
-	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="{{ asset('frontend_assets/css/reset.css')}}">
-	<link rel="stylesheet" href="{{ asset('frontend_assets/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/responsive.css')}}">
 
-	
-	
-</head>
-<body class="js">
-	
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Preloader -->
-	
-	
-	<!-- Header -->
-	<header class="header shop">
-		<!-- Topbar -->
-		<div class="topbar">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 col-md-12 col-12">
-						<!-- Top Left -->
-						<div class="top-left">
-							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> support@sharinaworld.com</li>
-							</ul>
-						</div>
-						<!--/ End Top Left -->
-					</div>
-					<div class="col-lg-7 col-md-12 col-12">
-						<!-- Top Right -->
-						<div class="right-content">
-							<ul class="list-main">
-								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="{{url('/login')}}">Login</a></li>
-							</ul>
-						</div>
-						<!-- End Top Right -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Topbar -->
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-12">
-						<!-- Logo -->
-						<div class="logo">
-							<a href="index.html"><img src="{{ asset('frontend_assets/images/Sharina-Logo.png')}}" alt="logo" style="height: 65px; width: auto; margin-top: -15px"></a>
-						</div>
-						<!--/ End Logo -->
-						<!-- Search Form -->
-						<div class="search-top">
-							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-							<!-- Search Form -->
-							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
-									<button value="search" type="submit"><i class="ti-search"></i></button>
-								</form>
-							</div>
-							<!--/ End Search Form -->
-						</div>
-						<!--/ End Search Form -->
-						<div class="mobile-nav"></div>
-					</div>
-					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
-							<div class="search-bar">
-								<select>
-									<option selected="selected">Select Here</option>
-									<option>Business</option>
-									<option>Service</option>
-									<option>Top Deals</option>
-								</select>
-								<form>
-									<input name="search" placeholder="Search Here....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-3 col-12">
-						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Header Inner -->
-		<div class="header-inner">
-			<div class="container">
-				<div class="cat-nav-head">
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="all-category">
-								<h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
-								<ul class="main-category">
-									<li><a href="#">Business Categories <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<ul class="sub-category">
-											<li><a href="#">Plumber</a></li>
-											<li><a href="#">Returant</a></li>
-											<li><a href="#">Air Conditioning & Heating</a></li>
-											<li><a href="#">Delivery</a></li>
-											<li><a href="#">Black Owned</a></li>
-											
-										</ul>
-									</li>
-									<li><a href="#">Service Categories <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<ul class="sub-category">
-											<li><a href="#">Plumber</a></li>
-											<li><a href="#">Returant</a></li>
-											<li><a href="#">Air Conditioning & Heating</a></li>
-											<li><a href="#">Delivery</a></li>
-											<li><a href="#">Black Owned</a></li>
-											
-										</ul>
-									</li>
-									<li class="main-mega"><a href="#">Featured <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<ul class="mega-menu">
-											<li class="single-menu">
-												<a href="#" class="title-link">Explore Now</a>
-												<div class="image">
-													<img src="{{ asset('frontend_assets/images/home-cleaning.jpg')}}" alt="#">
-												</div>
-												<div class="inner-link">
-													<a href="#">Home Cleaning</a>
-													<a href="#">Office Cleaning</a>
-													<a href="#">Pool Cleaning</a>
-													<a href="#">After-Party Cleaning</a>
-												</div>
-											</li>
-											<li class="single-menu">
-												<a href="#" class="title-link">Explore Now</a>
-												<div class="image">
-													<img src="{{ asset('frontend_assets/images/locksmith.jpg')}}" alt="#">
-												</div>
-												<div class="inner-link">
-													<a href="#">Lock Smith</a>
-													<a href="#">Electrician</a>
-													<a href="#">Carpentar</a>
-													<a href="#">Professional Mover</a>
-												</div>
-											</li>
-											<li class="single-menu">
-												<a href="#" class="title-link">Explore Now</a>
-												<div class="image">
-													<img src="{{ asset('frontend_assets/images/home-cleaning.jpg')}}" alt="#">
-												</div>
-												<div class="inner-link">
-													<a href="#">Home Cleaning</a>
-													<a href="#">Office Cleaning</a>
-													<a href="#">Pool Cleaning</a>
-													<a href="#">After-Party Cleaning</a>
-												</div>
-											</li>
-										</ul>
-									</li>
-									<li><a href="#">Plumber</a></li>
-									<li><a href="#">Resturant</a></li>
-									<li><a href="#">Air Conditioning & Services</a></li>
-									<li><a href="#">Delivery</a></li>
-									<li><a href="#">Black Owned</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-9 col-12">
-							<div class="menu-area">
-								<!-- Main Menu -->
-								<nav class="navbar navbar-expand-lg">
-									<div class="navbar-collapse">	
-										<div class="nav-inner">	
-											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Home</a></li>
-													<li><a href="#">How it works?</a></li>												
-													<li><a href="#">Get Featured</a></li>
-																						
-													<li><a href="#">Services<i class="ti-angle-down"></i></a>
-														<ul class="dropdown">
-															<li>
-																<a href="#">Top Rated</a>
-															</li>
-															<li>
-																<a href="#">Feaured Businesses</a>
-															</li>
-														</ul>
-													</li>
-													<li><a href="#">Blog</a></li>
-													<li><a href="#">Contact Us</a></li>
-												</ul>
-										</div>
-									</div>
-								</nav>
-								<!--/ End Main Menu -->	
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/ End Header Inner -->
-	</header>
-	<!--/ End Header -->
 	
 	<!-- Slider Area -->
 	<section class="hero-slider">
@@ -369,22 +112,22 @@
 												<div class="single-product">
 													<div class="product-img">
 														<a href="product-details.html">
-															<img class="default-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
-															<img class="hover-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+															<img class="default-img front_service_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+															<img class="hover-img front_service_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}"><i class=" ti-eye"></i><span>View Now</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
 																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with Similar</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="#">Contact Provider</a>
+																<a title="Add to cart" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">Contact Provider</a>
 															</div>
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="#">{{$val->title}}</a></h3>
+														<h3><a href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">{{$val->title}}</a></h3>
 														<div class="product-price">
 															<span>@php 
 
@@ -469,23 +212,23 @@
 						<div class="single-product">
 							<div class="product-img">
 								<a href="#">
-									<img class="default-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
-									<img class="hover-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<img class="default-img front_service_slide_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<img class="hover-img front_service_slide_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 									<span class="out-of-stock">Hot</span>
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}"><i class=" ti-eye"></i><span>View Now</span></a>
 										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
 										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
 									</div>
 									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
+										<a title="Add to cart" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">Contact Provider</a>
 									</div>
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="#">{{$val->title}}</a></h3>
+								<h3><a href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">{{$val->title}}</a></h3>
 								<div class="product-price">
 									<span class="old">$60.00</span>
 									@php 
@@ -526,23 +269,23 @@
 						<div class="single-product">
 							<div class="product-img">
 								<a href="#">
-									<img class="default-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
-									<img class="hover-img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<img class="default-img front_service_slide_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
+									<img class="hover-img front_service_slide_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 									<!-- <span class="out-of-stock">Hot</span> -->
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>View Now</span></a>
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}"><i class=" ti-eye"></i><span>View Now</span></a>
 										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
 										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with others</span></a>
 									</div>
 									<div class="product-action-2">
-										<a title="Add to cart" href="#">Contact Provider</a>
+										<a title="Add to cart" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">Contact Provider</a>
 									</div>
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="#">{{$val->title}}</a></h3>
+								<h3><a href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">{{$val->title}}</a></h3>
 								<div class="product-price">
 									<span class="old">$60.00</span>
 									@php 
@@ -600,7 +343,7 @@
 				<div class="col-lg-4 col-md-6 col-12">
 					<!-- Start Single Blog  -->	
 					<div class="shop-single-blog">
-						<img src="{{ asset('storage/media/'.$list->post_image)}}" alt="#">
+						<img style="object-fit: cover; width:370px; height:300px" src="{{ asset('storage/media/'.$list->post_image)}}" alt="#">
 						<div class="content">
 							<p class="date">{{$list->created_at}}</p>
 							<a href="{{url('blog/')}}/{{$list->slug}}" class="title">{{$list->title}}</a>
@@ -683,113 +426,5 @@
 	<!-- End Shop Newsletter -->
 	
 	
-	
-	<!-- Start Footer Area -->
-	<footer class="footer">
-		<!-- Footer Top -->
-		<div class="footer-top section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer about">
-							<div class="logo">
-								<a href="index.html"><img src="images/Sharina-Logo.png" alt="#"></a>
-							</div>
-							<p class="text">Sharina World! is a consilated platform for everyone. Get high-quality dervices at very affordable prices. Moreover, register with us to boost your business.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer links">
-							<h4>Sitemap</h4>
-							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#">How it Works</a></li>
-								<li><a href="#">Get Featured</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Blog</a></li>
-							</ul>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-					
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Single Widget -->
-						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
-							<!-- Single Widget -->
-							<div class="contact">
-								<ul>
-									<li>705 Denver Avenue</li>
-									<li>012 United States</li>
-									<li>info@sharinaworld.com</li>
-									<li>+032 3456 7890</li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-							<ul>
-								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-twitter"></i></a></li>
-								<li><a href="#"><i class="ti-flickr"></i></a></li>
-								<li><a href="#"><i class="ti-instagram"></i></a></li>
-							</ul>
-						</div>
-						<!-- End Single Widget -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Footer Top -->
-		<div class="copyright">
-			<div class="container">
-				<div class="inner">
-					<div class="row">
-						<div class="col-lg-6 col-12">
-							<div class="left">
-								<p>© All Copyrights are Reserved by <a href="#" target="_blank">- Sharina Wold</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- /End Footer Area -->
- 
-	<!-- Jquery -->
-    <script src="{{ asset('frontend_assets/js/jquery.min.js')}}"></script>
-    <script src="{{ asset('frontend_assets/js/jquery-migrate-3.0.0.js')}}"></script>
-	<script src="{{ asset('frontend_assets/js/jquery-ui.min.js')}}"></script>
-	<!-- Popper JS -->
-	<script src="{{ asset('frontend_assets/js/popper.min.js')}}"></script>
-	<!-- Bootstrap JS -->
-	<script src="{{ asset('frontend_assets/js/bootstrap.min.js')}}"></script>
-	<!-- Color JS -->
-	<script src="{{ asset('frontend_assets/js/colors.js')}}"></script>
-	<!-- Slicknav JS -->
-	<script src="{{ asset('frontend_assets/js/slicknav.min.js')}}"></script>
-	<!-- Owl Carousel JS -->
-	<script src="{{ asset('frontend_assets/js/owl-carousel.js')}}"></script>
-	<!-- Magnific Popup JS -->
-	<script src="{{ asset('frontend_assets/js/magnific-popup.js')}}"></script>
-	<!-- Waypoints JS -->
-	<script src="{{ asset('frontend_assets/js/waypoints.min.js')}}"></script>
-	<!-- Countdown JS -->
-	<script src="{{ asset('frontend_assets/js/finalcountdown.min.js')}}"></script>
-	<!-- Nice Select JS -->
-	<script src="{{ asset('frontend_assets/js/nicesellect.js')}}"></script>
-	<!-- Flex Slider JS -->
-	<script src="{{ asset('frontend_assets/js/flex-slider.js')}}"></script>
-	<!-- ScrollUp JS -->
-	<script src="{{ asset('frontend_assets/js/scrollup.js')}}"></script>
-	<!-- Onepage Nav JS -->
-	<script src="{{ asset('frontend_assets/js/onepage-nav.min.js')}}"></script>
-	<!-- Easing JS -->
-	<script src="{{ asset('frontend_assets/js/easing.js')}}"></script>
-	<!-- Active JS -->
-	<script src="{{ asset('frontend_assets/js/active.js')}}"></script>
-</body>
-</html>
+
+@endsection

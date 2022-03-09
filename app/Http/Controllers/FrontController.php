@@ -56,5 +56,47 @@ class FrontController extends Controller
        // return $service_package;
        return view('Front.service.single_service', compact('user', 'service', 'service_package'));
     }
+
+    public function single_category_service($slug){
+        $single_cat = Category::where('slug', $slug)->first();
+
+        //$service = $single_cat->services;
+        //return $service;
+        $single_cat_service = Service::where('category_id', $single_cat->id)->get();
+        //return $single_cat_service;
+
+
+        return view('Front.service.single_category_service', compact('single_cat_service', 'single_cat'));
+    }
+
+    public function service_all(){
+        $service = Service::all();
+        //return $service;
+        return view('Front.service.service_all', compact('service'));
+        
+    }
+
+    public function contact(){
+        return view('Front.contact.contact');
+    }
+
+    public function search(Request $request){
+
+        //echo "Hi this is test";
+        $query = $request['query'];
+      // return $query;
+
+        if ($query != "") {
+            
+            $data = Service::where('title', 'LIKE', '%' .$query. '%')->get();
+            //return $data;
+            return view('Front.pages.search', compact('data', 'query'));
+        }
+
+        else{
+            //echo "I am Else";
+            return redirect()->back()->with('message', 'No result found');
+        }
+    }
  
 }

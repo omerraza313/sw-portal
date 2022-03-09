@@ -35,6 +35,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /**********Frontend Routes***********/
 
+/********Home Page Search***********/
+Route::get('/search', [FrontController::class, 'search'])->name('front.search');
+/********Home Page Search End*******/
+
 //Blog Routes
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('blog/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
@@ -43,6 +47,9 @@ Route::get('blog/category/{slug}', [FrontController::class, 'single_category_pos
 //Services Routes
 
 Route::get('user/{user_name}/{slug}', [FrontController::class, 'single_service'])->name('front.service.single');
+Route::get('/service/', [FrontController::class, 'service_all'])->name('front.service.all');
+Route::get('category/{slug}', [FrontController::class, 'single_category_service'])->name('front.single.category.service');
+Route::get('/contact/', [FrontController::class, 'contact'])->name('front.contact');
 
 // Route::group(['prefix'=>'blog'], function(){
 
@@ -56,6 +63,7 @@ Route::get('user/{user_name}/{slug}', [FrontController::class, 'single_service']
 /**********Admin Dashboard Routes***********/
 
 //dashboard
+Route::group(['middleware'=> ['admin']], function(){
 Route::group(['prefix'=>'admin'], function(){
 
 	/**********Admin Controller************/
@@ -120,10 +128,11 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
 
 });
-
+});
 /*********Admin Controller End******/
 
 /*********Member Routes*************/
+Route::group(['middleware'=> ['member']], function(){
 Route::group(['prefix'=>'member'], function(){
 
 
@@ -155,7 +164,7 @@ Route::group(['prefix'=>'member'], function(){
 
 });
 
-
+});
 /*********End Member Routes*********/
 	
 	Route::post('/blog/add-comment', [BlogController::class, 'addComment'])->name('blog.comment.add');

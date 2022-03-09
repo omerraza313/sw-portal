@@ -55,15 +55,9 @@
 						<div class="col-lg-8 col-md-7 col-12">
 							<div class="search-bar-top">
 								<div class="search-bar">
-									<select>
-										<option selected="selected">Select Here</option>
-										<option>Business</option>
-										<option>Service</option>
-										<option>Top Deals</option>
-									</select>
-									<form>
-										<input name="search" placeholder="Search Here....." type="search">
-										<button class="btnn"><i class="ti-search"></i></button>
+									<form method="GET" action="{{url('/search')}}">
+										<input name="query" placeholder="Search Here....." type="search">
+										<button class="btnn" type="submit"><i class="ti-search"></i></button>
 									</form>
 								</div>
 							</div>
@@ -94,22 +88,22 @@
 										<div class="navbar-collapse">	
 											<div class="nav-inner">	
 												<ul class="nav main-menu menu navbar-nav">
-														<li class="active"><a href="index.html">Home</a></li>
-														<li><a href="how-it-works.html">How it works?</a></li>												
-														<li><a href="get-featured.html">Get Featured</a></li>
+														<li class="active"><a href="{{route('front.home')}}">Home</a></li>
+														<li><a href="#">How it works?</a></li>												
+														<li><a href="#">Get Featured</a></li>
 																							
-														<li><a href="service-search-result.html">Services<i class="ti-angle-down"></i></a>
+														<li><a href="{{route('front.service.all')}}">Services<i class="ti-angle-down"></i></a>
 															<ul class="dropdown">
 																<li>
-																	<a href="blog-single-sidebar.html">Top Rated</a>
+																	<a href="{{route('front.service.all')}}">Top Rated</a>
 																</li>
 																<li>
-																	<a href="blog-single-sidebar.html">Feaured Businesses</a>
+																	<a href="{{route('front.service.all')}}">Feaured Businesses</a>
 																</li>
 															</ul>
 														</li>
-														<li><a href="blog.html">Blog</a></li>
-														<li><a href="contact.html">Contact Us</a></li>
+														<li><a href="{{route('front.blog')}}">Blog</a></li>
+														<li><a href="{{route('front.contact')}}">Contact Us</a></li>
 													</ul>
 											</div>
 										</div>

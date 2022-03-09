@@ -1,6 +1,6 @@
 @extends('Front.front_layout.web_master')
 @section('content')
-<!-- Start Shop Blog  -->
+
 	<section class="shop-blog section1">
 		<div class="container">
 			<div class="row">
@@ -29,5 +29,5 @@
 				</div>
 		</div>
 	</section>
-	<!-- End Shop Blog  -->
-	@endsection
+	
+@endsection

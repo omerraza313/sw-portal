@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
-class Member
+class AdminCheck
 {
     /**
      * Handle an incoming request.
@@ -15,7 +16,19 @@ class Member
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {
-        return $next($request);
+    {   
+
+         if (Auth::check() && Auth::user()->role == 'Admin') {
+            return $next($request);
+        }
+
+
+        abort(403);
+
+
+
+       
+       
+        
     }
 }
