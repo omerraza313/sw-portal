@@ -68,6 +68,8 @@ Route::group(['prefix'=>'admin'], function(){
 
 	/**********Admin Controller************/
 	Route::get('/', [AdminController::class, 'index'])->name('admin.dash');
+	//Inbox View
+	Route::get('/inbox', [AdminController::class, 'inbox'])->name('admin.inbox');
 	//user View
 	Route::get('/user', [AdminController::class, 'users'])->name('admin.user');
 

@@ -191,7 +191,7 @@
           <img src="{{asset('backend_assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">John Doe</a>
+          <a href="#" class="d-block">{{Auth::user()->username}}</a>
         </div>
       </div>
 
@@ -220,6 +220,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{route('admin.inbox')}}" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                inbox
+              </p>
+            </a>
+          </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>

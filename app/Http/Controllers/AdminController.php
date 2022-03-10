@@ -22,19 +22,12 @@ class AdminController extends Controller
     	return view('Admin.user.user');
     }
 
-    /**********All Blog function************/
+    /**********inbox Functions Start************/
 
-
-    
-    
-    
-    
-    
-    
-
-   
-
-    /**********Blog Functions End***********/
+    public function inbox(){
+        echo "This is inbox";
+    }
+    /**********Inbox Functions End***********/
 
     /**********All Business View***********/
     public function business()

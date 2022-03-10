@@ -67,7 +67,7 @@
 	<!-- Start Footer Area -->
 	@include('Front.home.layouts.homeFooter')
 	<!-- /End Footer Area -->
-
+	{{ \TawkTo::widgetCode() }}
 	<!-- Jquery -->
     <script src="{{ asset('frontend_assets/js/jquery.min.js')}}"></script>
     <script src="{{ asset('frontend_assets/js/jquery-migrate-3.0.0.js')}}"></script>
