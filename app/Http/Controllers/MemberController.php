@@ -247,7 +247,7 @@ class MemberController extends Controller
         /*******Delete Service********/
         $service->delete();
 
-        return redirect('Member/service')->with('msg', 'Service Deleted');
+        return redirect('member/service')->with('msg', 'Service Deleted');
         // $single_package = ServicePackage::findOrfail($packageid);
         // foreach($single_package->package_attrs as $key=>$list){
         //     $list->delete();

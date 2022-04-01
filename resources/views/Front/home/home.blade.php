@@ -40,9 +40,9 @@
 					<div class="single-banner">
 						<img src="{{ asset('frontend_assets/images/top-rated-business.jpg')}}" alt="#">
 						<div class="content">
-							<p>Top Rated</p>
-							<h3>Explore BEST<br> Providers</h3>
-							<a href="#">Discover Now</a>
+							<p><span style="background-color:black; padding: 6px; font-size: 15px;">Top Rated</span></p>
+							<h3>Explore BEST<br> Posts</h3>
+							<a href="{{route('front.blog')}}">Discover Now</a>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 					<div class="single-banner">
 						<img src="{{ asset('frontend_assets/images/featured-business.jpg')}}" alt="#">
 						<div class="content">
-							<p>Featured</p>
+							<p><span style="background-color:black; padding: 6px; font-size: 15px;">Featured</span></p>
 							<h3>Get yourself featured for<br> more EXPOSURE </h3>
 							<a href="#">Get Featured</a>
 						</div>
@@ -64,9 +64,9 @@
 					<div class="single-banner tab-height">
 						<img src="{{ asset('frontend_assets/images/new-arrivals.jpg')}}" alt="#">
 						<div class="content">
-							<p>New Arrivals</p>
+							<p><span style="background-color:black; padding: 6px; font-size: 15px;">New Arrivals</span></p>
 							<h3>Explore New Business<br> and Service</h3>
-							<a href="#">Discover Now</a>
+							<a href="{{route('front.service.all')}}">Discover Now</a>
 						</div>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 						<div class="product-info">
 							<div class="nav-main">
 								<!-- Tab Nav -->
-								<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
 									@foreach($category as $key=>$list)
 									  @if($key==0)
 									  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#cleaning-services" role="tab">{{$list->name}}</a></li>
@@ -99,7 +99,7 @@
 									  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#cleaning-services" role="tab">{{$list->name}}</a></li>
 									  @endif
 									@endforeach
-								</ul>
+								</ul> -->
 								<!--/ End Tab Nav -->
 							</div>
 							<div class="tab-content" id="myTabContent">
@@ -111,15 +111,15 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">
 															<img class="default-img front_service_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 															<img class="hover-img front_service_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}"><i class=" ti-eye"></i><span>View Now</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with Similar</span></a>
+																<!-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Favourite</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with Similar</span></a> -->
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">Contact Provider</a>
@@ -172,7 +172,7 @@
 						<div class="content">
 							<p>New Arrivals</p>
 							<h3>Reliables Professionals in your <br>Area<span> Get Upto 50% OFF</span></h3>
-							<a href="#">Explore Now!</a>
+							<a href="{{route('front.service.all')}}">Explore Now!</a>
 						</div>
 					</div>
 				</div>
@@ -184,7 +184,7 @@
 						<div class="content">
 							<p>New Arrivals</p>
 							<h3>Check Out Best Companies <br> & <span>Get Upto 20%</span></h3>
-							<a href="#" class="btn">Explore Now!</a>
+							<a href="{{route('front.service.all')}}" class="btn">Explore Now!</a>
 						</div>
 					</div>
 				</div>
@@ -200,7 +200,7 @@
             <div class="row">
 				<div class="col-12">
 					<div class="section-title">
-						<h2>Hot Services</h2>
+						<h2>Top Services</h2>
 					</div>
 				</div>
             </div>
@@ -214,7 +214,7 @@
 								<a href="#">
 									<img class="default-img front_service_slide_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
 									<img class="hover-img front_service_slide_img" src="{{ asset('storage/media/'.$val->featured_img)}}" alt="#">
-									<span class="out-of-stock">Hot</span>
+									<span class="new">New Arrival</span>
 								</a>
 								<div class="button-head">
 									<div class="product-action">
@@ -318,7 +318,7 @@
                         <p class="text-white wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">Unlock your full potantial, connect with right customers, grown your sales,<br> and build trust.</p>
 
                         <div class="button">
-                            <a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/" target="_blank" rel="nofollow" class="btn wow fadeInUp" data-wow-delay=".8s">Register Now</a>
+                            <a href="{{ route('register') }}" target="_blank" class="btn wow fadeInUp" data-wow-delay=".8s">Register Now</a>
                         </div>
                     </div>
                 </div>

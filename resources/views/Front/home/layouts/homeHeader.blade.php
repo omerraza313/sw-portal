@@ -118,7 +118,7 @@
 											@endforeach
 										</ul>
 									</li>
-									<li class="main-mega"><a href="#">Featured <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									<!-- <li class="main-mega"><a href="#">Featured <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<ul class="mega-menu">
 											<li class="single-menu">
 												<a href="#" class="title-link">Explore Now</a>
@@ -157,7 +157,7 @@
 												</div>
 											</li>
 										</ul>
-									</li>
+									</li> -->
 									@foreach($category as $key=>$list)
 											<li><a href="{{url('category/')}}/{{$list->slug}}">{{$list->name}}</a></li>
 									@endforeach

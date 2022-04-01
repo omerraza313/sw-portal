@@ -4,10 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\UserScope;
 
 class Service extends Model
 {
     use HasFactory;
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+    //     if (auth()->check()) {
+    //         static::addGlobalScope(new UserScope());
+    //     }
+    //     static::observe(\App\Observers\CommonObserver::class);
+    // }
 
      function user(){
         return $this->belongsTo('App\Models\User');
@@ -32,4 +42,6 @@ class Service extends Model
     function service_packages(){
     	return $this->hasMany('\App\Models\ServicePackage');
     }
+
+
 }

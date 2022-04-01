@@ -14,6 +14,7 @@ use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,8 @@ Route::get('/contact/', [FrontController::class, 'contact'])->name('front.contac
 
 /**********End Frontend Routes***********/
 
+
+
 /**********Admin Dashboard Routes***********/
 
 //dashboard
@@ -67,6 +70,10 @@ Route::group(['middleware'=> ['admin']], function(){
 Route::group(['prefix'=>'admin'], function(){
 
 	/**********Admin Controller************/
+
+	
+
+
 	Route::get('/', [AdminController::class, 'index'])->name('admin.dash');
 	//Inbox View
 	Route::get('/inbox', [AdminController::class, 'inbox'])->name('admin.inbox');
@@ -137,7 +144,9 @@ Route::group(['prefix'=>'admin'], function(){
 Route::group(['middleware'=> ['member']], function(){
 Route::group(['prefix'=>'member'], function(){
 
-
+/**********Chat Routes************/
+Route::get('/chat/', [ChatController::class, 'chat'])->name('chat');
+/********End Chat Routes*********/
 
 
 	Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('member.dashboard');

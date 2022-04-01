@@ -19,11 +19,11 @@
 						<div class="single-footer links">
 							<h4>Sitemap</h4>
 							<ul>
-								<li><a href="#">Home</a></li>
+								<li><a href="{{route('front.home')}}">Home</a></li>
 								<li><a href="#">How it Works</a></li>
 								<li><a href="#">Get Featured</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Blog</a></li>
+								<li><a href="{{route('front.contact')}}">Contact Us</a></li>
+								<li><a href="{{route('front.blog')}}">Blog</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -44,10 +44,9 @@
 							</div>
 							<!-- End Single Widget -->
 							<ul>
-								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-twitter"></i></a></li>
-								<li><a href="#"><i class="ti-flickr"></i></a></li>
-								<li><a href="#"><i class="ti-instagram"></i></a></li>
+								<li><a href="https://www.facebook.com/sharinaworld/"><i class="ti-facebook"></i></a></li>
+								<li><a href="https://twitter.com/SharinaWorld"><i class="ti-twitter"></i></a></li>
+								<li><a href="http://instagram.com/sharinaworld"><i class="ti-instagram"></i></a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->

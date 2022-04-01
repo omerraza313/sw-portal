@@ -41,7 +41,7 @@ class ServiceController extends Controller
     }
 
     public function create_service(Request $request){
-        //return $request;
+       
 
        $content = $request->service_desc;
        $dom = new \DomDocument();
@@ -94,6 +94,7 @@ class ServiceController extends Controller
         $service->description = $content;
 
         $service->save();
+        //return $service;
         $sid = $service->id;
 
         /********Working Days********/

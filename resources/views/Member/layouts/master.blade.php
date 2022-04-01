@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{{asset('backend_assets/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('backend_assets/plugins/summernote/summernote-bs4.min.css')}}">
+  <!-- Chat Box Css-->
+  <link rel="stylesheet" href="{{asset('frontend_assets/css/mystyle.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

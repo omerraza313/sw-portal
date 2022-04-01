@@ -21,13 +21,13 @@
 		<section class="blog-single section">
 			<div class="container-fluid px-5">
 				<div class="row">
-					<div class="col-lg-9 col-12">
+					<div class="col-lg-8 col-12">
 						<div class="blog-single-main">
 							<div class="row">
 								@foreach($blog_posts as $key=>$list)
 								<div class="col-lg-4 col-md-4 mb-4">
 									
-						            <div class="card" style="box-shadow: 5px 7px 5px -1px rgba(199,189,189,0.75);">
+						            <div class="card" style="box-shadow: -1px 2px 10px 2px rgba(219,216,216,0.75);">
 						              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 						                <img src="{{ asset('storage/media/'.$list->post_image)}}" alt="{{$list->title}}" class="img-fluid rounded-top post_category_image" />
 						                <a href="{{url('/blog/')}}/{{$list->slug}}">
@@ -49,7 +49,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-12">
+					<div class="col-lg-4 col-12">
 						<div class="main-sidebar">
 							<!-- Single Widget -->
 							<div class="single-widget search">

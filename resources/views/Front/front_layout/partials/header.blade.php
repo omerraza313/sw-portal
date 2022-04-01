@@ -19,7 +19,22 @@
 								<ul class="list-main">
 									<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
 									<li><i class="ti-user"></i> <a href="#">My account</a></li>
-									<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+									@guest
+								@if (Route::has('login'))
+								<li><i class="ti-power-off"></i><a href="{{url('/login')}}">Login</a></li>
+								@endif
+								@else
+								<li>{{ Auth::user()->username }}</li>
+								<li><a class="btn btn-warning text-white" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></li>
+								@endguest
 								</ul>
 							</div>
 							<!-- End Top Right -->

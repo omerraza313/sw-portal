@@ -18,7 +18,9 @@ use Auth;
 class FrontController extends Controller
 {
     public function home(){
-        $service = Service::orderBy('id', 'desc')->take(4)->get();;
+        $service = Service::orderBy('id', 'desc')->take(4)->get();
+        // $service = Service::all();
+
         $category = Category::all();
         $recent_posts = Blog::orderBy('created_at', 'desc')->take(3)->get();
         return view('Front.home.home', compact('service','category', 'recent_posts'));
@@ -89,8 +91,15 @@ class FrontController extends Controller
         if ($query != "") {
             
             $data = Service::where('title', 'LIKE', '%' .$query. '%')->get();
+            $post = Blog::where('title', 'LIKE', '%' .$query. '%')->get();
+            // foreach($data as $key=>$list){
+            //     echo "<pre>";
+            //     print_r($list);
+            //     echo "</pre>";
+            // }
+            // die();
             //return $data;
-            return view('Front.pages.search', compact('data', 'query'));
+            return view('Front.pages.search', compact('data', 'query', 'post'));
         }
 
         else{
