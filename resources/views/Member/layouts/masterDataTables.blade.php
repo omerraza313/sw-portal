@@ -32,7 +32,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{route('front.home')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('member.profile')}}" class="nav-link">Profile</a>
@@ -205,6 +205,14 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{route('member.chat')}}" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Inbox
               </p>
             </a>
           </li>

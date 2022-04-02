@@ -145,7 +145,7 @@ Route::group(['middleware'=> ['member']], function(){
 Route::group(['prefix'=>'member'], function(){
 
 /**********Chat Routes************/
-Route::get('/chat/', [ChatController::class, 'chat'])->name('chat');
+Route::get('/chat/', [ChatController::class, 'chat'])->name('member.chat');
 /********End Chat Routes*********/
 
 
