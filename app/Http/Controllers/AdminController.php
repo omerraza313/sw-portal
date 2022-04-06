@@ -18,6 +18,27 @@ class AdminController extends Controller
     {
     	return view('Admin.dashboard');
     }
+
+    public function notifications(){
+
+        $notifications = auth()->user()->unreadNotifications;
+        return view('Admin.notifications.notifications', compact('notifications'));
+    }
+
+    public function notificationRead(Request $request){
+
+         auth()->user()
+        ->unreadNotifications
+        ->when($request->input('id'), function ($query) use ($request) {
+            return $query->where('id', $request->input('id'));
+        })
+        ->markAsRead();
+
+        return redirect()->back();
+
+
+    }
+
     /********All User View*******/
     public function users()
     {

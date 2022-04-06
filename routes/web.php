@@ -138,6 +138,11 @@ Route::group(['prefix'=>'admin'], function(){
 	//Pending Review
 	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
 
+
+	//Notification
+	Route::get('/notifications', [AdminController::class, 'notifications']);
+	Route::post('/notification/read', [AdminController::class, 'notificationRead'])->name('notification.Read');
+
 });
 });
 /*********Admin Controller End******/

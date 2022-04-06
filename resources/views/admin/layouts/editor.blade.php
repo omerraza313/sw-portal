@@ -131,28 +131,26 @@
                                     </a>
                             </li>
       <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">12</span>
+         <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">{{auth()->user()->unreadNotifications->count()}}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header"> Notifications</span>
+          
+          <div class="dropdown-divider"></div>
+          @foreach(auth()->user()->unreadNotifications as $notification)
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users "></i> 
+            Username <strong>{{$notification->data['username']}} </strong> just Registered
           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">12 Notifications</span>
-            
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users "></i> 8 new business registered
-              
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new top deal created
-             
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
+          @endforeach
+          
+          <div class="dropdown-divider"></div>
+          <a href="{{ url('admin/notifications')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>

@@ -385,11 +385,11 @@ class MemberController extends Controller
 
     public function user_profile_update(Request $request){
 
-        $data validator::make($request([
+        // $data validator::make($request([
 
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
 
-        ]));
+        // ]));
 
         $password = Hash::make($request->password);      
 
