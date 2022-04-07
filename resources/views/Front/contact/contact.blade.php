@@ -76,15 +76,15 @@
 									<i class="fa fa-phone"></i>
 									<h4 class="title">Call us Now:</h4>
 									<ul>
-										<li>+032 3456 7890</li>
-										<li>+032 3456 7890</li>
+										<li>+1 516-464-7444</li>
+										<li>+1 516-464-7444</li>
 									</ul>
 								</div>
 								<div class="single-info">
 									<i class="fa fa-envelope-open"></i>
 									<h4 class="title">Email:</h4>
 									<ul>
-										<li><a href="mailto:info@sharinaworld.com">info@sharinaworld.com</a></li>
+										<li><a href="mailto:info@sharinaworld.com">app@sharinaworld.com</a></li>
 										<li><a href="mailto:support@sharinaworld.com">support@sharinaworld.com</a></li>
 									</ul>
 								</div>
@@ -92,7 +92,7 @@
 									<i class="fa fa-location-arrow"></i>
 									<h4 class="title">Our Address:</h4>
 									<ul>
-										<li>705 Denver Avenue, 012 United States</li>
+										<li>1080 Old Country Road #1037 Westbury, NY 11590</li>
 									</ul>
 								</div>
 							</div>

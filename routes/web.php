@@ -133,6 +133,8 @@ Route::group(['prefix'=>'admin'], function(){
 
 	//Pending Approval
 	Route::get('/approval', [AdminController::class, 'approval'])->name('admin.approval');
+	Route::get('/approval/status/{id}', [AdminController::class, 'comment_satus_change'])->name('admin.approved');
+	Route::get('/approval/delete/{id}', [AdminController::class, 'comment_delete'])->name('admin.approved.delete');
 	//Pending Review
 	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
 

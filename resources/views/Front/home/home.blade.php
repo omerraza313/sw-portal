@@ -133,11 +133,21 @@
 
 																$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
 
+																if($package != null){
+
 																$package_attr = \App\Models\ServicePackageAttr::where('service_package_id', $package->id)->min('price');
 																if($package_attr){
 																	echo  '<strong class="py-2">Starts From <span style="font-family: inherit;background-color: #f7941d;padding: 3px 4px 3px 4px;color: white;border-radius: 5px;">$'.$package_attr . '</span></strong>';
 																}
-																
+															}
+
+																else{
+
+																	echo "Null" ;
+
+																}
+
+															
 
 																@endphp
 
@@ -234,11 +244,18 @@
 									@php 
 
 										$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
+										if($package){
+
 
 										$package_attr = \App\Models\ServicePackageAttr::where('service_package_id', $package->id)->min('price');
 										if($package_attr){
 										echo  '<strong class="py-2">Starts From <span style="font-family: inherit;background-color: #f7941d;padding: 3px 4px 3px 4px;color: white;border-radius: 5px;">$'.$package_attr . '</span></strong>';
 										}
+
+									}
+									else{
+										echo 'Null';
+									}
 									@endphp
 								</div>
 							</div>
@@ -291,11 +308,20 @@
 									@php 
 
 										$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
+										if($package){
+
 
 										$package_attr = \App\Models\ServicePackageAttr::where('service_package_id', $package->id)->min('price');
 										if($package_attr){
 										echo  '<strong class="py-2">Starts From <span style="font-family: inherit;background-color: #f7941d;padding: 3px 4px 3px 4px;color: white;border-radius: 5px;">$'.$package_attr . '</span></strong>';
 										}
+
+									}
+
+									else{
+
+										echo 'Null';
+									}
 									@endphp
 								</div>
 							</div>

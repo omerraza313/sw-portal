@@ -9,7 +9,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dash')}}">Dashboard</a></li>
               <li class="breadcrumb-item active">User</li>
             </ol>
           </div><!-- /.col -->
@@ -32,30 +32,34 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr No.</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Account Type</th>
+                    <th>Role</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  @foreach($users as $key=>$list)
                   <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td>{{++$key}}</td>
+                    <td>{{$list->f_name}} {{$list->l_name}}</td>
+                    <td>{{$list->username}}</td>
+                    <td>{{$list->email}}</td>
+                    <td>{{$list->account_type}}</td>
+                    <td>{{$list->role}}</td>
                   </tr>
+                  @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr No.</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Account Type</th>
+                    <th>Role</th>
                   </tr>
                   </tfoot>
                 </table>

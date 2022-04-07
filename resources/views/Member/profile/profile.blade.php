@@ -116,7 +116,7 @@
                                 <label for="Firstname" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="f_name" type="text" class="form-control @error('f_name') is-invalid @enderror" name="f_name" value="{{ Auth::user()->f_name }}" required autocomplete="f_name" autofocus>
+                                    <input id="f_name" type="text" class="form-control @error('f_name') is-invalid @enderror" name="f_name" value="{{ Auth::user()->f_name }}" required autocomplete="f_name" autofocus disabled>
 
                                     @error('f_name')
                                         <span class="invalid-feedback" role="alert">
@@ -130,7 +130,7 @@
                                 <label for="l_name" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="l_name" type="text" class="form-control @error('l_name') is-invalid @enderror" name="l_name" value="{{ Auth::user()->l_name }}" required autocomplete="l_name" autofocus>
+                                    <input id="l_name" type="text" class="form-control @error('l_name') is-invalid @enderror" name="l_name" value="{{ Auth::user()->l_name }}" required autocomplete="l_name" autofocus disabled>
 
                                     @error('l_name')
                                         <span class="invalid-feedback" role="alert">
@@ -172,7 +172,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password" required>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -186,14 +186,14 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" required>
                                 </div>
                             </div>
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Update') }}
                                     </button>
                                 </div>
                             </div>

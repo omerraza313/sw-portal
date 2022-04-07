@@ -11,6 +11,10 @@
     <title>Sharina World</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
+	<!---Font Awesome Icons---->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	

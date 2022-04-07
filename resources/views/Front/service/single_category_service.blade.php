@@ -20,8 +20,8 @@
 							<img style="object-fit: cover; width: 370px; height: 300px;" src="{{ asset('storage/media/'.$list->featured_img)}}" alt="#">
 							<div class="content">
 								 <p class="date"></p>
-								<a href="#" class="title">{{$list->title}}</a>
-								<a href="#" class="more-btn">View Details</a>
+								<a href="{{url('user')}}/{{$list->user->username}}/{{$list->slug}}" class="title">{{$list->title}}</a>
+								<a href="{{url('user')}}/{{$list->user->username}}/{{$list->slug}}" class="more-btn">View Details</a>
 							</div>
 						</div>
 						

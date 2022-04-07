@@ -13,6 +13,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\WorkerInfo;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 use Auth;
 
 class MemberController extends Controller
@@ -382,7 +385,17 @@ class MemberController extends Controller
 
     public function user_profile_update(Request $request){
 
-        User::find(Auth::id())->update($request->all());
+        $data validator::make($request([
+
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+        ]));
+
+        $password = Hash::make($request->password);      
+
+        $user = User::find(Auth::id());
+        $user->password = $password;
+        $user->update();
 
         return redirect()->back();
     }

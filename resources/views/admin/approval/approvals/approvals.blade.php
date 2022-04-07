@@ -1,4 +1,4 @@
-@extends('Admin.layouts.master')
+@extends('Admin.layouts.masterDataTables')
 @section('content')
 
 <div class="content-header">
@@ -9,7 +9,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dash')}}">Home</a></li>
               <li class="breadcrumb-item active">Pending Approvals</li>
             </ol>
           </div><!-- /.col -->
@@ -27,37 +27,54 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                @if(Session::has('success'))
+                <span class="alert alert-success py-2">{{ Session::get('success') }}</span>
+                @endif
+                @if(Session::has('danger'))
+                <span class="alert alert-danger py-2">{{ Session::get('danger') }}</span>
+                @endif
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr No.</th>
+                    <th>Post</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Comment</th>
+                    <th>Status</th>
+                    <th>Change</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  @foreach($comments as $key=>$list)
                   <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td>{{++$key}}</td>
+                    <td>{{$list->blogs->title}}</td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->email}}</td>
+                    <td>{{$list->comment}}</td>
+                    <td>{{$list->status}}</td>
+                    <td>
+                      <div class="btn-group btn-group-sm">
+                        <a href="{{url('admin/approval/status/')}}/{{$list->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
+                        <a href="{{url('admin/approval/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </td>
                   </tr>
+                  @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Sr No.</th>
+                    <th>Post</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Comment</th>
+                    <th>Status</th>
+                    <th>Change</th>
                   </tr>
                   </tfoot>
                 </table>

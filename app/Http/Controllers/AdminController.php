@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BlogCategory;
 use App\Models\BlogSubCategory;
+use App\Models\User;
+use App\Models\Comment;
 
 class AdminController extends Controller
 {
@@ -19,7 +21,9 @@ class AdminController extends Controller
     /********All User View*******/
     public function users()
     {
-    	return view('Admin.user.user');
+        $users = User::all();
+        // $users = User::where('role', 'Member')->get();
+    	return view('Admin.user.user', compact('users'));
     }
 
     /**********inbox Functions Start************/
@@ -42,7 +46,22 @@ class AdminController extends Controller
     /*********Pending Approvals View********/
     public function approval()
     {
-        return view('Admin.approval.approvals.approvals');
+        $comments = Comment::all();
+        //return $comments;
+        return view('Admin.approval.approvals.approvals', compact('comments'));
+    }
+    public function comment_satus_change($id){
+        // echo "this is status";
+        // die();
+       $single_comment = Comment::findOrfail($id);
+       $single_comment->status = 'approved';
+       $single_comment->save();
+       return redirect('/admin/approval')->with('success', 'Comment has been approved');
+    }
+    public function comment_delete($id){
+        $single_comment = Comment::findOrfail($id);
+        $single_comment->delete();
+       return redirect('/admin/approval')->with('danger', 'Comment has been deleted');
     }
     /*********Pending Reviews View********/
     public function review()

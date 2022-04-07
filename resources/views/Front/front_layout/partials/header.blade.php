@@ -7,8 +7,8 @@
 							<!-- Top Left -->
 							<div class="top-left">
 								<ul class="list-main">
-									<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-									<li><i class="ti-email"></i> support@sharinaworld.com</li>
+									<li><i class="ti-headphone-alt"></i> +1 516-464-7444</li>
+									<li><i class="ti-email"></i> app@sharinaworld.com</li>
 								</ul>
 							</div>
 							<!--/ End Top Left -->
@@ -49,7 +49,7 @@
 						<div class="col-lg-2 col-md-2 col-12">
 							<!-- Logo -->
 							<div class="logo">
-								<a href="index.html"><img src="{{ asset('frontend_assets/images/Sharina-Logo.png')}}" alt="logo" style="height: 65px; width: auto; margin-top: -15px"></a>
+								<a href="{{route('front.home')}}"><img src="{{ asset('frontend_assets/images/Sharina-Logo.png')}}" alt="logo" style="height: 65px; width: auto; margin-top: -15px"></a>
 							</div>
 							<!--/ End Logo -->
 							<!-- Search Form -->
