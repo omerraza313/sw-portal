@@ -156,6 +156,7 @@ Route::group(['prefix'=>'member'], function(){
 
 /**********Chat Routes************/
 Route::get('/chat/', [ChatController::class, 'chat'])->name('member.chat');
+Route::post('/chat/message/', [ChatController::class, 'chatMessage']);
 /********End Chat Routes*********/
 
 

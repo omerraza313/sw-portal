@@ -30,5 +30,12 @@ class ChatController extends Controller
         return view('Chat.chat');
     }
 
+    public function chatMessage(Request $request){
+
+
+        
+
+    }
+
     
 }
