@@ -61,7 +61,7 @@
                       <div class="btn-group btn-group-sm">
                         <a href="{{url('admin/service/edit/')}}/{{$list->id}}" class="btn btn-info"><i class="fas fa-pen-square"></i></a>
                         <a href="{{url('admin/service/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        <a href="{{url('/user_name/')}}/{{$list->slug}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="{{url('/user/')}}/{{$list->user->username}}/{{$list->slug}}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                       </div>
                     </td>
                   </tr>

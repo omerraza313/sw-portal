@@ -8,6 +8,9 @@ use App\Models\BlogSubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BlogController;
 use App\Models\Comment;
+use Illuminate\Notifications\Notification;
+use App\Notifications\NewCommentNotification;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -135,6 +138,9 @@ class BlogController extends Controller
         $comment->comment = $request->comment;
         $comment->status = 'pending';
         $comment->save();
+
+        $notify_user = Blog::find($comment->blog_id);
+        $notify_user->notify(new NewCommentNotification($comment));
 
         return redirect()->back()->with('msg', 'Your Comment has been submitted and under review.');
         

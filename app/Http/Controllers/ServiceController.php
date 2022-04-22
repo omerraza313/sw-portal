@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
+use Illuminate\Notifications\Notification;
+use App\Notifications\NewServiceNotification;
+
 class ServiceController extends Controller
 {
     /**
@@ -23,7 +26,7 @@ class ServiceController extends Controller
 
     public function __construct(){
 
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     public function index()
@@ -92,9 +95,10 @@ class ServiceController extends Controller
         $service->category_id = $request->category_id;
         $service->sub_category_id = $request->sub_category_id;
         $service->description = $content;
-
+        $service->status = 'draft';
         $service->save();
-        //return $service;
+      
+
         $sid = $service->id;
 
         /********Working Days********/
@@ -273,9 +277,10 @@ class ServiceController extends Controller
 
      
         $service_id = $request->service_id;
+       
 
         $model = new ServicePackage;
-       
+        
         $model->service_id = $request->service_id;
         $model->package_type = $request->package_name;
         $model->save();
@@ -293,6 +298,16 @@ class ServiceController extends Controller
 
             DB::table('service_package_attrs')->insert($packageAttr);
         }
+
+        $service_package_count = ServicePackage::where('service_id', $service_id)->count();
+
+        if ($service_package_count == 1) {
+             $service = Service::find($service_id);
+            $service->status = 'pending';
+            $service->is_Approve = 0;
+            $service->update();
+        }
+       
        
         return redirect('/admin/service/')->with('msg','Package has been added');
 

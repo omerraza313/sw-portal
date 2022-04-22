@@ -40,51 +40,36 @@
                   <thead>
                   <tr>
                     <th>Sr No.</th>
-                    <th>Type</th>
-                    <th>Notification</th>
-                    <th>Read</th>
-                    
+                    <th>Username</th>
+                    <th>Title</th>
+                    <th>Description</th>                   
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-
-
-                    
-                      
-                  @foreach($notifications as $key=>$notification)
-                  @php
-                    $array = json_decode($notification->data);
-                  @endphp
+                  @foreach($pending_services as $key=>$list)
                   <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$notification->type}}</td>
-                    @if($notification->type == 'App\Notifications\NewUserNotification')
-                    <td><strong>{{$array->username}}</strong> has been registered</td>
-                    @elseif($notification->type == 'App\Notifications\NewCommentNotification')
-                    <td><strong>{{$array->email}}</strong> Commented <i> {{$array->comment}}</i></td>
-                    @elseif($notification->type == 'App\Notifications\NewServiceNotification')
-                    <td><strong>{{$array->title}}</strong> Created</td>
-                    @endif
+                    <td>{{$list->user->username}}</td>
+                    <td>{{$list->title}}</td>
+                    <td>{{$list->description}}</td>
+                    
                     <td>
                       <div class="btn-group btn-group-sm">
-                        <form action="{{route('notification.Read')}}" method="post">
-                          @csrf
-                        <input type="text" name="id" value="{{$notification->id}}" hidden>
-                        <button type="submit" class="btn btn-success">Read</button>
-                         </form>
+                        <a href="{{url('/admin/pending/service/approval/')}}/{{$list->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
+                        <a href="{{url('admin/approval/delete/')}}/{{$list->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                       </div>
                     </td>
                   </tr>
-                 
                   @endforeach
-                  
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Sr No.</th>
-                    <th>Type</th>
-                    <th>Notification</th>
-                    <th>Read</th>
+                  <th>Sr No.</th>
+                    <th>Username</th>
+                    <th>Title</th>
+                    <th>Description</th>                   
+                    <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>

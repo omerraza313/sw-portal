@@ -15,11 +15,17 @@ use Illuminate\Http\Request;
 use App\Models\WorkerInfo;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Notifications\Notification;
+use App\Notifications\NewServiceNotification;
 use Auth;
 
 class MemberController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware(['auth','verified']);
+    }
+
     public function dashboard(){
         return view('Member.dashboard.member_dash');
     }
@@ -90,8 +96,15 @@ class MemberController extends Controller
         $service->category_id = $request->category_id;
         $service->sub_category_id = $request->sub_category_id;
         $service->description = $content;
-
+        $service->status = 'draft';
         $service->save();
+               
+        $notify_user = User::find($service->user_id);
+
+        $notify_user->notify(new NewServiceNotification($service));
+
+        // Notification::send(new NewServiceNotification($service));
+
         $sid = $service->id;
 
         /********Working Days********/
@@ -291,6 +304,15 @@ class MemberController extends Controller
             DB::table('service_package_attrs')->insert($packageAttr);
         }
        
+       $service_package_count = ServicePackage::where('service_id', $service_id)->count();
+
+        if ($service_package_count == 1) {
+             $service = Service::find($service_id);
+            $service->status = 'pending';
+            $service->is_Approve = 0;
+            $service->update();
+        }
+        
         return redirect('/member/service/')->with('msg','Package has been added');
 
     }

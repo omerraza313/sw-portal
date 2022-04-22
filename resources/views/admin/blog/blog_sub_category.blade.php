@@ -126,7 +126,7 @@
                         <label for="Parent Category">Parent Category</label>
                         <div class="input-group">
                           <select class="form-control" name="blog_category_id" required="">
-                           <option value="{{$list->id}}" selected>{{$list->category->name}}</option>
+                           <option value="{{$list->category->id}}" selected>{{$list->category->name}}</option>
                             @foreach($categories as $key=>$cat)
                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                             @endforeach

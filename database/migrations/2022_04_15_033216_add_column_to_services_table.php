@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChatsTable extends Migration
+class AddColumnToServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateChatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('sender_id')->unsigned();
-            $table->bigInteger('reciever_id')->unsigned();
-            $table->timestamps();
+        Schema::table('services', function (Blueprint $table) {
+            $table->string('status');
+            $table->boolean('is_Approve')->nullable();
         });
     }
 
@@ -28,6 +26,8 @@ class CreateChatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chats');
+        Schema::table('services', function (Blueprint $table) {
+            //
+        });
     }
 }

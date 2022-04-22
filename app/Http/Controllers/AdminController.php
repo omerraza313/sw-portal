@@ -7,9 +7,26 @@ use App\Models\BlogCategory;
 use App\Models\BlogSubCategory;
 use App\Models\User;
 use App\Models\Comment;
+use DB;
+use App\Models\Service;
 
 class AdminController extends Controller
 {
+    public function testFunction(){
+
+        $notifications = DB::table('notifications')->where('read_at', null)->get();
+
+        // dd($notifications);
+
+        foreach($notifications as $notify){
+            
+           $array = json_decode($notify->data);
+           echo $array->username;
+
+        }
+
+    }
+
     public function __construct(){
 
         $this->middleware('auth');
@@ -21,7 +38,7 @@ class AdminController extends Controller
 
     public function notifications(){
 
-        $notifications = auth()->user()->unreadNotifications;
+         $notifications = DB::table('notifications')->where('read_at', null)->get();
         return view('Admin.notifications.notifications', compact('notifications'));
     }
 
@@ -67,7 +84,7 @@ class AdminController extends Controller
     /*********Pending Approvals View********/
     public function approval()
     {
-        $comments = Comment::all();
+        $comments = Comment::where('status','pending')->get();
         //return $comments;
         return view('Admin.approval.approvals.approvals', compact('comments'));
     }
@@ -88,6 +105,22 @@ class AdminController extends Controller
     public function review()
     {
         return view('Admin.approval.reviews.reviews');
+    }
+
+    public function pendingService(){
+
+        $pending_services = Service::where('is_Approve', false)->get();
+        return view('Admin.approval.service_approval.service_approval', compact('pending_services'));
+    }
+
+    public function approvalService($id){
+
+        $service = Service::find($id);
+        $service->is_Approve = 1;
+        $service->status = 'publish';
+        $service->update();
+
+        return redirect()->back();
     }
 
 

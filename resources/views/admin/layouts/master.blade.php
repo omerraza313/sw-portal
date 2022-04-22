@@ -47,7 +47,7 @@
         <a href="{{route('front.home')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">How it Works?</a>
+        <a href="#" class="nav-link">Profile</a>
       </li>
     </ul>
 
@@ -78,41 +78,73 @@
       <!-- Messages Dropdown Menu -->
      
        <li class="nav-item">
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+          </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
+        </div>
+      </li>
 
-                            <li>
-                                <a class="nav-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                            </li>
+      <li>
+        <a class="nav-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+          {{ __('Logout') }}
+        </a>
+      </li>
+      @php
+          use Illuminate\Support\Facades\DB;
+          $notifications = DB::table('notifications')->where('read_at', null)->get();
+          //print_r($notification);
+
+          @endphp
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">{{auth()->user()->unreadNotifications->count()}}</span>
+          <span class="badge badge-warning navbar-badge">{{$notifications->count()}}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header"> Notifications</span>
           
           <div class="dropdown-divider"></div>
-          @foreach(auth()->user()->unreadNotifications as $notification)
+          <!-- @foreach(auth()->user()->unreadNotifications as $notification)
           <a href="#" class="dropdown-item">
             <i class="fas fa-users "></i> 
             Username <strong>{{$notification->data['username']}} </strong> just Registered
           </a>
+          @endforeach -->
+          
+          
+           @foreach($notifications as $notification)
+
+              @php
+               $array = json_decode($notification->data);
+              @endphp
+           @if($notification->type == 'App\Notifications\NewUserNotification')
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users "></i> 
+            <strong>{{$array->username}} </strong> just Registered
+          </a>
+          @endif
+
+           @if($notification->type == 'App\Notifications\NewCommentNotification')
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users "></i> 
+            <strong>{{$array->email}} </strong> left a comment
+          </a>
+          @endif
+
+
+           @if($notification->type == 'App\Notifications\NewServiceNotification')
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users "></i> 
+            <strong>{{$array->title}} </strong> Published 
+          </a>
+          @endif
+
           @endforeach
           
           <div class="dropdown-divider"></div>

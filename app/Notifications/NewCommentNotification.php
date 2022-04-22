@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewUserNotification extends Notification
+class NewCommentNotification extends Notification
 {
     use Queueable;
 
@@ -16,11 +16,11 @@ class NewUserNotification extends Notification
      *
      * @return void
      */
-    public $user;
 
-    public function __construct($user)
+    public $comment;
+    public function __construct($comment)
     {
-        $this->user = $user;
+        $this->comment = $comment;
     }
 
     /**
@@ -53,13 +53,12 @@ class NewUserNotification extends Notification
      *
      * @param  mixed  $notifiable
      * @return array
-     */ 
-    public function toArray($notifiable)
+     */
+    public function toDatabase($notifiable)
     {
         return [
-
-            'username'=> $this->user->username,
-            'email' => $this->user->email
+            'email'=> $this->comment->email,
+            'comment'=> $this->comment->comment,
         ];
     }
 }

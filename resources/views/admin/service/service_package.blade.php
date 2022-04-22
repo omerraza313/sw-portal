@@ -37,20 +37,20 @@
 			            <!-- Widget: user widget style 2 -->
 			            <div class="card card-widget widget-user-2">
 			              <!-- Add the bg color to the header using any of the bg-* classes -->
-			              <div class="widget-user-header bg-warning">
+			              <div class="widget-user-header" style="background-color: #3E5A78">
 			                
 			                <!-- /.widget-user-image -->
-			                <h3 class="widget-user-username">Package# {{++$key}}</h3>
-			                <h5 class="widget-user-desc">{{$val->package_type}}</h5>
+			                <h3 class="widget-user-username text-white">Package# {{++$key}}</h3>
+			                <h5 class="widget-user-desc text-white">{{$val->package_type}}</h5>
 			              </div>
-			              <div class="card-footer p-0">
+			              <div class="card-footer p-2" style="background-color: #3f454b">
 			                <ul class="nav flex-column">
 
 			                	@foreach($val->package_attrs as $key=>$list)
 			               
-			                  <li class="nav-item p-2">
+			                  <li class="nav-item p-2" style="border-bottom: 1px solid rgba(248, 244, 244, 0.25);">
 			                    
-			                     <span class="heading-6"> {{$list->plan_name}}</span> <span class="float-right bg-primary rounded p-1">$ {{$list->price}}</span>
+			                     <span class="heading-6 text-white"> {{$list->plan_name}}</span> <span class="float-right bg-primary rounded p-1">$ {{$list->price}}</span>
 			                   
 			                  </li>
 			               
@@ -60,7 +60,7 @@
 			                        <a href="{{url('admin/service/package/delete')}}/{{$val->id}}/{{$id}}" class="btn btn-danger"><!-- <i class="fas fa-minus"></i> -->Delete</a>
 			                    </div>
 			                    <div class="btn-group btn-group-md  float-right">
-			                        <a href="{{url('admin/service/package/edit/')}}/{{$val->id}}" class="btn btn-info"><!-- <i class="fas fa-pen-square"></i> -->Edit</a>
+			                        <a href="{{url('admin/service/package/edit/')}}/{{$val->id}}" class="btn btn-success text-white"><!-- <i class="fas fa-pen-square"></i> -->Edit</a>
 			                    </div>
 
 			                  </li>

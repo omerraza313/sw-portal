@@ -26,11 +26,12 @@ use App\Http\Controllers\ChatController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', [AdminController::class, 'testFunction']);
 
 Route::get('/', [FrontController::class, 'home'])->name('front.home');
 
 	
-Auth::routes();
+Auth::routes(['verify'=> true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('CheckUser');
 
@@ -114,7 +115,7 @@ Route::group(['prefix'=>'admin'], function(){
 	//business listing
 	Route::get('/business', [AdminController::class, 'business'])->name('admin.business');
 	//service listing
-	Route::get('/service', [ServiceController::class, 'index'])->name('admin.service');
+	Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
 	Route::get('/service/add', [ServiceController::class, 'add_service'])->name('admin.service.add');
 	Route::post('/service/create', [ServiceController::class, 'create_service'])->name('admin.service.create');
 	Route::get('/service/edit/{id}', [ServiceController::class, 'edit_service'])->name('admin.service.edit');
@@ -138,7 +139,9 @@ Route::group(['prefix'=>'admin'], function(){
 	//Pending Review
 	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
 
-
+	//pending services
+	Route::get('/pending/services', [AdminController::class, 'pendingService']);
+	Route::get('/pending/service/approval/{id}', [AdminController::class, 'approvalService']);
 	//Notification
 	Route::get('/notifications', [AdminController::class, 'notifications']);
 	Route::post('/notification/read', [AdminController::class, 'notificationRead'])->name('notification.Read');
