@@ -53,4 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function worker_info(){
         return $this->hasOne('App\Models\WorkerInfo');
     }
+
+    public function chat(){
+
+        return $this->hasMany('App\Models\Chat');
+    }
 }

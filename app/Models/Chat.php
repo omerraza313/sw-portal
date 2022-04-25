@@ -22,4 +22,9 @@ class Chat extends Model
 
         return $this->messages()->where('status', 0)->count();
     }
+
+    public function recieverUser(){
+
+        return $this->belongsTo('App\Models\User', 'reciever_id', 'id');
+    }
 }
