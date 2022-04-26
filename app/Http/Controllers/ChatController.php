@@ -26,7 +26,7 @@ class ChatController extends Controller
      */
     public function chat()
     {
-        $reciever_user = Chat::where('sender_id', Auth::id())->get();
+        $reciever_user = Chat::where('reciever_id', Auth::id())->orWhere('sender_id', Auth::id())->get();
         
         return view('Chat.chat', compact('reciever_user'));
     }
@@ -45,7 +45,9 @@ class ChatController extends Controller
 
     public function getMessages(Request $request){
 
+        $chat = ChatMessage::where('chat_id', $request->chat_id)->get();
 
+        return response()->json($chat);
     }
 
     public function chatList(){

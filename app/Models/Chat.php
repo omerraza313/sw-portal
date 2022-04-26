@@ -27,4 +27,9 @@ class Chat extends Model
 
         return $this->belongsTo('App\Models\User', 'reciever_id', 'id');
     }
+
+    public function senderUser(){
+
+        return $this->belongsTo('App\Models\User', 'sender_id', 'id');
+    }
 }

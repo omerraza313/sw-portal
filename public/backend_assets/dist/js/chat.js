@@ -67,37 +67,90 @@ function chatList(){
 	});
 }
 
-setInterval(chatList, 5000);
+// setInterval(chatList, 5000);
 
 
-function getChatMessages(){
+
+
+
+
+// $(".recieverUser").click(function(){
+
+// 	$(".chat-messages").empty();
+// 	$(".recieverUserName").empty();
+
+// 	var recieverName = $(".recieverUser").text();
+// 	$('#recieverUserName').text(recieverName);
+
+// 	var reciever = $(".recieverUser").attr("dataUserId");
+
+
+// 	var chatId = $(this).find("#chatId").val();
+// 	$(".recieverUserName").attr("datachat" , chatId);
+// 	alert($(".recieverUserName").attr("datachat"));
+
+
+// 	function getChatMessages(){
+// 	$.ajax({
+
+// 		url:'/member/chat/get-messages',
+// 		method: 'POST',
+// 		data: {
+
+// 			'_token': $('meta[name="csrf-token"]').attr('content'),
+// 		},
+
+// 		success: function(data){
+
+
+
+// 		}
+
+// 	});
+// };
+
+
+// });
+
+
+function chatUserFun(data){
+
+	$(".chat-messages").empty();
+	$(".recieverUserName").empty();
+
+	var UserName = $(data).attr('data-name');	
+	var chatId = $(data).attr('data-chat-id');
+	$('#recieverUserName').text(UserName);
+
 	$.ajax({
 
 		url:'/member/chat/get-messages',
-		method: 'POST',
+		method: 'GET',
 		data: {
 
-			'_token': $('meta[name="csrf-token"]').attr('content'),
+			
+			'chat_id':chatId,
 		},
 
 		success: function(data){
+			$.each(data, function(index,value){
 
+				console.log(value.name);
 
+			});
+		},
 
+		error: function(data){
+
+			console.log(data);
 		}
 
 	});
-};
+	
+}
 
 
 
-$(".recieverUser").click(function(){
-
-	var recieverName = $(".recieverUser").text();
-	$('#recieverUserName').text(recieverName);
-
-
-});
 
 
 
