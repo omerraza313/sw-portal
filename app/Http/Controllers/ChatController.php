@@ -56,5 +56,12 @@ class ChatController extends Controller
         return response()->json($chatList);
     }
 
+    public function syncMessages(Request $request){
+
+        $chat = ChatMessage::where('chat_id', $request->chat_id)->latest()->first();
+
+        return response()->json($chat);
+    }
+
     
 }

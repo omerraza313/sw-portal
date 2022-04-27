@@ -18,7 +18,7 @@
 					</div>
 					@foreach($reciever_user as $user)
 					@if($user->sender_id == Auth::id())
-					<a href="#" class="list-group-item list-group-item-action border-0">
+					<a href="javascript:void(0);" class="list-group-item list-group-item-action border-0">
 						<div class="badge bg-success float-right">5</div>
 						<div class="d-flex align-items-start">
 							<img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
@@ -54,7 +54,7 @@
 								<img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
 							</div>
 							<div class="flex-grow-1 pl-3">
-								<strong><span id="recieverUserName" datachat=""></span></strong>
+								<strong><span id="recieverUserName" data-chat-id=""></span></strong>
 								<div class="text-muted small"><em></em></div>
 							</div>
 							<!-- <div>
@@ -66,9 +66,8 @@
 					</div>
 
 					<div class="position-relative">
-						<div class="chat-messages p-4">
-
-							
+						<input type="id" name="activeId" class="active_user_id" value="{{Auth::id()}}" hidden>
+						<div class="chat-messages p-4">							
 
 							<div class="chat-message-right mb-4">
 								<div>
