@@ -1,6 +1,7 @@
 $("#sendmsg").click(function(){
 
 	var sender_msg = $("#chat-message").val();
+	var chatId = $("#recieverUserName").attr('data-chat-id');
 	if (sender_msg != "") {
  	
 		$.ajax({
@@ -11,6 +12,7 @@ $("#sendmsg").click(function(){
 
 				'_token': $('meta[name="csrf-token"]').attr('content'),
 				'message':sender_msg,
+				'chat_id': chatId,
 
 
 			},
@@ -161,7 +163,7 @@ function syncChat(){
 
 			success: function(data){
 				
-				console.log(data.message);
+				console.log(data.id);
 				
 
 			},

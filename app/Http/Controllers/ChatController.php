@@ -34,7 +34,7 @@ class ChatController extends Controller
     public function chatMessage(Request $request){
 
         $chat = new ChatMessage;
-        $chat->chat_id = 1;
+        $chat->chat_id = $request->chat_id;
         $chat->message = $request->message;
         $chat->user_id = Auth::id();
         $chat->save();
@@ -45,7 +45,7 @@ class ChatController extends Controller
 
     public function getMessages(Request $request){
 
-        $chat = ChatMessage::where('chat_id', $request->chat_id)->get();
+        $chat = ChatMessage::where('chat_id', $request->chat_id)->orderBy('id', 'ASC')->get();
 
         return response()->json($chat);
     }
