@@ -37,6 +37,7 @@ class ChatController extends Controller
         $chat->chat_id = $request->chat_id;
         $chat->message = $request->message;
         $chat->user_id = Auth::id();
+        $chat->status = 1;
         $chat->save();
 
         return response()->json($chat);    
@@ -58,7 +59,16 @@ class ChatController extends Controller
 
     public function syncMessages(Request $request){
 
-        $chat = ChatMessage::where('chat_id', $request->chat_id)->latest()->first();
+        $chat = ChatMessage::where('chat_id', $request->chat_id)->where('status', 1)->orderBy('id', 'DESC')->first();
+
+        if ($chat->user_id != Auth::id()) {
+            
+
+            $chat->status = 0;
+            $chat->save();   
+        }
+
+             
 
         return response()->json($chat);
     }

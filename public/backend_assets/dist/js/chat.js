@@ -123,7 +123,7 @@ function chatUserFun(data){
 									'<div class="text-muted small text-nowrap mt-2">2:43 am</div>'+
 								'</div>'+
 								'<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">'+
-									'<div class="font-weight-bold mb-1">'+UserName+'</div>'
+									'<div class="font-weight-bold mb-1" id="userChatMsg" data-chat-msg-id="'+ row.id +'">'+UserName+'</div>'
 									+ row.message +
 								'</div>'+
 							'</div>';
@@ -149,6 +149,10 @@ function chatUserFun(data){
 function syncChat(){
 
 	var chatId = $("#recieverUserName").attr('data-chat-id');
+	var chatMsgId = $("#userChatMsg").attr('data-chat-msg-id');
+	var ActiveUserId = $(".active_user_id").val();
+	var UserName = $('#recieverUserName').text();
+	var count = 0;
 
 	if (chatId) {
 		
@@ -162,8 +166,27 @@ function syncChat(){
 			},
 
 			success: function(data){
+
+				if (data.user_id != ActiveUserId) {
+
+					var msg = '<div class="chat-message-left mb-4">'+
+								'<div>'+
+									'<img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">'+
+									'<div class="text-muted small text-nowrap mt-2">2:43 am</div>'+
+								'</div>'+
+								'<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">'+
+									'<div class="font-weight-bold mb-1" id="userChatMsg" data-chat-msg-id="'+ data.id +'">'+UserName+'</div>'
+									+ data.message +
+								'</div>'+
+							'</div>';
+
+
+				$('.chat-messages').append(msg);
 				
-				console.log(data.id);
+
+				}
+				
+				
 				
 
 			},
