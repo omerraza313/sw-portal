@@ -51,7 +51,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="category-name">Service Title</label>
-                        <input type="text" class="form-control" name="service_title" id="category-name" placeholder="Service Name">
+                        <input type="text" class="form-control" name="service_title" id="category-name" placeholder="Service Name" required>
                       </div>
                     </div>
                  
@@ -59,7 +59,7 @@
       				        <div class="col-md-3">
         						    <div class="form-group">
         						        <label>Select Category</label>
-        						        <select class="form-control" id="selectcat" name="category_id">
+        						        <select class="form-control" id="selectcat" name="category_id" required>
         						            <option value="">Select Category</option>
         						            @foreach($categories as $category)
         						            <option value="{{$category->id}}">{{$category->name}}</option>
@@ -70,7 +70,7 @@
       				        <div class="col-md-3">
         				        <div class="form-group">
         						        <label>Select Sub Category</label>
-        						        <select class="form-control" id="subcat" name="sub_category_id">
+        						        <select class="form-control" id="subcat" name="sub_category_id" required> 
         						            		
         						        </select>
         						    </div>
@@ -81,7 +81,7 @@
                     <div class="col-md-6">
                       <h6 style="font-weight: bolder;">Image</h6>
                       <label for="primary_image"><i class="fa fa-plus" style="font-size: 24px; border:2px solid #9b9797bf; padding: 25px; border-radius: 2px; color:#9b9797bf; cursor: pointer;"></i></label>
-                      <input type="file" name="featured_img" id="primary_image" style="display: none; visibility: none;" onchange="getImage(this.value);">
+                      <input type="file" name="featured_img" id="primary_image" style="display: none; visibility: none;" onchange="getImage(this.value);" required>
 
                       <!----Display Image Name----->
                       <div id="display_image"></div>
@@ -93,7 +93,7 @@
 
                     <div class="form-group">
                        <label for="service-description">Service Description</label>
-  	                    <textarea id="summernote" name="service_desc">
+  	                    <textarea id="summernote" name="service_desc" required>
   	                 
   	                    </textarea>
                     </div>
@@ -102,7 +102,7 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label>Working Day</label>
-                              <select class="form-control" name="service_day[]">
+                              <select class="form-control" name="service_day[]" required>
                                 <option value="">Select Day</option>
                                 <option value="monday">Monday</option>
                                 <option value="tuesday">Tuesday</option>
@@ -117,7 +117,7 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label>Hours From</label>
-                              <select class="form-control" name="hour_from[]">
+                              <select class="form-control" name="hour_from[]" required>
                                 <option value="">Select Time</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -149,7 +149,7 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label>Hours To</label>
-                              <select class="form-control" name="hour_to[]">
+                              <select class="form-control" name="hour_to[]" required>
                                 <option value="">Select Time</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -213,11 +213,11 @@
     
     var html = '<div class="row" id="working_day_'+loop_count+'">';
 
-    html+='<div class="col-md-3"><div class="form-group"><label>Working Day</label><select class="form-control" name="service_day[]"><option value="">Select Day</option><option value="monday">Monday</option><option value="tuesday">Tuesday</option><option value="wednesday">Wednesday</option><option value="thursday">Thursday</option><option value="friday">Friday</option><option value="saturday">Saturday</option><option value="Sunday">Sunday</option></select></div></div>';
+    html+='<div class="col-md-3"><div class="form-group"><label>Working Day</label><select class="form-control" name="service_day[]" required><option value="">Select Day</option><option value="monday">Monday</option><option value="tuesday">Tuesday</option><option value="wednesday">Wednesday</option><option value="thursday">Thursday</option><option value="friday">Friday</option><option value="saturday">Saturday</option><option value="Sunday">Sunday</option></select></div></div>';
 
-    html+='<div class="col-md-3"><div class="form-group"><label>Hours From</label><select class="form-control" name="hour_from[]"><option value="">Select Time</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></div></div>';
+    html+='<div class="col-md-3"><div class="form-group"><label>Hours From</label><select class="form-control" name="hour_from[]" required><option value="">Select Time</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></div></div>';
 
-    html+='<div class="col-md-3"><div class="form-group"><label>Hours To</label><select class="form-control" name="hour_to[]"><option value="">Select Time</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></div></div>';
+    html+='<div class="col-md-3"><div class="form-group"><label>Hours To</label><select class="form-control" name="hour_to[]" required><option value="">Select Time</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option></select></div></div>';
 
     html+=' <div class="col-md-3"><div class="form-group"><br><button class="btn btn-danger mt-2" type="button" onclick=remove_more("'+loop_count+'")><i class="fa fa-minus"></i></button></div></div>';
 

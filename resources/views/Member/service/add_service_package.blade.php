@@ -38,7 +38,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="package-name">Package Name</label>
-                        <input type="text" class="form-control" name="package_name" id="package_name" placeholder="Package Name">
+                        <input type="text" class="form-control" name="package_name" id="package_name" placeholder="Package Name" required>
                       </div>
                     </div>   
                   </div>
@@ -48,13 +48,13 @@
                           <div class="col-md-3">
                             <div class="form-group">
                               <label for="package_detail">Detail</label>
-                              <input type="text" name="plan_name[]" class="form-control" id="package_detail">
+                              <input type="text" name="plan_name[]" class="form-control" id="package_detail" required>
                             </div>
                           </div>
                           <div class="col-md-2">
                             <div class="form-group">
                               <label for="package_price">Price</label>
-                              <input type="text" name="price[]" class="form-control" id="package_price">
+                              <input type="text" name="price[]" class="form-control" id="package_price" required>
                             </div>
                           </div>
                           
@@ -92,9 +92,9 @@
     loop_count++;
     html = '<div class="row" id="service_package_'+loop_count+'">';
 
-    html+='<div class="col-md-3"><div class="form-group"><label for="package_detail">Detail</label><input type="text" name="plan_name[]" class="form-control" id="package_detail"></div></div>';
+    html+='<div class="col-md-3"><div class="form-group"><label for="package_detail">Detail</label><input type="text" name="plan_name[]" class="form-control" id="package_detail" required></div></div>';
 
-    html+='<div class="col-md-2"><div class="form-group"><label for="package_price">Price</label><input type="text" name="price[]" class="form-control" id="package_price"></div></div>';
+    html+='<div class="col-md-2"><div class="form-group"><label for="package_price">Price</label><input type="text" name="price[]" class="form-control" id="package_price" required></div></div>';
 
     html+='<div class="col-md-3"><div class="form-group"><br><button class="btn btn-danger mt-2" type="button" onclick=remove_detail("'+loop_count+'")><i class="fa fa-minus"></i></button></div></div>';
 
