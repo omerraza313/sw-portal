@@ -161,7 +161,7 @@
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
+                    <h4 class="modal-title">Add Sub Category</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -170,12 +170,12 @@
                     <form method="POST" action="{{route('admin.sub_category.create')}}">
                       @csrf
                       <div class="form-group">
-                        <label for="category-name">Category Name</label>
+                        <label for="category-name">Sub Category Name</label>
                         <input type="text" class="form-control" name="name" id="category-name" placeholder="Category Name" required="">
                       </div>
                       
                       <div class="form-group">
-                        <label for="category-image">Category Image</label>
+                        <label for="category-image">Sub Category Image</label>
                         <div class="input-group">
                           <div class="custom-file">
                             <input type="file" class="custom-file-input" name="image" id="category-image" required="">

@@ -109,7 +109,14 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="#" class="btn">Contact Provider</a>
+										@if(Auth::id() != $service->user_id)
+										<form method="post" action="{{route('chat.init')}}">
+											@csrf
+											<input type="id" name="reciever_id" value="{{$service->user_id}}" hidden>
+											<button class="btn" type="submit">Contact Seller</button>
+										</form>
+										@endif
+										
 									</div>
 								</div>
 							</div>

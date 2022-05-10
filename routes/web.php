@@ -151,7 +151,9 @@ Route::group(['prefix'=>'admin'], function(){
 /*********Admin Controller End******/
 
 /*********Member Routes*************/
-Route::group(['middleware'=> ['member']], function(){
+Route::group(['middleware'=> ['member', 'auth']], function(){
+
+
 Route::group(['prefix'=>'member'], function(){
 
 /**********Chat Routes************/
@@ -160,6 +162,7 @@ Route::group(['prefix'=>'member'], function(){
 	Route::get('/chat/get-messages', [ChatController::class, 'getMessages']);
 	Route::get('/chat/syncMessage', [ChatController::class, 'syncMessages']);
 	Route::get('/chat/list', [ChatController::class, 'chatList']);
+	Route::post('/chat/init', [ChatController::class, 'chatInit'])->name('chat.init');
 
 /********End Chat Routes*********/
 

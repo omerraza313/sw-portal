@@ -9,18 +9,16 @@ class Chat extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['sender_id', 'reciever_id'];
+
     public function messages(){
+        
         return $this->hasMany('App\Models\ChatMessage');
-    }
-
-    public function unread(){
-
-        return $this->messages()->where('status', 0)->get();
     }
 
     public function unreadCount(){
 
-        return $this->messages()->where('status', 0)->count();
+        return $this->messages()->where('status', 1);
     }
 
     public function recieverUser(){

@@ -31,6 +31,28 @@ class ChatController extends Controller
         return view('Chat.chat', compact('reciever_user'));
     }
 
+    public function chatInit(Request $request){
+
+        $existingChatOne = Chat::where('sender_id', Auth::id())->where('reciever_id', $request->reciever_id)->exists();
+
+        $existingChatTwo = Chat::where('sender_id', $request->reciever_id)->where('reciever_id', Auth::id())->exists();
+
+        if (!$existingChatOne && !$existingChatTwo) {
+            Chat::create([
+
+                'sender_id' => Auth::id(),
+                'reciever_id' => $request->reciever_id,
+
+            ]);
+
+            return redirect('member/chat');
+        }
+
+
+        return redirect('member/chat');
+
+    }
+
     public function chatMessage(Request $request){
 
         $chat = new ChatMessage;
@@ -47,7 +69,12 @@ class ChatController extends Controller
     public function getMessages(Request $request){
 
         $chat = ChatMessage::where('chat_id', $request->chat_id)->orderBy('id', 'ASC')->get();
-
+        foreach($chat as $msg){
+            if ($msg->status == 1) {
+                $msg->status = 0;
+                $msg->update();
+            }
+        }
         return response()->json($chat);
     }
 
@@ -72,6 +99,8 @@ class ChatController extends Controller
 
         return response()->json($chat);
     }
+
+
 
     
 }

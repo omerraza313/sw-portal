@@ -3,7 +3,6 @@
 <main class="content">
     <div class="container p-0">
 
-		<h1 class="h3 mb-3">Messages</h1>
 
 		<div class="card">
 			<div class="row g-0">
@@ -19,7 +18,7 @@
 					@foreach($reciever_user as $user)
 					@if($user->sender_id == Auth::id())
 					<a href="javascript:void(0);" class="list-group-item list-group-item-action border-0">
-						<div class="badge bg-success float-right">5</div>
+						<div class="badge bg-success float-right">{{$user->unreadCount->count()}}</div>
 						<div class="d-flex align-items-start">
 							<img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
 							<div class="flex-grow-1 ml-3">
@@ -30,8 +29,8 @@
 						</div>
 					</a>
 					@elseif($user->reciever_id == Auth::id())
-					<a href="#" class="list-group-item list-group-item-action border-0">
-						<div class="badge bg-success float-right">5</div>
+					<a href="javascript:void(0);" class="list-group-item list-group-item-action border-0">
+						<div class="badge bg-success float-right">{{$user->unreadCount->count()}}</div>
 						<div class="d-flex align-items-start">
 							<img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
 							<div class="flex-grow-1 ml-3">
@@ -76,6 +75,7 @@
 							</div>
 
 						</div>
+
 					</div>
 					
 					<div class="flex-grow-0 py-3 px-4 border-top">
