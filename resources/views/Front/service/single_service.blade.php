@@ -113,7 +113,7 @@
 										<form method="post" action="{{route('chat.init')}}">
 											@csrf
 											<input type="id" name="reciever_id" value="{{$service->user_id}}" hidden>
-											<button class="btn" type="submit">Contact Seller</button>
+											<button class="btn" type="submit">Contact <b>{{$service->user->f_name}}</b>	</button>
 										</form>
 										@endif
 										

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Favourite;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class FavouriteController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class FavouriteController extends Controller
      */
     public function index()
     {
-        echo "Admin Favourite";
+        $favourites = Favourite::where('user_id', Auth::id())->get();
+        return view('Front.pages.favourites', compact('favourites'));
     }
 
     /**
@@ -33,9 +36,19 @@ class FavouriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function favourite(Request $request)
     {
-        //
+        $existing = Favourite::where('service_id', $request->service_id)->where('user_id', Auth::id())->exists();
+
+        if (!$existing) {
+            Favourite::create([
+
+                'service_id' => $request->service_id;
+                'user_id' => Auth::id();
+            ]);
+        }
+
+        return response()->json('done');
     }
 
     /**

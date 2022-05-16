@@ -45,5 +45,10 @@ class Service extends Model
     	return $this->hasMany('\App\Models\ServicePackage');
     }
 
+    public function favourite(){
+
+        return $this->hasOne('App\Models\Favourite');
+    }
+
 
 }

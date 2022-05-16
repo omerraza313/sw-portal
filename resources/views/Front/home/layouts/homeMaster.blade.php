@@ -104,5 +104,7 @@
 	<script src="{{ asset('frontend_assets/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{ asset('frontend_assets/js/active.js')}}"></script>
+	<!-- Active JS -->
+	<script src="{{ asset('frontend_assets/js/ajax.js')}}"></script>
 </body>
 </html>
