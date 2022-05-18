@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Favourite;
 use Illuminate\Http\Request;
-
 use Auth;
 
 class FavouriteController extends Controller
@@ -38,17 +37,28 @@ class FavouriteController extends Controller
      */
     public function favourite(Request $request)
     {
-        $existing = Favourite::where('service_id', $request->service_id)->where('user_id', Auth::id())->exists();
+        $existing = Favourite::where('service_id', $request->service_id)->where('user_id', Auth::id())->first();
 
         if (!$existing) {
             Favourite::create([
 
-                'service_id' => $request->service_id;
-                'user_id' => Auth::id();
+                'service_id' => $request->service_id,
+                'user_id' => Auth::id(),
             ]);
+
+         
+
+            return response()->json(['result' => 'added']);
         }
 
-        return response()->json('done');
+        else{
+
+            $existing->delete();
+            
+            return response()->json(['result' => 'deleted']);
+        }
+
+        return response()->json();
     }
 
     /**

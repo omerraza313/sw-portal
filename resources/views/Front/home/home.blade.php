@@ -118,7 +118,8 @@
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}"><i class="ti-heart"></i><span>View Now</span></a>
-																<a title="Wishlist" href="javascript:void(0);"><i class=" ti-heart" id="favourite" data-service-id="{{$val->id}}"></i><span>Add to Favourite</span></a>
+																<a title="Wishlist" href="javascript:void(0);">
+																	<i class=" ti-heart {{ $val->userFav ? 'bg-primary' : ''  }}" id="favourite" data-service-id="{{$val->id}}" onclick="chatUserFun(this)"></i><span>Add to Favourite</span></a>
 																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Compare with Similar</span></a>
 															</div>
 															<div class="product-action-2">

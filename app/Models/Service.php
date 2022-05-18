@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\UserScope;
 use Illuminate\Notifications\Notifiable;
+use Auth;
 
 class Service extends Model
 {
@@ -48,6 +49,11 @@ class Service extends Model
     public function favourite(){
 
         return $this->hasOne('App\Models\Favourite');
+    }
+
+    public function userFav(){
+
+        return $this->favourite()->where('user_id', Auth::id());
     }
 
 

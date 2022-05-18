@@ -1,24 +1,33 @@
-$('#favourite').click(function(){
+function chatUserFun(data){
 
-	var service_id = $('#favourite').attr('data-service-id');
-	alert(service_id);
+	var service_id = $(data).attr('data-service-id');	
 
 	$.ajax({
 
-			url: '/favourite',
+			url: '/member/favourite',
 			method: 'POST',
 			data: {
 
 				'_token': $('meta[name="csrf-token"]').attr('content'),
-				'service_id':service_id,
-				
-
+				'service_id':service_id,	
 
 			},
 
-			success: function(data){
+			success: function(response){
+
 				
-				$('#favourite').addClass('bg-primary');
+				if (response.result == 'added') {
+
+					$(data).addClass("bg-primary");
+
+				}
+
+				else{
+
+					$(data).removeClass("bg-primary");
+				}
+
+				
 			},
 
 			error: function(data){
@@ -28,4 +37,6 @@ $('#favourite').click(function(){
 
 		});
 
-});
+}
+
+
