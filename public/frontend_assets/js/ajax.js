@@ -18,13 +18,15 @@ function chatUserFun(data){
 				
 				if (response.result == 'added') {
 
-					$(data).addClass("bg-primary");
+					$(data).removeClass("fa-heart-o");
+					$(data).addClass("fa-heart");
 
 				}
 
 				else{
 
-					$(data).removeClass("bg-primary");
+					$(data).removeClass("fa-heart");
+					$(data).addClass("fa-heart-o");
 				}
 
 				
@@ -32,7 +34,7 @@ function chatUserFun(data){
 
 			error: function(data){
 
-				alert("failed");
+				alert("Login First");
 			}
 
 		});

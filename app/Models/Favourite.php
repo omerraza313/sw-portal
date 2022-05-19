@@ -20,4 +20,9 @@ class Favourite extends Model
 
         return $this->belongsTo('App\Models\Service');
     }
+
+    public function serviceUser(){
+
+        return $this->service()->user;
+    }
 }

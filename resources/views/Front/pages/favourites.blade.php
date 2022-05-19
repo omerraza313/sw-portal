@@ -13,7 +13,7 @@
 			</div>
 
 			
-				<div class="row">
+				<div class="row mt-5">
 					
 					@foreach($favourites as $key=>$list)
 					<div class="col-lg-4 col-md-6 col-12">
@@ -22,8 +22,8 @@
 							<img style="object-fit: cover; width: 370px; height: 300px;" src="{{ asset('storage/media/'.$list->service->featured_img)}}" alt="#">
 							<div class="content">
 								 <p class="date"></p>
-								<a href="{{url('user')}}/{{$list->user->username}}/{{$list->service->slug}}" class="title">{{$list->title}}</a>
-								<a href="{{url('user')}}/{{$list->user->username}}/{{$list->service->slug}}" class="more-btn">View Details</a>
+								<a href="{{url('user')}}/{{$list->service->user['username']}}/{{$list->service->slug}}" class="title">{{$list->service->title}}</a>
+								<a href="{{url('user')}}/{{$list->service->user['username']}}/{{$list->service->slug}}" class="more-btn">View Details</a>
 							</div>
 						</div>
 						

@@ -18,7 +18,7 @@
 							<div class="right-content">
 								<ul class="list-main">
 									<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-									<li><i class="ti-user"></i> <a href="#">My account</a></li>
+									<li><i class="ti-user"></i> <a href="{{ url('home')}}">My account</a></li>
 									@guest
 								@if (Route::has('login'))
 								<li><i class="ti-power-off"></i><a href="{{url('/login')}}">Login</a></li>
@@ -81,7 +81,7 @@
 							<div class="right-bar">
 								<!-- Search Form -->
 								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+									<a href="{{ url('member/favourites')}}" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 								</div>
 								<div class="sinlge-bar">
 									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
