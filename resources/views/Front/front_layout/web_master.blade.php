@@ -44,6 +44,271 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style type="text/css">
+
+    	.rating { 
+			  border: none;
+			  margin:0px;
+			  margin-bottom: 18px;
+			  float: left;
+			}
+
+			.rating > input { display: none; } 
+
+			.rating.star > label {
+			    color: #78e2fb;
+			    margin: 1px 20px 0px 0px;
+			    background-color: #ffffff;
+			    border-radius: 0;
+			    height: 48px;
+			    float: right;
+			    width: 44px;
+			    border: 1px solid #ffffff;
+			}
+			fieldset.rating.star > label:before { 
+			    margin-top: 0;
+			    padding: 0px;
+			    font-size: 47px;
+			    font-family: FontAwesome;
+			    display: inline-block;
+			    content: "\2605";
+			    position: relative;
+			    top: -9px;
+			}
+			.rating > label:before {
+			    margin-top: 2px;
+			    padding: 5px 12px;
+			    font-size: 1.25em;
+			    font-family: FontAwesome;
+			    display: inline-block;
+			    content: "";
+			}
+			.rating > .half:before { 
+			  content: "\f089";
+			  position: absolute;
+			}
+			.rating.star > label{
+			  background-color: transparent !important;
+			}
+			.rating > label { 
+			    color: #fff;
+			    margin: 1px 11px 0px 0px;
+			    background-color: #78e2fb;
+			    border-radius: 2px;
+			    height: 16px;
+			    float: right;
+			    width: 16px;
+			    border: 1px solid #c1c0c0;  
+			}
+
+			/***** CSS Magic to Highlight Stars on Hover *****/
+
+			.rating:not(:checked) > label:hover, /* hover current star */
+			.rating:not(:checked) > label:hover ~ label { 
+				background-color:red!important;
+			  cursor:pointer;
+			} /* hover previous stars in list */
+
+			.rating > input:checked + label:hover, /* hover current star when changing rating */
+			.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+			.rating > input:checked ~ label:hover ~ label { 
+				background-color:red!important;
+			  cursor:pointer;
+			} 
+			.rating.star:not(:checked) > label:hover, /* hover current star */
+			.rating.star:not(:checked) > label:hover ~ label { 
+			  color:red!important;
+			  background-color: transparent !important;
+			  cursor:pointer;
+			} /* hover previous stars in list */
+
+			.rating.star > input:checked + label:hover, /* hover current star when changing rating.star */
+			.rating.star > label:hover ~ input:checked ~ label, /* lighten current selection */
+			.rating.star > input:checked ~ label:hover ~ label { 
+			  color:red!important;
+			  cursor:pointer;
+			  background-color: transparent !important;
+			} 
+			.star_rating{
+			        width: 500px;
+			    margin: 0 auto;
+			    border: 1px solid #ff0000;
+			    padding: 3px 30px 72px 35px;
+			    box-shadow: 0 0 15px red;
+			    margin-top: 2%;
+			    border-radius: 14px;
+			}
+			.star_rating h2 {
+			  font-size: 27px;
+			  text-transform: uppercase;
+			}
+			.star_rating p {
+			  font-size: 17px;
+			  color: #78e2fb;
+			  clear: both;
+			  margin-bottom: 3px;
+			}
+			.star_rating h4 {
+			    font-size: 17px;
+			    color: #78e2fb;
+			    clear: both;
+			    margin-bottom: 3px;
+			    border-top: 2px solid red;
+			    padding-top: 16px;
+			    text-align: center;
+			}
+			
+			@media screen and (max-width: 500px){
+			  .star_rating {
+			    width: 100%;
+			    padding: 3px 8px 72px 6px;
+			  }
+			  .rating.star {
+			    margin: 0 auto;
+			    display: block;
+			    text-align: center;
+			    float: none;
+			  }
+			  .rating.star > label {
+			    margin: 1px;
+			    width: 19%;
+			  }
+			}
+
+		a {
+			text-decoration: none !important;
+			color: inherit;
+		}
+
+		a:hover {
+			color: #455A64;
+		}
+
+		.card {
+			border-radius: 5px;
+			background-color: #fff;
+			padding-left: 60px;
+			padding-right: 60px;
+			margin-top: 30px;
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+
+		.rating-box {
+			width: 130px;
+			height: 130px;
+			margin-right: auto;
+			margin-left: auto;
+			background-color: #FBC02D;
+			color: #fff;
+		}
+
+		.rating-label {
+			font-weight: bold;
+		}
+
+		/* Rating bar width */
+		.rating-bar {
+			width: 300px;
+			padding: 8px;
+			border-radius: 5px;
+		}
+
+		/* The bar container */
+		.bar-container {
+		  width: 100%;
+		  background-color: #f1f1f1;
+		  text-align: center;
+		  color: white;
+		  border-radius: 20px;
+		  cursor: pointer;
+		  margin-bottom: 5px;
+		}
+
+		/* Individual bars */
+		.bar-5 {
+			width: 70%;
+			height: 13px;
+			background-color: #FBC02D; 
+			border-radius: 20px;
+
+		}
+		.bar-4 {
+			width: 30%;
+			height: 13px;
+			background-color: #FBC02D; 
+			border-radius: 20px;
+
+		}
+		.bar-3 {
+			width: 20%;
+			height: 13px;
+			background-color: #FBC02D; 
+			border-radius: 20px;
+
+		}
+		.bar-2 {
+			width: 10%;
+			height: 13px;
+			background-color: #FBC02D; 
+			border-radius: 20px;
+
+		}
+		.bar-1 {
+			width: 0%;
+			height: 13px;
+			background-color: #FBC02D; 
+			border-radius: 20px;
+
+		}
+
+		td {
+			padding-bottom: 10px;
+		}
+
+		.star-active {
+			color: #FBC02D;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.star-active:hover {
+			color: #F9A825;
+			cursor: pointer;
+		}
+
+		.star-inactive {
+			color: #CFD8DC;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.blue-text {
+			color: #0091EA;
+		}
+
+		.content {
+			font-size: 18px;
+		}
+
+		.profile-pic {
+			width: 90px;
+			height: 90px;
+			border-radius: 100%;
+			margin-right: 30px;
+		}
+		 
+		.pic {
+			width: 80px;
+			height: 80px;
+			margin-right: 10px;
+		}
+
+		.vote {
+			cursor: pointer;
+		}
+    </style>
+
 	
 </head>
 <body class="js">
@@ -106,5 +371,20 @@
 	<script src="{{ asset('frontend_assets/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{ asset('frontend_assets/js/active.js')}}"></script>
+
+	<script type="text/javascript">
+			$("label").click(function(){
+	  $(this).parent().find("label").css({"background-color": "#78e2fb"});
+	  $(this).css({"background-color": "red"});
+	  $(this).nextAll().css({"background-color": "red"});
+	});
+	$(".star label").click(function(){
+	  $(this).parent().find("label").css({"color": "#78e2fb"});
+	  $(this).css({"color": "red"});
+	  $(this).nextAll().css({"color": "red"});
+	  $(this).css({"background-color": "transparent"});
+	  $(this).nextAll().css({"background-color": "transparent"});
+	});
+	</script>
 </body>
 </html>

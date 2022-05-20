@@ -27,7 +27,8 @@ class MemberController extends Controller
     }
 
     public function dashboard(){
-        return view('Member.dashboard.member_dash');
+        $service = Service::where('user_id', Auth::id())->count();
+        return view('Member.dashboard.member_dash', compact('service'));
     }
 
     public function index()

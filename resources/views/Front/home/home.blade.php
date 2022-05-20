@@ -17,7 +17,7 @@
 										<h1><span>Trusted and Quality </span>Service Providers</h1>
 										<p>Register you Business or Service with Sharina World to get <br>50% More Exposure.</p>
 										<div class="button">
-											<a href="#" class="btn">Regsiter Now!</a>
+											<a href="{{ url('register')}}" class="btn">Regsiter Now!</a>
 										</div>
 									</div>
 								</div>
