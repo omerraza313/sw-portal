@@ -48,12 +48,27 @@ class Service extends Model
 
     public function favourite(){
 
-        return $this->hasOne('App\Models\Favourite');
+        return $this->hasMany('App\Models\Favourite');
     }
 
     public function userFav(){
 
         return $this->favourite()->where('user_id', Auth::id());
+    }
+
+    public function reviews(){
+
+        return $this->hasMany('App\Models\Review');
+    }
+
+    public function approvedReviews(){
+
+        return $this->reviews()->where('status', 'approved');
+    }
+
+    public function pendingReviews(){
+
+        return $this->reviews()->where('status', 'pending');
     }
 
 

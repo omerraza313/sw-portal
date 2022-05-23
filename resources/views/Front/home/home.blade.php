@@ -241,7 +241,7 @@
 							<div class="product-content">
 								<h3><a href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">{{$val->title}}</a></h3>
 								<div class="product-price">
-									<span class="old">$60.00</span>
+									<!-- <span class="old">$60.00</span> -->
 									@php 
 
 										$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
@@ -305,7 +305,7 @@
 							<div class="product-content">
 								<h3><a href="{{url('user')}}/{{$val->user->username}}/{{$val->slug}}">{{$val->title}}</a></h3>
 								<div class="product-price">
-									<span class="old">$60.00</span>
+									<!-- <span class="old">$60.00</span> -->
 									@php 
 
 										$package = \App\Models\ServicePackage::where('service_id', $val->id)->first();
@@ -439,9 +439,10 @@
 						<div class="inner">
 							<h4>Newsletter</h4>
 							<p> Subscribe to our newsletter and get <span>Notified</span> about new Service Providers</p>
-							<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-								<input name="EMAIL" placeholder="Your email address" required="" type="email">
-								<button class="btn">Subscribe</button>
+							<form action="{{route('store.newsletter.email')}}" method="post" class="newsletter-inner">
+								@csrf
+								<input type="email" name="email" placeholder="Your email address" required>
+								<button class="btn" type="submit">Subscribe</button>
 							</form>
 						</div>
 						<!-- End Newsletter Inner -->

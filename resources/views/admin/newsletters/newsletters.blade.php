@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Reviews</h1>
+            <h1 class="m-0">Newsletters</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Reviews</li>
+              <li class="breadcrumb-item active">Newsletters</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,7 +28,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  Pending Reviews
+                  Newsletters
                 </h3>
               </div>
               <!-- /.card-header -->
@@ -37,26 +37,22 @@
                   <thead>
                   <tr>
                     <th>Sr #</th>
-                    <th>Service</th>
-                    <th>User</th>
-                    <th>Review</th>
-                    <th>Stars</th>
+                    <th>Email</th>
+                    
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($pending_reviews as $key=>$review)
+                  @foreach($newsletters as $key=>$data)
                   <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$review->service->title}}</td>
-                    <td>{{$review->user->username}}</td>
-                    <td>{{$review->review}}</td>
-                    <td>{{$review->star}}</td>
+                    <td>{{$data->email}}</td>
+                    
                    
                     <td>
                       <div class="btn-group btn-group-sm">
-                        <a href="{{url('admin/review/approve/')}}/{{$review->id}}" class="btn btn-info"><i class="fas fa-check"></i></a>
-                        <a href="{{url('admin/review/delete/')}}/{{$review->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        
+                        <a href="{{url('admin/newsletter/delete/')}}/{{$data->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         
                       </div>
                     </td>
@@ -66,10 +62,8 @@
                   <tfoot>
                    <tr>
                     <th>Sr #</th>
-                    <th>Service</th>
-                    <th>User</th>
-                    <th>Review</th>
-                    <th>Stars</th>
+                    <th>email</th>
+                    
                     <th>Action</th>
                   </tr>
                   </tfoot>

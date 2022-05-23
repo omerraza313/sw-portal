@@ -27,13 +27,13 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="blog-detail">
-										<h2 class="blog-title">{{$service->title}}</h2>
+										<h2 class="blog-title" id="service" data-service-id="{{$service->id}}">{{$service->title}}</h2>
 									</div>
 									<div class="blog-meta">
 										<span class="author">
 											<a href="#"><i class="fa fa-user"></i>{{$user->f_name}} {{$user->l_name}}</a>
-											<a href="#"><i class="fa fa-umbrella"></i>Jobs Completed (10)</a>
-											<a href="#"><i class="fa fa-star"></i>Star Rating (4.5)</a>
+											<a href="#"><i class="fa fa-heart"></i>Favourites ({{$service->favourite->count()}})</a>
+											<a href="#reviews"><i class="fa fa-star"></i>Total Reviews ({{$service->approvedReviews->count()}})</a>
 										</span>
 									</div>
 									
@@ -131,12 +131,18 @@
 		<div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
 			<div class="card">
 				<div class="row" id="post-review-box" style="display:block;">
-                <div class="col-md-12">
-                    <form accept-charset="UTF-8" action="" method="post">
-                        <input id="ratings-hidden" name="rating" type="hidden"> 
-                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+
+					@if(auth()->check())
+						@if(Auth::id() != $service->user_id)
+
+							<div class="col-md-12">
+                    <form>
+                    	
+                       
+                        <textarea class="form-control animated" cols="50" id="review-text" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
                         	<fieldset class="rating star mt-4">
-								<input type="radio" id="field6_star5" name="rating" value="5" /><label class = "full" for="field6_star5"></label>
+								<input type="radio" id="field6_star5" name="
+								" value="5" id="review-star"/><label class = "full" for="field6_star5"></label>
 								<input type="radio" id="field6_star4" name="rating" value="4" /><label class = "full" for="field6_star4"></label>
 								<input type="radio" id="field6_star3" name="rating" value="3" /><label class = "full" for="field6_star3"></label>
 								<input type="radio" id="field6_star2" name="rating" value="2" /><label class = "full" for="field6_star2"></label>
@@ -147,13 +153,24 @@
                            
 							
                            
-                            <button class="btn btn-success btn-lg mt-3" type="submit">Save</button>
+                            <a class="btn btn-success text-white mt-3" id="submit-review">Submit</a>
+                           	<p id="msg"></p>
                         </div>
                     </form>
                 </div>
+
+						
+						@endif
+						
+                
+
+                	@else
+                	Login First to Leave Feedback
+                	<a href="{{url('login')}}" class="btn btn-success mt-3 text-white"> Login </a>
+                	@endif
             </div>	
 			</div>
-			<div class="card">
+		<!-- 	<div class="card">
 				<div class="row justify-content-left d-flex">
 					<div class="col-md-4 d-flex flex-column">
 						<div class="rating-box">
@@ -220,17 +237,18 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="card">
+			@foreach($service->approvedReviews as $review)
+			<div class="card" id="reviews">
 				<div class="row d-flex">
 					<div class="">
 						<img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg">
 					</div>
 					<div class="d-flex flex-column">
-						<h3 class="mt-2 mb-0">Vikram jit Singh</h3>
+						<h3 class="mt-2 mb-0">{{$review->user->username}}</h3>
 						<div>
-							<p class="text-left"><span class="text-muted">4.0</span>
+							<p class="text-left"><span class="text-muted">{{$review->star}}</span>
 							<span class="fa fa-star star-active ml-3"></span>
 							<span class="fa fa-star star-active"></span>
 							<span class="fa fa-star star-active"></span>
@@ -239,23 +257,24 @@
 						</div>
 					</div>
 					<div class="ml-auto">
-						<p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+						<p class="text-muted pt-5 pt-sm-3">{{$review->created_at->format('d-m-y')}}</p>
 					</div>
 				</div>
 				<div class="row text-left">
-					<h4 class="blue-text mt-3">"An awesome activity to experience"</h4>
-					<p class="content">If you really enjoy spending your vacation 'on water' or would like to try something new and exciting for the first time.</p>
+					
+					<p class="content mt-4">"{{$review->review}}"</p>
 				</div>
 				
-				<div class="row text-left mt-4">
+				<!-- <div class="row text-left mt-4">
 					<div class="like mr-3 vote">
 						<img src="https://i.imgur.com/mHSQOaX.png"><span class="blue-text pl-2">20</span>
 					</div>
 					<div class="unlike vote">
 						<img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span>
 					</div>
-				</div>
+				</div> -->
 			</div>
+			@endforeach
 		</div>
 	</div>
 </div>

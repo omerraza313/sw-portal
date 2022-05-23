@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Auth;
+
 
 class ReviewController extends Controller
 {
@@ -13,8 +15,10 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        echo "Admin Review";
+    {   
+        $pending_reviews = Review::where('status', 'pending')->get();
+        $approved_reviews = Review::where('status', 'approved')->get();
+        return view('Admin.approval.reviews.reviews', compact('pending_reviews', 'approved_reviews'));
     }
 
     /**
@@ -22,9 +26,15 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function approve(Review $approve)
     {
-        //
+        
+        $approve->status = 'approved';
+        $approve->update();
+
+
+
+        return redirect()->back()->with('msg', 'Review has been Approved');
     }
 
     /**
@@ -33,9 +43,32 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeReview(Request $request)
     {
-        //
+        $existing = Review::where('service_id', $request->service_id)->where('user_id', Auth::id())->first();
+
+        if (!$existing) {
+            Review::create([
+
+                'service_id' => $request->service_id,
+                'user_id' => Auth::id(),
+                'review' => $request->review,
+                'star' => $request->star,
+                'status' => 'pending'
+            ]);
+
+         
+
+            return response()->json(['result' => 'Thanks for your feedback. We will review your feeback']);
+        }
+
+        else{
+
+                        
+            return response()->json(['result' => 'Already Reviewed']);
+        }
+
+        return response()->json();
     }
 
     /**

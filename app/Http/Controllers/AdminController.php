@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Comment;
 use DB;
 use App\Models\Service;
+use App\Models\Review;
 
 class AdminController extends Controller
 {
@@ -33,7 +34,12 @@ class AdminController extends Controller
     }
     public function index()
     {
-    	return view('Admin.dashboard');
+        $services_count = Service::all()->count();
+        $pending_services = Service::where('status', 'pending')->get()->count();
+        $pending_reviews = Review::where('status', 'pending')->get()->count();
+        $user_count = User::all()->count();
+
+    	return view('Admin.dashboard', compact('services_count', 'pending_reviews', 'user_count','pending_services'));
     }
 
     public function notifications(){
@@ -102,10 +108,7 @@ class AdminController extends Controller
        return redirect('/admin/approval')->with('danger', 'Comment has been deleted');
     }
     /*********Pending Reviews View********/
-    public function review()
-    {
-        return view('Admin.approval.reviews.reviews');
-    }
+    
 
     public function pendingService(){
 

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name='copyright' content=''>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
     <title>Sharina World</title>
@@ -386,5 +387,80 @@
 	  $(this).nextAll().css({"background-color": "transparent"});
 	});
 	</script>
+
+<script type="text/javascript">
+
+$("#submit-review").click(function(){
+
+	
+	var serviceId = $("#service").attr('data-service-id');
+
+	var review = $("#review-text").val();
+
+
+
+	if (review != "") {
+
+		if ($('input[name=rating]:checked').length > 0) {
+
+
+			var star = $('input[name=rating]:checked').val();
+
+	
+
+			$.ajax({
+
+				url: '/member/review',
+				method: 'POST',
+				data: {
+
+					'_token': $('meta[name="csrf-token"]').attr('content'),
+					'service_id': serviceId,
+					'review':review,
+					'star': star,
+
+
+				},
+
+				success: function(data){				
+					$('#msg').text('');
+					$('#msg').append(data.result);
+					$("#review-text").val('');
+					$('input[name=rating]:checked').removeAttr("checked");
+
+					
+				},
+
+				error: function(data){
+
+					alert("failed");
+				}
+
+			});
+    
+
+		}
+
+		else{
+
+			alert('please star');
+		}
+
+ 	
+		
+
+	}
+
+	else{
+
+		$('#msg').text('');
+		var msg = 'Please fill the form';
+		$('#msg').append(msg);
+	}
+	
+	
+});
+
+</script>
 </body>
 </html>

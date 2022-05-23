@@ -9,5 +9,16 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['service_id', 'user_id', 'status', 'email' , ];
+    protected $fillable = ['service_id', 'user_id', 'status', 'review' , 'star'];
+
+    public function service(){
+
+        return $this->belongsTo('App\Models\Service');
+
+    }
+
+    public function user(){
+
+        return $this->belongsTo('App\Models\User');
+    }
 }

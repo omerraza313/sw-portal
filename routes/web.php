@@ -15,6 +15,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\NewsletterController;
 
 
 /*
@@ -53,6 +54,8 @@ Route::get('user/{user_name}/{slug}', [FrontController::class, 'single_service']
 Route::get('/service/', [FrontController::class, 'service_all'])->name('front.service.all');
 Route::get('category/{slug}', [FrontController::class, 'single_category_service'])->name('front.single.category.service');
 Route::get('/contact/', [FrontController::class, 'contact'])->name('front.contact');
+
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('store.newsletter.email');
 
 // Route::group(['prefix'=>'blog'], function(){
 
@@ -136,9 +139,7 @@ Route::group(['prefix'=>'admin'], function(){
 	//Pending Approval
 	Route::get('/approval', [AdminController::class, 'approval'])->name('admin.approval');
 	Route::get('/approval/status/{id}', [AdminController::class, 'comment_satus_change'])->name('admin.approved');
-	Route::get('/approval/delete/{id}', [AdminController::class, 'comment_delete'])->name('admin.approved.delete');
-	//Pending Review
-	Route::get('/review', [AdminController::class, 'review'])->name('admin.review');
+	Route::get('/approval/delete/{id}', [AdminController::class, 'comment_delete'])->name('admin.approved.delete');	
 
 	//pending services
 	Route::get('/pending/services', [AdminController::class, 'pendingService']);
@@ -146,6 +147,17 @@ Route::group(['prefix'=>'admin'], function(){
 	//Notification
 	Route::get('/notifications', [AdminController::class, 'notifications']);
 	Route::post('/notification/read', [AdminController::class, 'notificationRead'])->name('notification.Read');
+
+
+	//reviews
+	
+	Route::get('/review', [ReviewController::class, 'index'])->name('admin.review');
+	Route::get('/review/approve/{approve}', [ReviewController::class, 'approve']);
+
+
+	//newsletter
+
+	Route::get('/newsletter', [NewsletterController::class, 'index'])->name('admin.newsletter');
 
 });
 });
@@ -196,6 +208,9 @@ Route::group(['prefix'=>'member'], function(){
 
 	Route::get('favourites', [FavouriteController::class, 'index']);
 	Route::post('favourite', [FavouriteController::class, 'favourite']);
+
+	Route::post('review', [ReviewController::class, 'storeReview']);
+
 
 });
 

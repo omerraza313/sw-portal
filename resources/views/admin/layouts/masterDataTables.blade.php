@@ -322,6 +322,14 @@
             </ul>
           </li>
             <li class="nav-item menu-open">
+              <a href="{{route('admin.newsletter')}}" class="nav-link">
+                <i class="nav-icon fas fa-eye"></i>
+                <p>
+                  Newsletters
+                </p>
+              </a>
+            </li>
+            <li class="nav-item menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-eye"></i>
                 <p>
