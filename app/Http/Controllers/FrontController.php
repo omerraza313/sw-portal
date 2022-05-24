@@ -107,5 +107,14 @@ class FrontController extends Controller
             return redirect()->back()->with('message', 'No result found');
         }
     }
+
+    public function profile($user){
+
+        $user = User::where('username', $user)->first();
+
+        
+        return view('Front.pages.profile', compact('user'));
+
+    }
  
 }

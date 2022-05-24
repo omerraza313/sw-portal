@@ -51,9 +51,14 @@ class Service extends Model
         return $this->hasMany('App\Models\Favourite');
     }
 
+    public function fav(){
+
+        return $this->hasOne('App\Models\Favourite');
+    }
+
     public function userFav(){
 
-        return $this->favourite()->where('user_id', Auth::id());
+        return $this->fav()->where('user_id', Auth::id());
     }
 
     public function reviews(){

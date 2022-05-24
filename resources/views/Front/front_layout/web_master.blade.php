@@ -185,7 +185,7 @@
 			color: #455A64;
 		}
 
-		.card {
+		.rate {
 			border-radius: 5px;
 			background-color: #fff;
 			padding-left: 60px;

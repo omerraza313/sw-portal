@@ -52,17 +52,14 @@ Route::get('blog/category/{slug}', [FrontController::class, 'single_category_pos
 
 Route::get('user/{user_name}/{slug}', [FrontController::class, 'single_service'])->name('front.service.single');
 Route::get('/service/', [FrontController::class, 'service_all'])->name('front.service.all');
+
 Route::get('category/{slug}', [FrontController::class, 'single_category_service'])->name('front.single.category.service');
+
 Route::get('/contact/', [FrontController::class, 'contact'])->name('front.contact');
 
 Route::post('/newsletter', [NewsletterController::class, 'store'])->name('store.newsletter.email');
 
-// Route::group(['prefix'=>'blog'], function(){
-
-
-// 	Route::get('/{slug}', [FrontController::class, 'single_post'])->name('front.single.post');
-
-// });
+Route::get('/profile/user/{user_name}', [FrontController::class, 'profile']);
 
 /**********End Frontend Routes***********/
 

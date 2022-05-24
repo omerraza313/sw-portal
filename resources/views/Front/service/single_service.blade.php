@@ -31,7 +31,7 @@
 									</div>
 									<div class="blog-meta">
 										<span class="author">
-											<a href="#"><i class="fa fa-user"></i>{{$user->f_name}} {{$user->l_name}}</a>
+											<a href="{{ url('/profile/user/'.$user->username)}}"><i class="fa fa-user"></i>{{$user->username}}</a>
 											<a href="#"><i class="fa fa-heart"></i>Favourites ({{$service->favourite->count()}})</a>
 											<a href="#reviews"><i class="fa fa-star"></i>Total Reviews ({{$service->approvedReviews->count()}})</a>
 										</span>
@@ -129,7 +129,7 @@
 
 	<div class="row justify-content-center">
 		<div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-			<div class="card">
+			<div class="card rate">
 				<div class="row" id="post-review-box" style="display:block;">
 
 					@if(auth()->check())
@@ -240,7 +240,7 @@
 			</div> -->
 
 			@foreach($service->approvedReviews as $review)
-			<div class="card" id="reviews">
+			<div class="card rate" id="reviews">
 				<div class="row d-flex">
 					<div class="">
 						<img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg">

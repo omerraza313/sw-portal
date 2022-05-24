@@ -46,14 +46,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    function services(){
+    public function services(){
+
         return $this->hasMany('App\Models\Service');
     }
-    function favourites(){
+
+    public function favourites(){
+
         return $this->hasMany('App\Models\Favourite');
     }
 
     public function worker_info(){
+
         return $this->hasOne('App\Models\WorkerInfo');
     }
 
