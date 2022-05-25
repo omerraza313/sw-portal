@@ -70,7 +70,7 @@
 								<ul class="mr-5">
 									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="https://www.facebook.com/sharinaworld/"><i class="ti-facebook"></i></a></li>
 									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="http://instagram.com/sharinaworld"><i class="ti-instagram"></i></a></li>
-									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="https://twitter.com/SharinaWorld"><i class="ti-youtube"></i></a></li>
+									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="https://www.youtube.com/c/SHARINAWORLD"><i class="ti-youtube"></i></a></li>
 									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="http://www.pinterest.com/sharinaworld/"><i class="ti-pinterest"></i></a></li>
 									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="https://www.linkedin.com/company/cpaclinics"><i class="ti-linkedin"></i></a></li>
 									<li style="display:inline-block; padding: 0px 7px; color: white;"><a href="https://twitter.com/SharinaWorld"><i class="ti-twitter"></i></a></li>

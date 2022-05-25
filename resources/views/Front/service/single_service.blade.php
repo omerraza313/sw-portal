@@ -122,6 +122,33 @@
 							</div>
 							<!--/ End Button Widget -->
 						</div>
+
+						<div class="card card-primary card-outline mt-5">
+			              <div class="card-body box-profile">
+			                <div class="text-center p-4">
+			                  <span style="font-size: 32px;background: #f2f1f1;padding: 16px 28px;border-radius: 101px;color: #989999;">{{ substr($user->username, 0, 1)}}</span>
+			                </div>
+
+			                <h3 class="profile-username text-center">{{$user->username}}</h3>
+
+			                <p class="text-muted text-center mb-4">Software Engineer</p>
+
+			                <ul class="list-group list-group-unbordered mb-4">
+			                  <li class="list-group-item">
+			                    <b>Reviews</b> <a class="float-right">10</a>
+			                  </li>
+			                  <li class="list-group-item">
+			                    <b>Favourites</b> <a class="float-right">543</a>
+			                  </li>
+			                  <li class="list-group-item">
+			                    <b>Services</b> <a class="float-right">2</a>
+			                  </li>
+			                </ul>
+
+			                <a href="{{ url('/profile/user/'.$user->username)}}" class="btn btn-primary btn-block text-center text-white">Check Profile</a>
+			              </div>
+			              <!-- /.card-body -->
+		            	</div>
 					</div>
 				</div>
 			</div>
@@ -141,8 +168,7 @@
                        
                         <textarea class="form-control animated" cols="50" id="review-text" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
                         	<fieldset class="rating star mt-4">
-								<input type="radio" id="field6_star5" name="
-								" value="5" id="review-star"/><label class = "full" for="field6_star5"></label>
+								<input type="radio" id="field6_star5" name="rating" value="5" id="review-star"/><label class = "full" for="field6_star5"></label>
 								<input type="radio" id="field6_star4" name="rating" value="4" /><label class = "full" for="field6_star4"></label>
 								<input type="radio" id="field6_star3" name="rating" value="3" /><label class = "full" for="field6_star3"></label>
 								<input type="radio" id="field6_star2" name="rating" value="2" /><label class = "full" for="field6_star2"></label>
