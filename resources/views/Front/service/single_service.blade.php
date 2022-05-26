@@ -126,10 +126,10 @@
 						<div class="card card-primary card-outline mt-5">
 			              <div class="card-body box-profile">
 			                <div class="text-center p-4">
-			                  <span style="font-size: 32px;background: #f2f1f1;padding: 16px 28px;border-radius: 101px;color: #989999;">{{ substr($user->username, 0, 1)}}</span>
+			                  <span style="font-size: 32px;background: #f2f1f1;padding: 16px 28px;border-radius: 101px;color: #989999;">{{ substr($user->f_name, 0, 1)}}</span>
 			                </div>
 
-			                <h3 class="profile-username text-center">{{$user->username}}</h3>
+			                <h3 class="profile-username text-center">{{$user->f_name}} {{$user->l_name}}</h3>
 
 			                <p class="text-muted text-center mb-4">Software Engineer</p>
 
