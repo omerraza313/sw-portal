@@ -308,8 +308,10 @@
 		.vote {
 			cursor: pointer;
 		}
-    </style>
 
+		
+    </style>
+@yield('css')
 	
 </head>
 <body class="js">

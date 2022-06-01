@@ -18,7 +18,7 @@ use Auth;
 class FrontController extends Controller
 {
     public function home(){
-        $service = Service::orderBy('id', 'desc')->take(4)->get();
+        $service = Service::orderBy('id', 'desc')->take(12)->get();
         // $service = Service::all();
 
         $category = Category::all();

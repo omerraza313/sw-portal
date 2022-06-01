@@ -1,4 +1,13 @@
 @extends('Front.front_layout.web_master')
+@section('css')
+<style type="text/css">
+  .social i{
+
+    padding:  20px;
+    font-size: 20px;
+  }
+</style>
+@endsection
 @section('content')
 
 
@@ -8,15 +17,15 @@
           <div class="col-md-4">
 
             <!-- Profile Image -->
-            <div class="card card-primary card-outline mb-5">
+            <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center p-4">
                   <span style="font-size: 32px;background: #f2f1f1;padding: 16px 28px;border-radius: 101px;color: #989999;">{{ substr($user->username, 0, 1)}}</span>
                 </div>
 
-                <h3 class="profile-username text-center">{{$user->username}}</h3>
+                <h3 class="profile-username text-center">{{ucfirst($user->f_name)}} {{ucfirst($user->l_name)}}</h3>
 
-                <p class="text-muted text-center mb-4">Software Engineer</p>
+                <p class="text-muted text-center mb-4">{{$user->username}}</p>
 
                 <ul class="list-group list-group-unbordered mb-4">
                   <li class="list-group-item">
@@ -43,7 +52,7 @@
             <!-- /.card -->
 
             <!-- About Me Box -->
-            <div class="card card-primary">
+            <div class="card card-primary mt-5">
               <div class="card-header">
                 <h3 class="card-title">About Me</h3>
               </div>
@@ -52,7 +61,7 @@
                 <strong> Description</strong>
 
                 <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
+                  B.S. in Computer Science from the University of Tennessee at Knoxville B.S. in Computer Science from the University of Tennessee at Knoxville B.S. in Computer Science from the University of Tennessee at Knoxville
                 </p>
 
                 <hr>
@@ -75,13 +84,54 @@
 
                 <hr>
 
-                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                <strong><i class="fas fa-pencil-alt mr-1"></i> Phone</strong>
 
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                <p class="text-muted">
+                  <a href="tel:+92321213123"><span class="tag tag-danger">+92 (12) 123123</span></a>
+                 
+                </p>
+
+                <hr>
+
+                <strong><i class="far fa-file-alt mr-1"></i> Social </strong>
+                  <div class="social">
+
+                    <!-- Facebook -->
+                    <a href="">
+                      <i class="fa fa-facebook-f"></i>
+                    </a>
+
+                    <!-- Twitter -->
+                    <i class="fa fa-twitter"></i>
+
+                    <!-- Google -->
+                    <i class="fa fa-google"></i>
+
+                    <!-- Instagram -->
+                    <i class="fa fa-instagram"></i>
+
+                    <!-- Linkedin -->
+                    <i class="fa fa-linkedin"></i>
+
+                    <!-- Pinterest -->
+                    <i class="fa fa-pinterest"></i>                
+
+                    <!-- Youtube -->
+                    <i class="fa fa-youtube"></i>                
+
+                    <!-- Whatsapp -->
+                    <i class="fa fa-whatsapp"></i>
+                    
+                  </div>
+                
+                    
+             
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+          
           </div>
           <!-- /.col -->
           <div class="col-md-8">
