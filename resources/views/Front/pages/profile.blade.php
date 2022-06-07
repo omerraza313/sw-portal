@@ -61,14 +61,14 @@
                 <strong> Description</strong>
 
                 <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville B.S. in Computer Science from the University of Tennessee at Knoxville B.S. in Computer Science from the University of Tennessee at Knoxville
+                  {{$user->info->personal_info}}
                 </p>
 
                 <hr>
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">{{$user->info->city}}, {{$user->info->state}}</p>
 
                 <hr>
 
@@ -96,31 +96,48 @@
                 <strong><i class="far fa-file-alt mr-1"></i> Social </strong>
                   <div class="social">
 
+                    @if(Auth::user()->social->facebook != null)
                     <!-- Facebook -->
                     <a href="">
                       <i class="fa fa-facebook-f"></i>
                     </a>
+                    @endif
 
+
+                    @if(Auth::user()->social->facebook != null)
                     <!-- Twitter -->
                     <i class="fa fa-twitter"></i>
+                    @endif
 
+                    @if(Auth::user()->social->google_plus != null)
                     <!-- Google -->
                     <i class="fa fa-google"></i>
+                    @endif
 
+                    @if(Auth::user()->social->instagram != null)
                     <!-- Instagram -->
                     <i class="fa fa-instagram"></i>
+                    @endif
 
+                    @if(Auth::user()->social->linkedin != null)
                     <!-- Linkedin -->
                     <i class="fa fa-linkedin"></i>
+                    @endif
 
+                    @if(Auth::user()->social->pinterest != null)
                     <!-- Pinterest -->
-                    <i class="fa fa-pinterest"></i>                
+                    <i class="fa fa-pinterest"></i> 
+                    @endif               
 
+                    @if(Auth::user()->social->youtube != null)
                     <!-- Youtube -->
-                    <i class="fa fa-youtube"></i>                
+                    <i class="fa fa-youtube"></i>   
+                    @endif              
 
+                    @if(Auth::user()->social->whatsapp != null)
                     <!-- Whatsapp -->
                     <i class="fa fa-whatsapp"></i>
+                    @endif 
                     
                   </div>
                 

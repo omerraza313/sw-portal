@@ -1,4 +1,15 @@
 @extends('Member.layouts.master')
+@section('css')
+
+<style type="text/css">
+     .profile-user-img{
+       
+        height:100px !important;
+    }
+    
+</style>
+   
+@endsection
 @section('content')
 
 <!-- Content Header (Page header) -->
@@ -28,8 +39,8 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
+                  <img class="profile-user-img img-circle"
+                       src="{{ asset('storage/media/'. Auth::user()->info->profile_img)}}"
                        alt="User profile picture">
                 </div>
 
@@ -103,215 +114,267 @@
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Profile</a></li>
                   <li class="nav-item"><a class="nav-link" href="#addtional_info" data-toggle="tab">Addtional Information</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#social" data-toggle="tab">Social Media</a></li>
                 </ul>
                 	
               </div><!-- /.card-header -->
               <div class="card-body">
                     <div class="tab-content">
                       <div class="active tab-pane" id="profile">
-                        <form method="POST" action="{{ route('member.update.profile') }}">
-                            @csrf
+                            <form method="POST" action="{{ route('member.update.profile') }}">
+                                @csrf
 
-                            <div class="row mb-3">
-                                <label for="Firstname" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
+                                <div class="row mb-3">
+                                    <label for="Firstname" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="f_name" type="text" class="form-control @error('f_name') is-invalid @enderror" name="f_name" value="{{ Auth::user()->f_name }}" required autocomplete="f_name" autofocus disabled>
+                                    <div class="col-md-6">
+                                        <input id="f_name" type="text" class="form-control @error('f_name') is-invalid @enderror" name="f_name" value="{{ Auth::user()->f_name }}" required autocomplete="f_name" autofocus disabled>
 
-                                    @error('f_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('f_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="l_name" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
+                                <div class="row mb-3">
+                                    <label for="l_name" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="l_name" type="text" class="form-control @error('l_name') is-invalid @enderror" name="l_name" value="{{ Auth::user()->l_name }}" required autocomplete="l_name" autofocus disabled>
+                                    <div class="col-md-6">
+                                        <input id="l_name" type="text" class="form-control @error('l_name') is-invalid @enderror" name="l_name" value="{{ Auth::user()->l_name }}" required autocomplete="l_name" autofocus disabled>
 
-                                    @error('l_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('l_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
+                                <div class="row mb-3">
+                                    <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Auth::user()->username }}" disabled>
+                                    <div class="col-md-6">
+                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Auth::user()->username }}" disabled>
 
-                                    @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('username')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                <div class="row mb-3">
+                                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" disabled>
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" disabled>
 
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                <div class="row mb-3">
+                                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password" required>
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password" required>
 
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                                <div class="row mb-3">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" required>
+                                    <div class="col-md-6">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" required>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
-                                    </button>
+                                <div class="row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Update') }}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                       </div>
                       <!-- /.tab-pane -->
                       <div class="tab-pane" id="addtional_info">
-                       <form class="form-horizontal" method="post" action="{{ route('member.profile.info.update')}}" enctype="multipart/form-data">
-                        @csrf
-                              <div class="form-group row">
-                                <label for="education" class="col-sm-2 col-form-label">Education</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="education" name="education" placeholder="B.S. in Computer Science from the University of Tennessee at Knoxville">
+                           <form class="form-horizontal" method="post" action="{{ route('member.profile.info.update')}}" enctype="multipart/form-data">
+                            @csrf
+                                  <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Education</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="education" name="education" placeholder="B.S. in Computer Science from the University of Tennessee at Knoxville">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="country" class="col-sm-2 col-form-label">Country</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="country" name="country" placeholder="United States">
+                                            <option value="">Select Country</option>
+                                            <option value="united_states">United States</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="state" class="col-sm-2 col-form-label">State</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="state" name="state" placeholder="United States">
+                                            <option value="">Select State</option>
+                                            <option value="alabama">Alabama</option>
+                                            <option value="alaska">Alaska</option>
+                                            <option value="arizona">Arizona</option>
+                                            <option value="arkansas">Arkansas</option>
+                                            <option value="california">California</option>
+                                            <option value="colorado">Colorado</option>
+                                            <option value="connecticut">Connecticut</option>
+                                            <option value="delaware">Delaware</option>
+                                            <option value="florida">Florida</option>
+                                            <option value="georgia">Georgia</option>
+                                            <option value="hawaii">Hawaii</option>
+                                            <option value="idaho">Idaho</option>
+                                            <option value="illinois">Illinois</option>
+                                            <option value="indiana">Indiana</option>
+                                            <option value="iowa">Iowa</option>
+                                            <option value="kansas">Kansas</option>
+                                            <option value="kentucky">Kentucky</option>
+                                            <option value="louisiana">Louisiana</option>
+                                            <option value="maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="massachusetts">Massachusetts</option>
+                                            <option value="michigan">Michigan</option>
+                                            <option value="minnesota">Minnesota</option>
+                                            <option value="mississippi">Mississippi</option>
+                                            <option value="missouri">Missouri</option>
+                                            <option value="montana">Montana</option>
+                                            <option value="nebraska">Nebraska</option>
+                                            <option value="nevada">Nevada</option>
+                                            <option value="new_hampshire">New Hampshire</option>
+                                            <option value="new_jersey">New Jersey</option>
+                                            <option value="new_mexico">New Mexico</option>
+                                            <option value="new_york">New York</option>
+                                            <option value="north_carolina">North Carolina</option>
+                                            <option value="north_dakota">North Dakota</option>
+                                            <option value="ohio">Ohio</option>
+                                            <option value="oklahoma">Oklahoma</option>
+                                            <option value="oregon">Oregon</option>
+                                            <option value="pennsylvania">Pennsylvania</option>
+                                            <option value="rhode_island">Rhode Island</option>
+                                            <option value="south_carolina">South Carolina</option>
+                                            <option value="south_dakota">South Dakota</option>
+                                            <option value="tennessee">Tennessee</option>
+                                            <option value="texas">Texas</option>
+                                            <option value="utah">Utah</option>
+                                            <option value="vermont">Vermont</option>
+                                            <option value="virginia">Virginia</option>
+                                            <option value="washington">Washington</option>
+                                            <option value="west_virginia">West Virginia</option>
+                                            <option value="wisconsin">Wisconsin</option>
+                                            <option value="wyoming">Wyoming</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="city" class="col-sm-2 col-form-label">City</label>
+                                    <div class="col-sm-10">
+                                       <input type="text" class="form-control" id="city" name="city" placeholder="City">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="town" class="col-sm-2 col-form-label">Town</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name="town" id="town" placeholder="Town">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="zip_code" class="col-sm-2 col-form-label">Zip Code</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name="zip_code" id="zip_code" placeholder="Zip Code">
+                                    </div>
+                                  </div>
+                                   <div class="form-group row">
+                                    <label for="profile_img" class="col-sm-2 col-form-label">Upload Avatar</label>
+                                    <div class="col-sm-10">
+                                      <input type="file" class="form-control" name="profile_img" id="profile_img">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="personal_info" class="col-sm-2 col-form-label">Personal Information</label>
+                                    <div class="col-sm-10">
+                                      <textarea class="form-control" id="personal_info" name="personal_info" placeholder="Experience"></textarea>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                      <button type="submit" class="btn btn-danger">Submit</button>
+                                    </div>
+                                  </div>
+                            </form>
+                      </div>
+                      <!-- /.tab-pane -->
+                      <div class="tab-pane" id="social">
+                           <form class="form-horizontal" method="post" action="{{ route('member.social.info.update')}}" enctype="multipart/form-data">
+                            @csrf
+                                <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Facebook</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="facebook" name="facebook" placeholder="facebook.com/username" value="{{Auth::user()->social['facebook']}}">
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="country" class="col-sm-2 col-form-label">Country</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" id="country" name="country" placeholder="United States">
-                                        <option value="">Select Country</option>
-                                        <option value="united_states">United States</option>
-                                    </select>
+                                <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Twitter</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="twitter" name="twitter" placeholder="twitter.com/username" value="{{Auth::user()->social['twitter']}}">
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="state" class="col-sm-2 col-form-label">State</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" id="state" name="state" placeholder="United States">
-                                        <option value="">Select State</option>
-                                        <option value="alabama">Alabama</option>
-                                        <option value="alaska">Alaska</option>
-                                        <option value="arizona">Arizona</option>
-                                        <option value="arkansas">Arkansas</option>
-                                        <option value="california">California</option>
-                                        <option value="colorado">Colorado</option>
-                                        <option value="connecticut">Connecticut</option>
-                                        <option value="delaware">Delaware</option>
-                                        <option value="florida">Florida</option>
-                                        <option value="georgia">Georgia</option>
-                                        <option value="hawaii">Hawaii</option>
-                                        <option value="idaho">Idaho</option>
-                                        <option value="illinois">Illinois</option>
-                                        <option value="indiana">Indiana</option>
-                                        <option value="iowa">Iowa</option>
-                                        <option value="kansas">Kansas</option>
-                                        <option value="kentucky">Kentucky</option>
-                                        <option value="louisiana">Louisiana</option>
-                                        <option value="maine">Maine</option>
-                                        <option value="Maryland">Maryland</option>
-                                        <option value="massachusetts">Massachusetts</option>
-                                        <option value="michigan">Michigan</option>
-                                        <option value="minnesota">Minnesota</option>
-                                        <option value="mississippi">Mississippi</option>
-                                        <option value="missouri">Missouri</option>
-                                        <option value="montana">Montana</option>
-                                        <option value="nebraska">Nebraska</option>
-                                        <option value="nevada">Nevada</option>
-                                        <option value="new_hampshire">New Hampshire</option>
-                                        <option value="new_jersey">New Jersey</option>
-                                        <option value="new_mexico">New Mexico</option>
-                                        <option value="new_york">New York</option>
-                                        <option value="north_carolina">North Carolina</option>
-                                        <option value="north_dakota">North Dakota</option>
-                                        <option value="ohio">Ohio</option>
-                                        <option value="oklahoma">Oklahoma</option>
-                                        <option value="oregon">Oregon</option>
-                                        <option value="pennsylvania">Pennsylvania</option>
-                                        <option value="rhode_island">Rhode Island</option>
-                                        <option value="south_carolina">South Carolina</option>
-                                        <option value="south_dakota">South Dakota</option>
-                                        <option value="tennessee">Tennessee</option>
-                                        <option value="texas">Texas</option>
-                                        <option value="utah">Utah</option>
-                                        <option value="vermont">Vermont</option>
-                                        <option value="virginia">Virginia</option>
-                                        <option value="washington">Washington</option>
-                                        <option value="west_virginia">West Virginia</option>
-                                        <option value="wisconsin">Wisconsin</option>
-                                        <option value="wyoming">Wyoming</option>
-                                    </select>
+                                <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Google Plus</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="google_plus" name="google_plus" placeholder="plus.google.com/username" value="{{Auth::user()->social['google_plus']}}">
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="city" class="col-sm-2 col-form-label">City</label>
-                                <div class="col-sm-10">
-                                   <input type="text" class="form-control" id="city" name="city" placeholder="City">
+                                <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Pinterest</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="pinterest" name="pinterest" placeholder="pinterest.com/username" value="{{Auth::user()->social['pinterest']}}"> 
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="town" class="col-sm-2 col-form-label">Town</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="town" id="town" placeholder="Town">
+                                <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Youtube</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="youtube" name="youtube" placeholder="youtube.com/username" value="{{Auth::user()->social['youtube']}}">
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="zip_code" class="col-sm-2 col-form-label">Zip Code</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="zip_code" id="zip_code" placeholder="Zip Code">
+                                <div class="form-group row">
+                                    <label for="education" class="col-sm-2 col-form-label">Whatsapp</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="+9323904234" value="{{Auth::user()->social['whatsapp']}}">
+                                    </div>
                                 </div>
-                              </div>
-                               <div class="form-group row">
-                                <label for="profile_img" class="col-sm-2 col-form-label">Upload Avatar</label>
-                                <div class="col-sm-10">
-                                  <input type="file" class="form-control" name="profile_img" id="profile_img">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="personal_info" class="col-sm-2 col-form-label">Personal Information</label>
-                                <div class="col-sm-10">
-                                  <textarea class="form-control" id="personal_info" name="personal_info" placeholder="Experience"></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                  <button type="submit" class="btn btn-danger">Submit</button>
-                                </div>
-                              </div>
-                        </form>
+                                  
+                                  
+                                  
+                                 
+                                  <div class="form-group row">
+                                    <div class="offset-sm-2 col-sm-10">
+                                      <button type="submit" class="btn btn-danger">Submit</button>
+                                    </div>
+                                  </div>
+                            </form>
                       </div>
                       <!-- /.tab-pane -->
                     </div>

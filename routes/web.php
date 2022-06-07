@@ -16,6 +16,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\SocialController;
 
 
 /*
@@ -199,6 +200,8 @@ Route::group(['prefix'=>'member'], function(){
 	Route::get('/profile/', [MemberController::class, 'user_profile'])->name('member.profile');
 	Route::post('/profile/update', [MemberController::class, 'user_profile_update'])->name('member.update.profile');
 	Route::post('/profile/update_info', [MemberController::class, 'user_profile_info_update'])->name('member.profile.info.update');
+
+	Route::post('/profile/social/update', [SocialController::class, 'update'])->name('member.social.info.update');
 	/********End Member Profile******/
 
 	/********* Favourites ************/

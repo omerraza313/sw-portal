@@ -43,7 +43,7 @@
 									<!------------Start----------->
 									<div class="column">
 										<img id="featured" src="{{ asset('storage/media/'.$service->featured_img)}}">
-											<!-- <div id="slide-wrapper">
+											<div id="slide-wrapper">
 												<img id="slideLeft" class="arrow" src="images/arrow-left.png">
 
 												<div id="slider">
@@ -55,7 +55,7 @@
 
 												</div>
 											    <img id="slideRight" class="arrow" src="images/arrow-right.png">
-											</div> -->
+											</div>
 										
 									</div>
 									<!------------End------------->
