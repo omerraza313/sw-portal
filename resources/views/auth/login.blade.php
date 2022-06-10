@@ -21,7 +21,7 @@
             background: #ebebeb !important;
         }
         .user_card {
-            height: 400px;
+            
             width: 350px;
             margin-top: auto;
             margin-bottom: auto;
@@ -85,6 +85,10 @@
         .links a{
             color: white;
         }
+
+        #show{
+            cursor: pointer;
+        }
     </style>
 </head>
 <!--Coded with love by Mutiullah Samim-->
@@ -115,14 +119,18 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter Password">
-
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter Password" >
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-eye-slash" id="show"></i></span>
+                            </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                         </div>
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customControlInline">
@@ -146,5 +154,25 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $("#show").click(function(){
+
+            $("#show").toggleClass("fa-eye-slash fa-eye");
+            
+         
+            var x = document.getElementById("password");
+            
+            if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+
+
+
+
+        })
+    </script>
 </body>
 </html>

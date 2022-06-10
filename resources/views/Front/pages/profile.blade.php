@@ -6,6 +6,16 @@
     padding:  20px;
     font-size: 20px;
   }
+  .profile-user-img {
+  border: 3px solid #adb5bd;
+  margin: 0 auto;
+  padding: 3px;
+  width: 100px;
+  height: 100px !important;
+}
+.img-circle {
+  border-radius: 50%;
+}
 </style>
 @endsection
 @section('content')
@@ -19,9 +29,16 @@
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                <div class="text-center p-4">
-                  <span style="font-size: 32px;background: #f2f1f1;padding: 16px 28px;border-radius: 101px;color: #989999;">{{ substr($user->username, 0, 1)}}</span>
+
+                <div class="text-center">
+                  <img class="profile-user-img img-circle"
+                       src="{{ asset('storage/media/'. $user->info->profile_img)}}"
+                       alt="User profile picture">
+                  
                 </div>
+                
+                  
+               
 
                 <h3 class="profile-username text-center">{{ucfirst($user->f_name)}} {{ucfirst($user->l_name)}}</h3>
 
@@ -35,7 +52,7 @@
                     <b>Favourites</b> <a class="float-right">543</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Services</b> <a class="float-right">2</a>
+                    <b>Services</b> <a class="float-right">{{$user->services->count()}}</a>
                   </li>
                 </ul>
 
@@ -96,7 +113,9 @@
                 <strong><i class="far fa-file-alt mr-1"></i> Social </strong>
                   <div class="social">
 
-                    @if(Auth::user()->social->facebook != null)
+                    @if($user->social()->exists())
+
+                    @if($user->social->facebook != null)
                     <!-- Facebook -->
                     <a href="">
                       <i class="fa fa-facebook-f"></i>
@@ -104,40 +123,42 @@
                     @endif
 
 
-                    @if(Auth::user()->social->facebook != null)
+                    @if($user->social->facebook != null)
                     <!-- Twitter -->
                     <i class="fa fa-twitter"></i>
                     @endif
 
-                    @if(Auth::user()->social->google_plus != null)
+                    @if($user->social->google_plus != null)
                     <!-- Google -->
                     <i class="fa fa-google"></i>
                     @endif
 
-                    @if(Auth::user()->social->instagram != null)
+                    @if($user->social->instagram != null)
                     <!-- Instagram -->
                     <i class="fa fa-instagram"></i>
                     @endif
 
-                    @if(Auth::user()->social->linkedin != null)
+                    @if($user->social->linkedin != null)
                     <!-- Linkedin -->
                     <i class="fa fa-linkedin"></i>
                     @endif
 
-                    @if(Auth::user()->social->pinterest != null)
+                    @if($user->social->pinterest != null)
                     <!-- Pinterest -->
                     <i class="fa fa-pinterest"></i> 
                     @endif               
 
-                    @if(Auth::user()->social->youtube != null)
+                    @if($user->social->youtube != null)
                     <!-- Youtube -->
                     <i class="fa fa-youtube"></i>   
                     @endif              
 
-                    @if(Auth::user()->social->whatsapp != null)
+                    @if($user->social->whatsapp != null)
                     <!-- Whatsapp -->
                     <i class="fa fa-whatsapp"></i>
                     @endif 
+
+                    @endif
                     
                   </div>
                 

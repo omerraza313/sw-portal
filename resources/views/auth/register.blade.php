@@ -21,8 +21,8 @@
             background: #ebebeb !important;
         }
         .user_card {
-            height: 560px;
-            width: 350px;
+            height: 460px;
+            width: 450px;
             margin-top: auto;
             margin-bottom: auto;
             background: #edc878;
@@ -30,7 +30,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            padding: 10px;
+            padding: 40px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -89,7 +89,7 @@
 </head>
 <!--Coded with love by Mutiullah Samim-->
 <body>
-    <div class="container h-100">
+    <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="user_card">
                 <div class="d-flex justify-content-center">
@@ -100,19 +100,24 @@
                 <div class="d-flex justify-content-center form_container">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input id="f_name" type="text" class="form-control @error('f_name') is-invalid @enderror" name="f_name" value="{{ old('f_name') }}" required autocomplete="f_name" autofocus placeholder="First Name">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                <input id="f_name" type="text" class="form-control @error('f_name') is-invalid @enderror" name="f_name" value="{{ old('f_name') }}" required autocomplete="f_name" autofocus placeholder="First Name">
 
                                 @error('f_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                        </div>
-                        <div class="input-group mb-2">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
@@ -124,6 +129,11 @@
                                     </span>
                                 @enderror
                         </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -168,7 +178,7 @@
                         </div>
                         
                             <div class="d-flex justify-content-center mt-3 login_container">
-                    <button type="submit" class="btn login_btn">Login</button>
+                    <button type="submit" class="btn login_btn">Register</button>
                    </div>
                     </form>
                 </div>

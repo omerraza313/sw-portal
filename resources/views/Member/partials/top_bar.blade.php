@@ -5,10 +5,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('front.home')}}" class="nav-link">Home</a>
+        <a href="{{route('front.home')}}" target="_blank" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('member.profile')}}" class="nav-link">Profile</a>
+        <a href="{{url('profile/user/' . Auth::user()->username )}}" target="_blank" class="nav-link">Profile</a>
       </li>
     </ul>
 

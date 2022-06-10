@@ -84,6 +84,7 @@
     // Summernote
     $('#summernote').summernote({
       height:300,
+      lineWrapping: true,
     });
 
   })
