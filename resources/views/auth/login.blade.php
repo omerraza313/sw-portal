@@ -91,7 +91,7 @@
         }
     </style>
 </head>
-<!--Coded with love by Mutiullah Samim-->
+
 <body>
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">

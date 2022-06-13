@@ -24,6 +24,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'role',
         'account_type',
+        'profile_img',
+        'education',
+        'country',
+        'state',
+        'city',
+        'town',
+        'zip_code',
+        'personal_info',
         'password',
     ];
 
@@ -45,6 +53,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setEmailAttribute($value){
+      $this->attributes['email'] = strtolower($value);
+    }
+
+    public function setFNameAttribute($value){
+      $this->attributes['f_name'] = ucfirst($value);
+    }
+
+    public function setLNameAttribute($value){
+      $this->attributes['l_name'] = ucfirst($value);
+    }
+
 
     public function services(){
 

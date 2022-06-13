@@ -10,8 +10,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          @if(Auth::user()->info()->exists())
-          <img src="{{ asset('storage/media/'. Auth::user()->info->profile_img) }}" class="img-circle elevation-2" alt="User Image" style="width: 40px; height:40px;" />
+          @if(Auth::user()->profile_image)
+          <img src="{{ asset('storage/media/'. Auth::user()->profile_img) }}" class="img-circle elevation-2" alt="User Image" style="width: 40px; height:40px;" />
           @else
           
                         <span style="font-size: 32px;background: #f2f1f1;padding: 3px 13px;border-radius: 101px;color: #989999;">{{ substr(Auth::user()->f_name, 0, 1)}}</span>
@@ -20,6 +20,7 @@
 
         </div>
         <div class="info">
+          <h4>{{Auth::user()->f_name}} {{Auth::user()->l_name}}</h4>
           <a href="#" class="d-block">{{Auth::user()->username}}</a>
         </div>
       </div>

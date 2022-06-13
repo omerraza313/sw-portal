@@ -31,16 +31,18 @@
               <div class="card-body box-profile">
 
                 <div class="text-center">
-                  <img class="profile-user-img img-circle"
-                       src="{{ asset('storage/media/'. $user->info->profile_img)}}"
-                       alt="User profile picture">
+                  
+                  
+                  <img class="profile-user-img img-circle" src="{{ asset('storage/media/'. $user->profile_img)}}" alt="User profile picture">
+
+               
                   
                 </div>
                 
                   
                
 
-                <h3 class="profile-username text-center">{{ucfirst($user->f_name)}} {{ucfirst($user->l_name)}}</h3>
+                <h3 class="profile-username text-center">{{$user->f_name}} {{$user->l_name}}</h3>
 
                 <p class="text-muted text-center mb-4">{{$user->username}}</p>
 
@@ -78,14 +80,14 @@
                 <strong> Description</strong>
 
                 <p class="text-muted">
-                  {{$user->info->personal_info}}
+                  {{$user->personal_info}}
                 </p>
 
                 <hr>
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                <p class="text-muted">{{$user->info->city}}, {{$user->info->state}}</p>
+                <p class="text-muted">{{$user->city}}, {{$user->state}}</p>
 
                 <hr>
 

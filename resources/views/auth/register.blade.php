@@ -85,9 +85,12 @@
         .links a{
             color: white;
         }
+        #show{
+            cursor: pointer;
+        }
     </style>
 </head>
-<!--Coded with love by Mutiullah Samim-->
+
 <body>
     <div class="container">
         <div class="d-flex justify-content-center h-100">
@@ -163,7 +166,9 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-eye-slash" id="show"></i></span>
+                            </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -175,6 +180,7 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                            
                         </div>
                         
                             <div class="d-flex justify-content-center mt-3 login_container">
@@ -192,5 +198,25 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $("#show").click(function(){
+
+            $("#show").toggleClass("fa-eye-slash fa-eye");
+            
+         
+            var x = document.getElementById("password");
+            
+            if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+
+
+
+
+        })
+    </script>
 </body>
 </html>
