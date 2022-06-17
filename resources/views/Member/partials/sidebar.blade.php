@@ -20,7 +20,7 @@
 
         </div>
         <div class="info">
-          <h4>{{Auth::user()->f_name}} {{Auth::user()->l_name}}</h4>
+          <h5 class="text-white">{{Auth::user()->f_name}} {{Auth::user()->l_name}}</h5>
           <a href="#" class="d-block">{{Auth::user()->username}}</a>
         </div>
       </div>

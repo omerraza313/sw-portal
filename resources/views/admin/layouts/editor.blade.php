@@ -96,12 +96,12 @@
             <span class="dropdown-item dropdown-header"> Notifications</span>
             
             <div class="dropdown-divider"></div>
-            @foreach(auth()->user()->unreadNotifications as $notification)
+        {{--[    @foreach(auth()->user()->unreadNotifications as $notification)
             <a href="#" class="dropdown-item">
               <i class="fas fa-users "></i> 
               Username <strong>{{$notification->data['username']}} </strong> just Registered
             </a>
-            @endforeach
+            @endforeach ]--}}
             
             <div class="dropdown-divider"></div>
             <a href="{{ url('admin/notifications')}}" class="dropdown-item dropdown-footer">See All Notifications</a>

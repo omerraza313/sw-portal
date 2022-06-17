@@ -1,21 +1,29 @@
 @extends('Front.front_layout.web_master')
 @section('css')
 <style type="text/css">
-  .social i{
+.social i{
 
-    padding:  20px;
-    font-size: 20px;
-  }
-  .profile-user-img {
+  padding:  20px;
+  font-size: 20px;
+  
+}
+
+.profile-user-img {
   border: 3px solid #adb5bd;
   margin: 0 auto;
   padding: 3px;
   width: 100px;
   height: 100px !important;
 }
+
 .img-circle {
   border-radius: 50%;
 }
+
+.profileImage{
+  padding:  25px 0;
+}
+
 </style>
 @endsection
 @section('content')
@@ -30,10 +38,17 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
 
-                <div class="text-center">
+                <div class="text-center profileImage">
                   
                   
-                  <img class="profile-user-img img-circle" src="{{ asset('storage/media/'. $user->profile_img)}}" alt="User profile picture">
+                  @if($user->profile_img != "")
+                      <img class="profile-user-img img-circle" src="{{ asset('storage/media/'. $user->profile_img)}}" alt="User profile picture">
+                        
+                      @else
+
+                      <span style="font-size: 32px;background: #f2f1f1;padding: 16px 28px;border-radius: 101px;color: #989999;">{{ substr($user->f_name, 0, 1)}}</span>
+
+                      @endif
 
                
                   

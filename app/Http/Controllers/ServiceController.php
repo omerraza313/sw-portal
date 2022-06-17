@@ -40,6 +40,7 @@ class ServiceController extends Controller
         $categories = Category::all();
         $sub_categories = SubCategory::all();
         $users = User::where('role', 'Member')->where('account_type', 'Worker')->get();
+
         return view('Admin.service.add_service', compact('categories','sub_categories', 'users'));
     }
 
@@ -123,6 +124,7 @@ class ServiceController extends Controller
     }
 
     public function edit_service($id){
+
         $categories = Category::all();
         $sub_categories = SubCategory::all();
         $edit_service = Service::findOrfail($id);
@@ -135,12 +137,13 @@ class ServiceController extends Controller
     public function service_update(Request $request){
         //return $request;
 
-        $content = $request->service_desc;
+       $content = $request->service_desc;
        $dom = new \DomDocument();
        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
        $imageFile = $dom->getElementsByTagName('imageFile');
  
        foreach($imageFile as $item => $image){
+
            $data = $img->getAttribute('src');
 
            list($type, $data) = explode(';', $data);
@@ -155,11 +158,12 @@ class ServiceController extends Controller
            $image->setAttribute('src', $image_name);
         }
  
-       $content = $dom->saveHTML();
+        $content = $dom->saveHTML();
 
         $find_service = Service::find($request->id);
 
         $find_service->id = $request->id;
+
         $find_service->title = $request->title;
 
 /**********Converting title to lowercase************/
@@ -173,11 +177,13 @@ class ServiceController extends Controller
          /************Image Handling****************/
 
         if($request->hasfile('featured_img')){
+
             $image = $request->file('featured_img');
             $ext = $image->extension();
             $image_name = time().'.'.$ext;
             $image->storeAs('/public/media', $image_name);
             $find_service->featured_img = $image_name;
+
         }
         
         /************Image Handling End*********/
@@ -205,10 +211,14 @@ class ServiceController extends Controller
            // return $swdidArr[$key];
            // return $workingArr;
             if($swdidArr[$key] > 0){
+
                 DB::table('service_working_days')->where(['id'=>$swdidArr[$key]])->update($workingArr);
+
             }
             else{
+
                 DB::table('service_working_days')->insert($workingArr);
+
             }
            
         }
@@ -218,19 +228,32 @@ class ServiceController extends Controller
     }
 
     public function delete_working_day(Request $request ,$dayid, $serviceid){
+
         $model = ServiceWorkingDay::where('id', $dayid)->first();
+
         $check = $model->delete();
+
         if($check){
+
             return redirect('admin/service/edit/'.$serviceid);
+
         }
         else{
+
             echo "Not Deleted";
+
         }
+
     }
+
     public function delete_service($id){
+
         $service = Service::findOrfail($id);
+
         $serv_days = ServiceWorkingDay::where('service_id', $service->id)->get();
+
         $serv_packs = ServicePackage::where('service_id', $service->id)->get();
+
 
          /*******Delete Package Attributes********/
 
@@ -243,25 +266,33 @@ class ServiceController extends Controller
         foreach($serv_packs as $key=>$pack){
 
             foreach($pack->package_attrs as $key=>$list){
+
                 $list->delete();
+
             }
+
             $pack->delete();
         }
 
         /*******Delete Working Days********/
 
         foreach($serv_days as $key=>$day){
+
             $day->delete();
+
         }
 
         /*******Delete Service********/
+
         $service->delete();
 
         return redirect('admin/service')->with('msg', 'Service Deleted');
+
         // $single_package = ServicePackage::findOrfail($packageid);
         // foreach($single_package->package_attrs as $key=>$list){
         //     $list->delete();
        // return $serv_packs;
+
     }
 
     public function service_package()

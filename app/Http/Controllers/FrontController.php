@@ -52,11 +52,15 @@ class FrontController extends Controller
     /*************Service Routes**************/
     
     public function single_service($user_name, $slug){
+
        $user = User::where('username', $user_name)->first();
        $service = Service::where('user_id', $user->id)->where('slug', $slug)->first();
        $service_package = ServicePackage::where('service_id', $service->id)->get();
        // return $service_package;
-       return view('Front.service.single_service', compact('user', 'service', 'service_package'));
+       $userServices = Service::where('user_id', $user->id)->get()->except($service->id);
+
+       return view('Front.service.single_service', compact('user', 'service', 'service_package', 'userServices'));
+
     }
 
     public function single_category_service($slug){
