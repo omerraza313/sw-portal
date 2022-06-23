@@ -61,6 +61,8 @@
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <!-- Bootstrap 4 -->
 <script src="{{ asset('backend_assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   
 <!-- AdminLTE App -->
 <script src="{{ asset('backend_assets/dist/js/adminlte.min.js')}}"></script>
 <!-- Summernote -->
@@ -74,6 +76,7 @@
 <script src="{{ asset('backend_assets/dist/js/demo.js')}}"></script>
 <!-- Page specific script -->
 
+@yield('js')
 
 
 <script>

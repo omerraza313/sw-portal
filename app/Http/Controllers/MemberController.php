@@ -129,14 +129,16 @@ class MemberController extends Controller
 
     }
 
-    public function edit_service($id){
+    public function edit_service(Service $service){
+
+        $this->authorize('canEdit', $service);
         $categories = Category::all();
         $sub_categories = SubCategory::all();
-        $edit_service = Service::findOrfail($id);
-        $working_days = ServiceWorkingDay::where('service_id', $id)->get();
+        
+        $working_days = ServiceWorkingDay::where('service_id', $service->id)->get();
         //return $working_days;
         
-        return view('Member.service.edit_service', compact('edit_service', 'working_days', 'categories', 'sub_categories'));
+        return view('Member.service.edit_service', compact('service', 'working_days', 'categories', 'sub_categories'));
     }
 
     public function service_update(Request $request){
@@ -318,11 +320,11 @@ class MemberController extends Controller
 
     }
 
-    public function show_service_package($id){
-    
-        $package = ServicePackage::where('service_id', $id)->get();
+    public function show_service_package(Service $service){
+        $this->authorize('canEdit', $service);
+        $package = ServicePackage::where('service_id', $service->id)->get();
         //$package = ServicePackage::where('id', $pid)->where('service_id', $id)->first();
-        return view('Member.service.service_package', compact('id', 'package'));
+        return view('Member.service.service_package', compact('service', 'package'));
       
     }
 
@@ -342,13 +344,17 @@ class MemberController extends Controller
        // return $package->package_attrs;
     }
 
-    public function edit_service_package($id){
+    public function edit_service_package(ServicePackage $servicePackage, Service $service){
         //return $id;
-
-        $package = ServicePackage::findOrfail($id);
-        $packageAttr = ServicePackageAttr::where('service_package_id', $id)->get();
+        $this->authorize('canEdit', $service);
+        // $package = ServicePackage::findOrfail($id);
+        // return $servicePackage->package_attrs;
+        // return $servicePackage;
+        // $packageAttr = $servicePackage->with('package_attrs')->get();
         // return $packageAttr;
-        return view('Member.service.edit_service_package', compact('package', 'packageAttr'));
+        $packageAttr = $servicePackage->package_attrs;;
+        // return $packageAttr;
+        return view('Member.service.edit_service_package', compact('servicePackage', 'packageAttr'));
     }
 
     public function update_service_package(Request $request){

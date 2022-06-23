@@ -29,9 +29,9 @@
                 <h3 class="card-title">Edit Package</h3>
               </div>
               <?php
-              if(Session::has('package', 'packageAttr')){
+              if(Session::has('servicePackage', 'packageAttr')){
 
-                $package = Session::get('package');
+                $servicePackage = Session::get('package');
                 $packageAttr = Session::get('packageAttr');
               } 
 
@@ -40,14 +40,14 @@
               <!-- form start -->
               <form method="POST" action="{{route('member.service.package.update')}}">
                 @csrf
-                <input type="hidden" name="service_id" value="{{$package->service_id}}">
-                <input type="hidden" name="id" value="{{$package->id}}">
+                <input type="hidden" name="service_id" value="{{$servicePackage->service_id}}">
+                <input type="hidden" name="id" value="{{$servicePackage->id}}">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="package-name">Package Name</label>
-                        <input type="text" class="form-control" name="package_name" id="package_name" value="{{$package->package_type}}" placeholder="Package Name">
+                        <input type="text" class="form-control" name="package_name" id="package_name" value="{{$servicePackage->package_type}}" placeholder="Package Name">
                       </div>
                     </div>   
                   </div>

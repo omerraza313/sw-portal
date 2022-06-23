@@ -18,6 +18,11 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
+        
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
+        }
         return view('auth.login');
     }
 

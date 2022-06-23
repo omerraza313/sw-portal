@@ -27,7 +27,7 @@
 
             <div class="card">
               <div class="card-header">
-                <a href="{{url('member/service/package/add/')}}/{{$id}}" class="btn btn-info">Add Package</a>
+                <a href="{{url('member/service/package/add/')}}/{{$service->id}}" class="btn btn-info">Add Package</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -57,10 +57,10 @@
 			                  @endforeach
 			                  <li class="nav-item p-2">
 			                    <div class="btn-group btn-group-md  float-left">
-			                        <a href="{{url('member/service/package/delete')}}/{{$val->id}}/{{$id}}" class="btn btn-danger"><!-- <i class="fas fa-minus"></i> -->Delete</a>
+			                        <a href="{{url('member/service/package/delete')}}/{{$val->id}}/{{$service->id}}" class="btn btn-danger"><!-- <i class="fas fa-minus"></i> -->Delete</a>
 			                    </div>
 			                    <div class="btn-group btn-group-md  float-right">
-			                        <a href="{{url('member/service/package/edit/')}}/{{$val->id}}" class="btn btn-info"><!-- <i class="fas fa-pen-square"></i> -->Edit</a>
+			                        <a href="{{url('member/service/package/edit/')}}/{{$val->id}}/{{$service->id}}" class="btn btn-info"><!-- <i class="fas fa-pen-square"></i> -->Edit</a>
 			                    </div>
 
 			                  </li>

@@ -119,6 +119,17 @@
                           </div>
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label for="category-image">Parent Category</label>
+                        <div class="input-group">
+                          <select class="form-control" name="category_id">
+                            <option value="">Select Parent Category</option>
+                            @foreach($categories as $category)
+                            <option @if($list->id == $category->id) ? selected : 'das' @endif value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </div>
                       <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>

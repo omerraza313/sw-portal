@@ -261,18 +261,18 @@
                <!-- form start -->
             <form method="POST" action="{{route('member.service.update')}}" enctype="multipart/form-data">
               @csrf
-              <input type="text" name="id" value="{{$edit_service->id}}" hidden="">
+              <input type="text" name="id" value="{{$service->id}}" hidden="">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input name="title" type="text" class="form-control" id="category-name" placeholder="Service Title" value="{{$edit_service->title}}">
+                        <input name="title" type="text" class="form-control" id="category-name" placeholder="Service Title" value="{{$service->title}}">
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Select Category</label>
                           <select class="form-control" id="selectcat" name="category_id">
-                            <option value="{{$edit_service->category_id}}">{{$edit_service->category->name}}</option>
+                            <option value="{{$service->category_id}}">{{$service->category->name}}</option>
                             @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -283,7 +283,7 @@
                         <div class="form-group">
                           <label>Select Sub Category</label>
                           <select class="form-control" id="subcat" name="sub_category_id">
-                            <option value="{{$edit_service->sub_category_id}}">{{$edit_service->subcategory->name}}</option>
+                            <option value="{{$service->sub_category_id}}">{{$service->subcategory->name}}</option>
                             @foreach($sub_categories as $sub_cat)
                                <option value="{{$sub_cat->id}}">
                                 {{$sub_cat->name}}
@@ -295,7 +295,7 @@
                     </div>
 
 
-@if($edit_service->id>0)
+@if($service->id>0)
 {{$image_required=""}}
 @else
 {{$image_required="required"}}
@@ -436,7 +436,7 @@
                                 </button>
                               @else
 
-                                <a href="{{url('admin/service/working_day/delete/')}}/{{$val['id']}}/{{$edit_service->id}}">
+                                <a href="{{url('admin/service/working_day/delete/')}}/{{$val['id']}}/{{$service->id}}">
                                   <button type="button" class="btn btn-danger btn-lg">
                                      <i class="fa fa-minus"></i>
                                   </button>
@@ -508,7 +508,7 @@
 
  
 
-  $('#summernote').summernote('code', `{!! $edit_service->description !!}` );
+  $('#summernote').summernote('code', `{!! $service->description !!}` );
 
 
 </script>
