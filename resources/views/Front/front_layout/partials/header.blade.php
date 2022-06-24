@@ -18,7 +18,7 @@
 							<div class="right-content">
 								<ul class="list-main">
 									<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-									@if(Auth::user()->role == "Member")
+									@if(Auth::check() && Auth::user()->role == "Member")
 									<li><i class="ti-user"></i> <a href="{{ url('member/dashboard')}}">My account</a></li>
 									@endif
 

@@ -131,6 +131,11 @@
                         </div>
                         {!! NoCaptcha::renderJs() !!}
                         {!! NoCaptcha::display() !!}
+                        @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $captcha }}</strong>
+                                    </span>
+                                @enderror
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customControlInline">

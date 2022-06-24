@@ -18,6 +18,40 @@
 	ul.days li span{
 		float: right;
 	}
+
+	.contactIcon{
+		background: #48f;
+		padding: 10px;
+		color: white;
+
+	}
+
+	ul.contactDetails li{
+
+		margin: 10px 0px;
+	}
+
+	ul.contactDetails li span{
+
+		font-size: 15px;
+		color: black;
+		margin-left: 12px;
+
+	}
+
+	li.address div{
+
+		font-size: 15px;
+		color: black;
+		margin-left: 12px;
+
+	}
+
+	form.serviceForm .form-control{
+		padding: 10px;
+		font-size: 13px;
+	}
+
 </style>
 
 @endsection
@@ -259,7 +293,7 @@
 										<form method="post" action="{{route('chat.init')}}">
 											@csrf
 											<input type="id" name="reciever_id" value="{{$service->user_id}}" hidden>
-											<button class="btn" type="submit">Contact <b>{{$service->user->f_name}}</b>	</button>
+											<button class="btn" type="submit">Chat with <b>{{$service->user->f_name}}</b>	</button>
 										</form>
 										@endif
 										
@@ -273,6 +307,30 @@
 
 						</div>
 						
+						<div class="card mt-4">
+							<div class="card-header">
+								<h5 class="text-center">Contact Details</h5>
+							</div>
+							<div class="card-body">
+									
+								<ul class="contactDetails">
+									
+									<a href="tel:13213123"><li> <i class="fa fa-phone contactIcon"></i> <span>(555) - 5533 434</span> </li></a>
+									
+									<a href="mailto:info@example.com"><li> <i class="fa fa-envelope-open contactIcon"></i> <span>info@example-domain.com</span></li></a>	
+									
+									<a href="http://example-domain.com" target="_blank"><li> <i class="fa fa-globe contactIcon"></i> <span>example-domain.com</span></li></a>	
+									
+									<a href="https://www.google.com/maps/search/120+Bethpage+Road+Suite+100+Hicksville,+NY+1180/@31.5300254,74.3470055,15z" target="_blank"><li class="d-flex address"> <i class="fa fa-map contactIcon"></i> 
+										<div>120 Bethpage Road Suite 100 Hicksville, NY 11801</div></li></a>								
+								
+									
+									
+								</ul>
+								
+							</div>				
+							
+						</div>
 						  
 
 						<div class="card mt-4">
@@ -285,7 +343,7 @@
 								
 									@foreach($service->service_working_days as $time)
 
-									<li class=" @if(\Carbon\Carbon::now()->format('l') == ucfirst($time->day)) font-weight-bold border @endif">{{ucfirst($time->day)}} <span>
+									<li class=" @if(\Carbon\Carbon::now()->format('l') == ucfirst($time->day)) font-weight-bold border @endif"><i class="fa fa-calendar mr-1"></i>{{ucfirst($time->day)}} <span><i class="fa fa-clock-o"></i>
 										
 										@php 
 
@@ -302,14 +360,32 @@
 									
 								</ul>
 								
+							</div>				
+							
+						</div>
+						<div class="card mt-4">
+							<div class="card-header">
+								<h5 class="text-center">Get a Quote</h5>
 							</div>
+							<div class="card-body">
+								<form class="serviceForm">
+									<input type="id" name="service_id" value="{{$service->id}}" hidden>
+									<div class="form-group">
+										<input class="form-control" type="text" name="name" placeholder="Your Name" required>
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="text" name="name" placeholder="Your Phone" required>
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="email" name="name" placeholder="Your Email" required>
+									</div>
+									<div class="form-group">
+										<textarea class="form-control" name="name" placeholder="Your Message"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary">Send Now</button>
+								</form>
 								
-								
-
-								
-							
-							
-							
+							</div>
 						</div>
 
 
