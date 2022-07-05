@@ -1,4 +1,11 @@
 @extends('Admin.layouts.masterDataTables')
+@section('css')
+<style type="text/css">
+  .iconText{
+    font-size: 14px;
+  }
+</style>
+@endsection
 @section('content')
 
 <div class="content-header">
@@ -34,7 +41,7 @@
             <div class="card card-dafault">
               <div class="card-header">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add">
-                  Add Category
+                  Add Category 
                 </button>
                 @if(Session::Has('msg'))
                 <p class="alert alert-danger float-right bg-danger py-2 px-3" role="alert">
@@ -49,6 +56,7 @@
                       <th>No#</th>
                       <th>Category</th>
                       <th>Slug</th>
+                      <th>Icon</th>
                       <th class="text-right">Action</th>
                     </tr>
                   </thead>
@@ -58,6 +66,7 @@
                       <td>{{++$key}}</td>
                       <td>{{$list->name}}</td>
                       <td>{{$list->slug}}</td>
+                      <td> <i class="{{$list->icon}}"></i> {{$list->icon}}</td>
                       <td class="text-right py-0 align-middle">
                         <div class="btn-group btn-group-sm">
                           <button class="btn btn-info" data-toggle="modal" data-target="#modal-edit-{{$list->id}}"><i class="fas fa-pen-square"></i></button>
@@ -92,56 +101,42 @@
                     </div>
                     <!------------Delete Category Modal End-------------->
                     <!--------Edit Category Modal------->
-            <div class="modal fade" id="modal-edit-{{$list->id}}">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Edit Category</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <form method="POST" action="{{route('admin.edit.category')}}">
-                      @csrf
-                      <input type="text" name="id" value="{{$list->id}}" hidden="">
-                      <div class="form-group">
-                        <label for="category-name">Category Name</label>
-                        <input type="text" class="form-control" name="name" id="category-name" placeholder="Category Name" value="{{$list->name}}">
-                      </div>
-                    
-                      <div class="form-group">
-                        <label for="category-image">Category Image</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image" id="category-image">
-                            <label class="custom-file-label" for="category-image">Choose file</label>
+                    <div class="modal fade" id="modal-edit-{{$list->id}}">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Category</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                           </div>
+                          <div class="card-body">
+                            <form method="POST" action="{{route('admin.edit.category')}}">
+                              @csrf
+                              <input type="text" name="id" value="{{$list->id}}" hidden="">
+                              <div class="form-group">
+                                <label for="category-name">Category Name</label>
+                                <input type="text" class="form-control" name="name" id="category-name" placeholder="Category Name" value="{{$list->name}}">
+                              </div>
+                            
+                              <div class="form-group">
+                                <label for="category-image">Category Image</label>
+                                    <input type="text" name="icon" class="form-control" placeholder="fas fa-icon" value="{{$list->icon}}">
+                                    <p class="iconText">You can Find Icon <a href="https://fontawesome.com/v5/search?m=free" target="_blank">Here</a></p>
+                              </div>
+                             
+                              <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                              </div>
+                            </form>
+                          </div>
+                          
+                         
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="category-image">Parent Category</label>
-                        <div class="input-group">
-                          <select class="form-control" name="category_id">
-                            <option value="">Select Parent Category</option>
-                            @foreach($categories as $category)
-                            <option @if($list->id == $category->id) ? selected : 'das' @endif value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                      </div>
-                    </form>
-                  </div>
-                  
-                 
-                </div>
-             
-              </div>  
-            </div>
+                     
+                      </div>  
+                    </div>
             <!-- Edit Category End -->
                     @endforeach        
                   </tbody>
@@ -172,13 +167,13 @@
                       </div>
                       
                       <div class="form-group">
-                        <label for="category-image">Category Image</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image" id="category-image" required="">
-                            <label class="custom-file-label" for="category-image">Choose file</label>
-                          </div>
-                        </div>
+                        <label for="category-image">Category Icon</label>
+                        
+                          
+                            <input type="text" name="icon" class="form-control" placeholder="fas fa-icon">
+                            <p class="iconText">You can Find Icon <a href="https://fontawesome.com/v5/search?m=free" target="_blank">Here</a></p>
+                          
+                        
                       </div>
                       <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

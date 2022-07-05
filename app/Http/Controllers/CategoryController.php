@@ -22,7 +22,9 @@ class CategoryController extends Controller
     public function create_category(Request $request){
 
         $request->validate([
-            'name'=>'required|unique:categories'
+            'name'=>'required|unique:categories',
+            'icon'=>'required'
+
         ]);
         
         /*******Converting slug to lowercase******/
@@ -36,14 +38,15 @@ class CategoryController extends Controller
         $model = new Category;
         $model->name = $request->name;
         $model->slug = $str2;
-        $model->image = "test";
+        $model->icon = $request->icon;
         $model->save();
         return redirect('/admin/category')->with('msg', 'Category Has Been Added');
     }
 
     public function edit_category(Request $request){
          $request->validate([
-            'name'=>'required|unique:categories'
+            'name'=>'required|unique:categories',
+            'icon'=>'required'
         ]);
         
         /*******Converting slug to lowercase******/
@@ -56,7 +59,7 @@ class CategoryController extends Controller
         $edit_cat = Category::find($request->id);
         $edit_cat->name = $request->name;
         $edit_cat->slug = $str2;
-        $edit_cat->image = "test";
+        $edit_cat->icon = "test";
         $edit_cat->save();
         return redirect('/admin/category')->with('msg', 'Category Has Been Updated');
     }

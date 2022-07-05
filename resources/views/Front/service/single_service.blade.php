@@ -390,7 +390,7 @@
 
 
 
-						<div class="card card-primary card-outline mt-5">
+						<div class="card card-primary card-outline mt-4">
 			              <div class="card-body box-profile">
 			                <div class="text-center p-4">
 			                @if($user->profile_img != "")

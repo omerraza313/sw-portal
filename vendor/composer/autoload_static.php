@@ -36,6 +36,7 @@ class ComposerStaticInit3e246cefe0307745091090f262a75232
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'ea457e51deab667f650238f68a62222c' => __DIR__ . '/../..' . '/app/functions/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -573,6 +574,7 @@ class ComposerStaticInit3e246cefe0307745091090f262a75232
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\AdminCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AdminCategoryRequest.php',
         'App\\Listeners\\SendNewUserNotification' => __DIR__ . '/../..' . '/app/Listeners/SendNewUserNotification.php',
         'App\\Models\\Blog' => __DIR__ . '/../..' . '/app/Models/Blog.php',
         'App\\Models\\BlogCategory' => __DIR__ . '/../..' . '/app/Models/BlogCategory.php',
@@ -599,12 +601,15 @@ class ComposerStaticInit3e246cefe0307745091090f262a75232
         'App\\Notifications\\NewServiceNotification' => __DIR__ . '/../..' . '/app/Notifications/NewServiceNotification.php',
         'App\\Notifications\\NewUserNotification' => __DIR__ . '/../..' . '/app/Notifications/NewUserNotification.php',
         'App\\Observers\\CommonObserver' => __DIR__ . '/../..' . '/app/Observers/CommonObserver.php',
+        'App\\Policies\\ServicePackagePolicy' => __DIR__ . '/../..' . '/app/Policies/ServicePackagePolicy.php',
+        'App\\Policies\\ServicePolicy' => __DIR__ . '/../..' . '/app/Policies/ServicePolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Scopes\\UserScope' => __DIR__ . '/../..' . '/app/Scopes/UserScope.php',
+        'App\\Services\\CategoryService' => __DIR__ . '/../..' . '/app/Services/CategoryService.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

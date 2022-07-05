@@ -69,7 +69,7 @@ Route::get('/profile/user/{user_name}', [FrontController::class, 'profile']);
 /**********Admin Dashboard Routes***********/
 
 //dashboard
-Route::group(['middleware'=> ['admin']], function(){
+Route::group(['middleware'=> ['admin', 'auth']], function(){
 Route::group(['prefix'=>'admin'], function(){
 
 	/**********Admin Controller************/

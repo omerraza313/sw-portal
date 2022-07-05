@@ -108,14 +108,14 @@
 								<ul class="main-category">
 									<li><a href="#">Business Categories <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<ul class="sub-category">
-											@foreach($category as $key=>$list)
+											@foreach($categories as $key=>$list)
 											<li><a href="{{url('category/')}}/{{$list->slug}}">{{$list->name}}</a></li>
 											@endforeach
 										</ul>
 									</li>
 									<li><a href="#">Service Categories <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<ul class="sub-category">
-											@foreach($category as $key=>$list)
+											@foreach($categories as $key=>$list)
 											<li><a href="{{url('category/')}}/{{$list->slug}}">{{$list->name}}</a></li>
 											@endforeach
 										</ul>
@@ -160,7 +160,7 @@
 											</li>
 										</ul>
 									</li> -->
-									@foreach($category as $key=>$list)
+									@foreach($categories as $key=>$list)
 											<li><a href="{{url('category/')}}/{{$list->slug}}">{{$list->name}}</a></li>
 									@endforeach
 								</ul>

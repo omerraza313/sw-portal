@@ -1,4 +1,26 @@
 @extends('Front.home.layouts.homeMaster')
+@section('css')
+<style type="text/css">
+	.catSection{
+		background: #F6F7FB;
+	}
+	.catBox{
+		padding: 60px 10px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	.catBox:hover{
+		box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.1);
+		transition: 0.3s;
+	}
+
+	.catBox i{
+		margin-bottom: 20px;
+		font-size: 30px;
+	}
+</style>
+@endsection
 @section('content')	
 	
 
@@ -75,7 +97,30 @@
 		</div>
 	</section>
 	<!-- End Small Banner -->
-	
+	<section>
+		<div class="container p-5 my-5 catSection">
+			<div class="row">
+				@foreach($categories as $cat)
+				<div class="col-md-3 mt-4">
+					<a href="{{url('category/'. $cat->name)}}">
+						<div class="card catBox text-center">
+							<i class="{{$cat->icon}}"></i>
+							<h5>{{$cat->name}}</h5>
+						</div>
+					</a>
+				</div>
+				@endforeach
+				<div class="col-md-3 mt-4">
+					<div class="card catBox text-center">
+						<i class="far fa-eye"></i>
+						<h5>View More</h5>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
 	<!-- Start Product Area -->
     <div class="product-area section">
             <div class="container">
@@ -92,7 +137,7 @@
 							<div class="nav-main">
 								<!-- Tab Nav -->
 								<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-									@foreach($category as $key=>$list)
+									@foreach($categories as $key=>$list)
 									  @if($key==0)
 									  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#cleaning-services" role="tab">{{$list->name}}</a></li>
 									  @else

@@ -21,9 +21,9 @@ class FrontController extends Controller
         $service = Service::orderBy('id', 'desc')->take(12)->get();
         // $service = Service::all();
 
-        $category = Category::all();
+        $categories = Category::all();
         $recent_posts = Blog::orderBy('created_at', 'desc')->take(3)->get();
-        return view('Front.home.home', compact('service','category', 'recent_posts'));
+        return view('Front.home.home', compact('service','categories', 'recent_posts'));
     }
     public function blog(){
         $blog = Blog::all();
